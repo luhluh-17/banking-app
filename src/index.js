@@ -1,25 +1,26 @@
-import React, { useState } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './styles/index.css'
-import Login from './pages/Login'
-import Main from './pages/Main'
+import Login from './banking/pages/Login'
+import Main from './banking/pages/Main'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
+import './banking/styles/index.css'
+
 function App() {
-	return (
+  return (
     <BrowserRouter>
       <Routes>
         <Route exact path='/' element={<Login />} />
         <Route path='/login' element={<Login />} />
         <Route path='/main' element={<Main />} />
       </Routes>
-	  </BrowserRouter>
+    </BrowserRouter>
   )
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-	<React.StrictMode>
-		<App />
-	</React.StrictMode>
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
 )
