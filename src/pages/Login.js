@@ -2,7 +2,6 @@ import React from 'react'
 import '../styles/login.css'
 import LoginForm from '../components/loginForm'
 
-
 const Login = () => {
 	return (
 		<div className='two-col'>
@@ -19,7 +18,5 @@ const Logo = () => {
 		</div>
 	)
 }
-
-
 
 export default Login
