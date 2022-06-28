@@ -8,16 +8,14 @@ const data = [
   { icon: 'payments', title: 'Expenses' },
 ]
 
-const SidePanel = () => { 
-  const style = ({isActive}) => isActive ? 'side-item active': 'side-item'
-
+const SidePanel = () => {
   return (
-    <div className="sideBar">
-      <div className="logo">
+    <div className="sideBar-budget">
+      <div className="logo-budget">
         <span className="material-symbols-outlined">account_circle</span>
         <h1>Greetings, User</h1>
       </div>
-    
+
       {data.map((item, index) => {
         return <SideItem key={index} {...item} />
       })}
@@ -27,8 +25,13 @@ const SidePanel = () => {
 
 const SideItem = ({ icon, title }) => {
   return (
-    <NavLink to={title.toLowerCase()} className={({isActive}) => isActive ? 'side-item active': 'side-item'}>
-      <span className="material-symbols-outlined side-icon">{icon}</span>
+    <NavLink
+      to={title.toLowerCase()}
+      className={({ isActive }) =>
+        isActive ? 'side-item-budget active' : 'side-item-budget'
+      }
+    >
+      <span className="material-symbols-outlined side-icon-budget">{icon}</span>
       <span>{title}</span>
     </NavLink>
   )
