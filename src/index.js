@@ -3,16 +3,17 @@ import ReactDOM from 'react-dom/client'
 import Login from './banking/pages/Login'
 import Main from './banking/pages/Main'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-
 import './banking/styles/index.css'
+
+import Budget from './budget/Budget'
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path='/' element={<Login />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/main' element={<Main />} />
+        <Route exact path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/main" element={<Main />} />
       </Routes>
     </BrowserRouter>
   )
@@ -21,6 +22,8 @@ function App() {
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Budget />
+    </BrowserRouter>
   </React.StrictMode>
 )
