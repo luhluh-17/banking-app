@@ -33,7 +33,7 @@ const LoginForm = props => {
         employees[index].username === username &&
         employees[index].password === password
       ) {
-        navigate('/main')
+        navigate('/dashboard')
       }
       setInvalidLogin(true)
     }
