@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+<<<<<<< HEAD
 import Login from './banking/pages/Login'
 import Main from './banking/pages/Main'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
@@ -19,11 +20,18 @@ function App() {
   )
 }
 
+=======
+import { BrowserRouter } from 'react-router-dom'
+import BangkingApp from './banking/BangkingApp'
+
+import './banking/styles/index.css'
+
+>>>>>>> main
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Budget />
+      <BangkingApp />
     </BrowserRouter>
   </React.StrictMode>
 )
