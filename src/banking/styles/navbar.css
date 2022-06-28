@@ -1,0 +1,27 @@
+.navbar {
+  width: 20rem;
+  height: 100vh;
+  box-shadow: var(--shadow-2);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.link {
+  color: var(--grey-500);
+  border-radius: var(--borderRadius);
+  letter-spacing: var(--letterSpacing);
+  padding: 0.8rem 0.75rem;
+  width: 100%;
+}
+
+.active {
+  color: white;
+  background-color: rgb(107, 109, 240);
+  border-radius: var(--borderRadius);
+  letter-spacing: var(--letterSpacing);
+  padding: 0.8rem 0.75rem;
+  width: 100%;
+}

@@ -130,6 +130,11 @@ body {
   width: 100%;
 }
 
+/* Sizing */
+.content {
+  width: 100vw;
+}
+
 /* Display */
 
 .flex-col {
@@ -143,7 +148,5 @@ body {
 .flex-row {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
   gap: 1rem;
 }
