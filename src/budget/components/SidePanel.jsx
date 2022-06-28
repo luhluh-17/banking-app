@@ -13,7 +13,10 @@ const SidePanel = () => {
     <div className="sideBar-budget">
       <div className="logo-budget">
         <span className="material-symbols-outlined">account_circle</span>
-        <h1>Greetings, User</h1>
+        <div>
+          <h1>Greetings,</h1>
+          <h1>User</h1>
+        </div>
       </div>
 
       {data.map((item, index) => {
