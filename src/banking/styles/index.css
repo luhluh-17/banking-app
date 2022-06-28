@@ -94,6 +94,11 @@ img {
   height: auto;
 }
 
+/* Fonts */
+body {
+  font-family: 'Inter', sans-serif;
+}
+
 /* buttons */
 
 .btn {
