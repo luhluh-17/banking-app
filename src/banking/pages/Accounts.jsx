@@ -1,4 +1,5 @@
 import React from 'react'
+import Fab from '../components/Fab'
 import Table from '../components/Table'
 
 const Accounts = () => {
@@ -6,12 +7,13 @@ const Accounts = () => {
     <main>
       <input type='text' placeholder='Searchbar'></input>
       <Table />
-      <button className='btn fab'>
-        <div className='flex-row-c'>
-          <span class='material-symbols-outlined'>add</span>
-          <span>Create User</span>
-        </div>
-      </button>
+      <Fab
+        icon='add'
+        text='Create User'
+        cb={() => {
+          alert('show dialog')
+        }}
+      />
     </main>
   )
 }
