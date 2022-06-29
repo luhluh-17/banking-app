@@ -1,33 +1,38 @@
-import React from 'react'
-import Chip from '../../budget/images/chip.png'
-import Visa from '../images/visa.png'
+import React, { useContext, useState } from 'react'
+import Overview_Bal from '../components/Overview_Bal'
+import Overview_Card from '../components/Overview_Card'
+import Chart_Bar from '../components/Chart_Bar'
+import User from '../data/User'
+
 const Overview = () => {
+  const [userData, setUserData] = useState({
+    labels: User.expenses.map(item => item.name),
+    datasets: [
+      {
+        label: 'Expenses',
+        data: User.expenses.map(item => item.cost),
+       
+        backgroundColor: ['hsla(224, 84%, 34%)', 'rgb(242, 169, 11)'],
+        borderWidth: 1,
+      },
+    ],
+  })
+
   return (
     <section className="dash-sec">
       <div className="dash-content">
         <section className="tab-header">
           <h1>Overview</h1>
         </section>
-        <section className="bal-card">
-          <div className="bal-card-item balance">
-            <h2>Current Balance</h2>
-            <span>$100,000</span>
-          </div>
-          <div className="bal-card-item card">
-            <h2>My Card</h2>
-            <div className="visa-card">
-              <h3>platinum</h3>
-              <div>
-                <img className="chip-logo" src={Chip} />
-              </div>
-              <div className="num-visa">
-                <span>894 414 6739</span>
-                <img src={Visa} className="visa-logo" />
-              </div>
-            </div>
-            <div className="back-card"></div>
-          </div>
-        </section>
+        <div className="overview-top">
+          <section className="bal-card">
+            <Overview_Card />
+            <Overview_Bal />
+          </section>
+          <section className="barCon">
+            <Chart_Bar chartData={userData} />
+          </section>
+        </div>
       </div>
     </section>
   )
