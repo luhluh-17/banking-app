@@ -1,0 +1,52 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
+  border-bottom: 1px solid grey ;
+}
+
+.logo-s {
+  width: 100px;
+}
+
+.login-btn {
+  font-size: 16px;
+  padding: 15px 25px;
+  border: none;
+  border-radius: 50px;
+  background-color: #FFB20C;
+  color: white;
+}
+
+hero-section {
+  background-image: url(../assets/home-bg.jpg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 3px 4px 7px black;
+}
+
+hero-section h1 {
+  width: 50%;
+  font-size: 60px;
+  font-weight: 900;
+  color: white;
+  text-align: center;
+}
+
+footer {
+  color: rgb(134, 134, 134);
+  padding: 20px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  text-align: center;
+}
+
+footer .login-btn {
+  background-color: transparent;
+  border: 1px solid #FFB20C;
+  color: black;
+}
