@@ -1,10 +1,20 @@
 import React from 'react'
+import Fab from '../components/Fab'
+import Table from '../components/Table'
 
 const Accounts = () => {
   return (
-    <section className='flex-col'>
-      <h1>Accounts Page</h1>
-    </section>
+    <main>
+      <input type='text' placeholder='Searchbar'></input>
+      <Table />
+      <Fab
+        icon='add'
+        text='Create User'
+        cb={() => {
+          alert('show dialog')
+        }}
+      />
+    </main>
   )
 }
 
