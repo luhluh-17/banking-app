@@ -9,17 +9,22 @@ const User = {
     {
       id: 1,
       name: 'Electricity',
-      cost: 200,
+      cost: 4000,
     },
     {
       id: 1,
       name: 'Water',
-      cost: 200,
+      cost: 300,
     },
     {
       id: 1,
       name: 'Internet',
-      cost: 200,
+      cost: 2000,
+    },
+    {
+      id: 1,
+      name: 'Grocery',
+      cost: 3000,
     },
   ],
   transactions: [
@@ -31,12 +36,12 @@ const User = {
       amount: 200,
     },
     {
-        id: 2,
-        date: 'January 5, 2014',
-        desc: 'Transferred to other bank',
-        status: 'Posted',
-        amount: 5000,
-      },
+      id: 2,
+      date: 'January 5, 2014',
+      desc: 'Transferred to other bank',
+      status: 'Posted',
+      amount: 5000,
+    },
   ],
 }
 
