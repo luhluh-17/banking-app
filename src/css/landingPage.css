@@ -19,7 +19,7 @@ header {
   color: white;
 }
 
-hero-section {
+.hero-section {
   background-image: url(../assets/home-bg.jpg);
   display: flex;
   justify-content: center;
@@ -27,7 +27,7 @@ hero-section {
   text-shadow: 3px 4px 7px black;
 }
 
-hero-section h1 {
+.hero-section h1 {
   width: 50%;
   font-size: 60px;
   font-weight: 900;
