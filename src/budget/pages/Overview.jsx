@@ -11,18 +11,8 @@ const Overview = () => {
       {
         label: 'Expenses',
         data: User.expenses.map(item => item.cost),
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
-          'rgba(255, 205, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-        ],
-        borderColor: [
-          'rgb(255, 99, 132)',
-          'rgb(255, 159, 64)',
-          'rgb(255, 205, 86)',
-          'rgb(75, 192, 192)',
-        ],
+       
+        backgroundColor: ['hsla(224, 84%, 34%)', 'rgb(242, 169, 11)'],
         borderWidth: 1,
       },
     ],
@@ -34,11 +24,15 @@ const Overview = () => {
         <section className="tab-header">
           <h1>Overview</h1>
         </section>
-        <section className="bal-card">
-          <Overview_Bal />
-          <Overview_Card />
-        </section>
-        <Chart_Bar chartData={userData} />
+        <div className="overview-top">
+          <section className="bal-card">
+            <Overview_Card />
+            <Overview_Bal />
+          </section>
+          <section className="barCon">
+            <Chart_Bar chartData={userData} />
+          </section>
+        </div>
       </div>
     </section>
   )

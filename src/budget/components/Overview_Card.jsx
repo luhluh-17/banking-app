@@ -6,8 +6,8 @@ import { UserContext } from '../helper/Context'
 const Overview_Card = () => {
   const {accountNumber} = useContext(UserContext)
   return (
-    <div className="bal-card-item card">
-      <h2>My Card</h2>
+    <div className="card">
+     
       <div className="visa-card">
         <h3>platinum</h3>
         <div>

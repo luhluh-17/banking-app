@@ -11,7 +11,7 @@ const Overview_Bal = () => {
     }).format(number)
   }
   return (
-    <div className="bal-card-item balance">
+    <div className="balance">
       <h2>Current Balance</h2>
       <span>{formatCurrency(balance)}</span>
     </div>

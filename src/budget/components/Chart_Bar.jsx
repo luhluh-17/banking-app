@@ -3,7 +3,7 @@ import { Bar, Line } from 'react-chartjs-2'
 import { Chart as ChartJS } from 'chart.js/auto'
 const Chart_Bar = ({ chartData }) => {
   return (
-    <div>
+    <div className='bar-chart'>
       <Bar data={chartData} />
     </div>
   )

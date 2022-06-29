@@ -26,6 +26,11 @@ const User = {
       name: 'Grocery',
       cost: 3000,
     },
+    {
+      id: 1,
+      name: 'Rent',
+      cost: 10000,
+    },
   ],
   transactions: [
     {
