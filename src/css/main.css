@@ -9,7 +9,6 @@
   --primary-700: #3c3799;
   --primary-800: #282566;
   --primary-900: #141233;
-
   /* grey */
   --grey-50: #f8fafc;
   --grey-100: #f1f5f9;
@@ -28,9 +27,7 @@
   --red-dark: #842029;
   --green-light: #d1e7dd;
   --green-dark: #0f5132;
-
   /* fonts  */
-
   --small-text: 0.875rem;
   --extra-small-text: 0.7em;
   /* rest of the vars */
@@ -39,9 +36,6 @@
   --borderRadius: 0.25rem;
   --letterSpacing: 1px;
   --transition: 0.3s ease-in-out all;
-  --max-width: 1120px;
-  --fixed-width: 600px;
-
   /* box shadow*/
   --shadow-1: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   --shadow-2: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
@@ -51,8 +45,6 @@
   --shadow-4: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
-
-/* Resetter */
 
 html {
   box-sizing: border-box;
@@ -94,12 +86,23 @@ img {
   height: auto;
 }
 
-/* Fonts */
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
-/* buttons */
+.flex, .flex-row, .flex-col {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
 
 .btn {
   cursor: pointer;
@@ -118,35 +121,38 @@ body {
   background: var(--primary-700);
   box-shadow: var(--shadow-3);
 }
-.btn-hipster {
-  color: var(--primary-500);
-  background: var(--primary-200);
-}
-.btn-hipster:hover {
-  color: var(--primary-200);
-  background: var(--primary-700);
-}
+
 .btn-block {
   width: 100%;
 }
 
+.navbar {
+  width: 20rem;
+  height: 100vh;
+  box-shadow: var(--shadow-2);
+}
+
+.link {
+  color: var(--grey-500);
+  border-radius: var(--borderRadius);
+  letter-spacing: var(--letterSpacing);
+  padding: 0.8rem 0.75rem;
+  width: 100%;
+}
+
+.active {
+  color: white;
+  background-color: rgb(107, 109, 240);
+  border-radius: var(--borderRadius);
+  letter-spacing: var(--letterSpacing);
+  padding: 0.8rem 0.75rem;
+  width: 100%;
+}
+
 /* Sizing */
-.content {
+body {
   width: 100vw;
+  height: 100vh;
 }
 
-/* Display */
-
-.flex-col {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-
-.flex-row {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-}
+/*# sourceMappingURL=main.css.map */

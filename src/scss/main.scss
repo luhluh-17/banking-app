@@ -1,0 +1,12 @@
+@use 'abstracts/variables';
+@use 'base/reset';
+@use 'base/typography';
+@use 'utils/display';
+@use 'components/button';
+@use 'components/sidenavbar';
+
+/* Sizing */
+body {
+  width: 100vw;
+  height: 100vh;
+}
