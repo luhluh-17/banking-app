@@ -22,7 +22,22 @@ const User = {
       cost: 200,
     },
   ],
-  transactions: [],
+  transactions: [
+    {
+      id: 1,
+      date: 'January 5, 2014',
+      desc: 'Ate outside',
+      status: 'Posted',
+      amount: 200,
+    },
+    {
+        id: 2,
+        date: 'January 5, 2014',
+        desc: 'Transferred to other bank',
+        status: 'Posted',
+        amount: 5000,
+      },
+  ],
 }
 
 export default User
