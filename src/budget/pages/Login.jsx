@@ -2,7 +2,7 @@ import React from 'react'
 import LoginForm from '../components/LoginForm'
 import '../../css/login.css'
 
-const EmployeeLogin = () => {
+const CustomerLogin = () => {
   return (
     <div className='two-col'>
       <Logo />
@@ -23,4 +23,4 @@ const Logo = () => {
   )
 }
 
-export default EmployeeLogin
+export default CustomerLogin
