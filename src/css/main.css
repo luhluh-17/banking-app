@@ -162,10 +162,31 @@ section {
   width: 100%;
 }
 
+table {
+  margin-top: 1rem;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
 main {
-  background-color: var(--primary-100);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f5f5f5;
   height: 100vh;
   width: 100%;
+  padding: 1rem;
 }
 
 /*# sourceMappingURL=main.css.map */

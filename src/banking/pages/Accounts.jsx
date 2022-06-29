@@ -1,10 +1,12 @@
 import React from 'react'
+import Table from '../components/Table'
 
 const Accounts = () => {
   return (
-    <section className='flex-col'>
-      <h1>Accounts Page</h1>
-    </section>
+    <main>
+      <input type='text' placeholder='Searchbar'></input>
+      <Table />
+    </main>
   )
 }
 

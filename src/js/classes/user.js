@@ -1,4 +1,4 @@
-class User {
+export default class User {
   constructor(
     id,
     firstName,
@@ -21,6 +21,15 @@ class User {
 
   get name() {
     return `${this.firstName} + ${this.lastName}`
+  }
+
+  get formattedBalance() {
+    const CURRENCY_FORMATTER = new Intl.NumberFormat(undefined, {
+      currency: 'PHP',
+      style: 'currency',
+    })
+
+    return `₱ ${CURRENCY_FORMATTER.format(this.balance)}`
   }
 
   static calculateRemainingBalance(User) {
