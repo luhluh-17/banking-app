@@ -1,7 +1,8 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Landing from './pages/Landing'
-import Login from './pages/Login'
+import EmployeeLogin from './pages/Login'
+import CustomerLogin from '../budget/pages/Login'
 import Dashboard from './layout/Dashboard'
 import Overview from './pages/Overview'
 import Accounts from './pages/Accounts'
@@ -14,7 +15,8 @@ const BankingApp = () => {
     <Routes>
       <Route path='/'>
         <Route index element={<Landing />} />
-        <Route path='login' element={<Login />} />
+        <Route path='employee-login' element={<EmployeeLogin />} />
+        <Route path='customer-login' element={<CustomerLogin />} />
 
         <Route path='dashboard' element={<Dashboard />}>
           <Route index element={<Overview />} />
