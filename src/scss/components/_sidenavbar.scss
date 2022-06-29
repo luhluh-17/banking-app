@@ -1,12 +1,19 @@
-.navbar {
+.sidenavbar {
   width: 20rem;
   height: 100vh;
   box-shadow: var(--shadow-2);
 }
 
+.navbar-heading {
+  color: white;
+  width: 100%;
+  padding: 3rem 1rem;
+  background-color: var(--primary-700);
+  text-align: center;
+}
+
 .link {
   color: var(--grey-500);
-  border-radius: var(--borderRadius);
   letter-spacing: var(--letterSpacing);
   padding: 0.8rem 0.75rem;
   width: 100%;
@@ -14,8 +21,7 @@
 
 .active {
   color: white;
-  background-color: rgb(107, 109, 240);
-  border-radius: var(--borderRadius);
+  background-color: var(--primary-300);
   letter-spacing: var(--letterSpacing);
   padding: 0.8rem 0.75rem;
   width: 100%;

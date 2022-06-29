@@ -1,15 +1,14 @@
-.flex {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
 .flex-col {
-  @extend .flex;
+  display: flex;
   flex-direction: column;
 }
 
+.flex-col-sb {
+  @extend .flex-col;
+  justify-content: space-between;
+}
+
 .flex-row {
-  @extend .flex;
+  display: flex;
   flex-direction: row;
 }
