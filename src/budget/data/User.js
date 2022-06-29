@@ -1,6 +1,7 @@
 const User = {
   firstName: 'Stanley',
   lastName: 'Hugo',
+  accountNumber: '894 414 6749',
   email: 'stanleyhugo06@gmail.com',
   password: 12345,
   balance: 20000,

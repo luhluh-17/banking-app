@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-const SideItem = ({ icon, title }) => {
+const SidePanel_Item = ({ icon, title }) => {
   return (
     <NavLink
       to={title.toLowerCase()}
@@ -15,4 +15,4 @@ const SideItem = ({ icon, title }) => {
   )
 }
 
-export default SideItem
+export default SidePanel_Item

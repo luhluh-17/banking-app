@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { UserContext } from '../helper/Context'
-import SideItem from './SideItem'
+import SideItem from './SidePanel_Item'
 
 const PanelData = [
   { icon: 'apps', title: 'Overview' },
