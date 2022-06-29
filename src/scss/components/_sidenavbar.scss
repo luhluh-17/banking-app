@@ -15,14 +15,17 @@
 .link {
   color: var(--grey-500);
   letter-spacing: var(--letterSpacing);
-  padding: 0.8rem 0.75rem;
+  padding: 0.8rem 1.5rem;
   width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .active {
   color: white;
   background-color: var(--primary-300);
   letter-spacing: var(--letterSpacing);
-  padding: 0.8rem 0.75rem;
+  padding: 0.8rem 1.5rem;
   width: 100%;
 }

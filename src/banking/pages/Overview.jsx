@@ -2,10 +2,10 @@ import React from 'react'
 
 const Overview = () => {
   return (
-    <section className='flex-col'>
+    <main className='flex-col'>
       <h1>Overview Page</h1>
       <p>Content goes here</p>
-    </section>
+    </main>
   )
 }
 
