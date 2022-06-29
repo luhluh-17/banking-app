@@ -8,9 +8,9 @@ const Table = () => {
       <TableItem
         key={user.id}
         id={user.id}
-        name={`${user.firstName} ${user.lastName}`}
+        name={user.name}
         email={user.email}
-        balance={user.balance}
+        balance={user.formattedBalance}
       />
     )
   }

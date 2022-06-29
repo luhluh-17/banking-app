@@ -20,7 +20,7 @@ export default class User {
   }
 
   get name() {
-    return `${this.firstName} + ${this.lastName}`
+    return `${this.firstName} ${this.lastName}`
   }
 
   get formattedBalance() {
@@ -29,7 +29,7 @@ export default class User {
       style: 'currency',
     })
 
-    return `₱ ${CURRENCY_FORMATTER.format(this.balance)}`
+    return `${CURRENCY_FORMATTER.format(this.balance)}`
   }
 
   static calculateRemainingBalance(User) {
