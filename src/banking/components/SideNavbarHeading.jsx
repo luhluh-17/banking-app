@@ -3,8 +3,7 @@ import React from 'react'
 function NavbarHeading() {
   return (
     <div className='flex-col navbar-heading'>
-      <p>Insert Logo</p>
-      <h3>Welcome User</h3>
+      <img src='../../assets/logo.png' alt='company logo' />
     </div>
   )
 }
