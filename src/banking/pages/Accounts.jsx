@@ -6,6 +6,12 @@ const Accounts = () => {
     <main>
       <input type='text' placeholder='Searchbar'></input>
       <Table />
+      <button className='btn fab'>
+        <div className='flex-row-c'>
+          <span class='material-symbols-outlined'>add</span>
+          <span>Create User</span>
+        </div>
+      </button>
     </main>
   )
 }

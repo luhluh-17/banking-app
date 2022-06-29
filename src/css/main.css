@@ -104,6 +104,14 @@ body {
   flex-direction: row;
 }
 
+.flex-row-c {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
 .btn {
   cursor: pointer;
   color: var(--white);
@@ -124,6 +132,12 @@ body {
 
 .btn-block {
   width: 100%;
+}
+
+.fab {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
 }
 
 section {
