@@ -1,7 +1,8 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import Fab from '../components/Fab'
 import Table from '../components/Table'
 import User from '../../js/classes/user'
+import { KEY_USERS } from '../../js/variables'
 
 const Accounts = () => {
   const firstNameRef = useRef(null)
@@ -9,10 +10,20 @@ const Accounts = () => {
   const emailRef = useRef(null)
   const balanceRef = useRef(null)
 
-  const [users, setUsers] = useState([])
+  const list =
+    localStorage.getItem(KEY_USERS) !== null
+      ? JSON.parse(localStorage.getItem(KEY_USERS))
+      : []
+  const [users, setUsers] = useState(list)
+
+  useEffect(
+    () => localStorage.setItem(KEY_USERS, JSON.stringify(users)),
+    [users]
+  )
 
   const addItem = (firstName, lastName, balance, email) => {
-    const user = new User(firstName, lastName, balance, email)
+    const id = new Date().getTime()
+    const user = new User(id, firstName, lastName, balance, email)
 
     setUsers(state => [...state, user])
   }
@@ -47,6 +58,7 @@ const Accounts = () => {
       <main>
         <input type='text' placeholder='Searchbar'></input>
         <Table list={users} />
+        <button onClick={() => localStorage.clear()}>Clear Local</button>
       </main>
 
       <form onSubmit={handleSubmit} className='flex-col form'>

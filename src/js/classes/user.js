@@ -1,5 +1,6 @@
 export default class User {
   constructor(
+    id,
     firstName,
     lastName,
     balance = 0,
@@ -8,7 +9,7 @@ export default class User {
     expenses = [],
     transactions = []
   ) {
-    this.id = new Date().getTime()
+    this.id = id
     this.firstName = firstName
     this.lastName = lastName
     this.balance = balance

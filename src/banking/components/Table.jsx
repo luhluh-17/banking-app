@@ -1,8 +1,20 @@
 import React from 'react'
+import User from '../../js/classes/user'
 import TableItem from './TableItem'
 
 const Table = ({ list }) => {
-  const createTableItem = user => {
+  const createTableItem = item => {
+    const user = new User(
+      item.id,
+      item.firstName,
+      item.lastName,
+      item.balance,
+      item.password,
+      item.email,
+      item.expenses,
+      item.transactions
+    )
+
     return (
       <TableItem
         key={user.id}
