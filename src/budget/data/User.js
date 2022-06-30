@@ -34,14 +34,28 @@ const User = {
   ],
   transactions: [
     {
-      id: 1,
+      id: new Date().getTime().toString(),
       date: 'January 5, 2014',
       desc: 'Ate outside',
       status: 'Posted',
       amount: 200,
     },
     {
-      id: 2,
+      id: new Date().getTime().toString(),
+      date: 'January 5, 2014',
+      desc: 'Transferred to other bank',
+      status: 'Posted',
+      amount: 5000,
+    },
+    {
+      id: new Date().getTime().toString(),
+      date: 'January 5, 2014',
+      desc: 'Transferred to other bank',
+      status: 'Posted',
+      amount: 5000,
+    },
+    {
+      id: new Date().getTime().toString(),
       date: 'January 5, 2014',
       desc: 'Transferred to other bank',
       status: 'Posted',
