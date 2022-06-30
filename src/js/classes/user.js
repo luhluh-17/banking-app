@@ -1,3 +1,5 @@
+import { capitalizeWord } from '../utils/helper'
+
 export default class User {
   constructor(
     id,
@@ -20,7 +22,7 @@ export default class User {
   }
 
   get name() {
-    return `${this.firstName} ${this.lastName}`
+    return capitalizeWord(`${this.firstName} ${this.lastName}`)
   }
 
   get formattedBalance() {
