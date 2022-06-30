@@ -13,6 +13,7 @@ const TransactionsList = () => {
               <th>REFERENCE NO.</th>
               <th>DESCRIPTION</th>
               <th>STATUS</th>
+              <th>AMOUNT</th>
             </tr>
           </thead>
           <tbody>
