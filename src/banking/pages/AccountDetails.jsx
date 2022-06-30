@@ -37,7 +37,7 @@ function AccountDetails() {
       setBalance(balance - amount)
 
       const id = new Date().getTime()
-      const transaction = new Transaction(id, 'Withdraw', 'posted', balance)
+      const transaction = new Transaction(id, 'Withdraw', 'posted', amount)
 
       setTransactions(state => [...state, transaction])
     }
@@ -50,7 +50,7 @@ function AccountDetails() {
     setBalance(balance + amount)
 
     const id = new Date().getTime()
-    const transaction = new Transaction(id, 'Deposit', 'posted', balance)
+    const transaction = new Transaction(id, 'Deposit', 'posted', amount)
 
     setTransactions(state => [...state, transaction])
   }
