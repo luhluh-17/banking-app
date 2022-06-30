@@ -15,10 +15,11 @@ const BankingApp = () => {
     <Routes>
       <Route path='/'>
         <Route index element={<Landing />} />
+
         <Route path='employee-login' element={<EmployeeLogin />} />
         <Route path='customer-login' element={<CustomerLogin />} />
 
-        <Route path='dashboard' element={<Dashboard />}>
+        <Route path='dashboard-employee' element={<Dashboard />}>
           <Route index element={<Overview />} />
           <Route path='accounts' element={<Accounts />} />
           <Route path='accounts/:userId' element={<AccountDetails />} />

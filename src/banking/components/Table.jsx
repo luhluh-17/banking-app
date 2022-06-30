@@ -33,6 +33,7 @@ const Table = ({ list }) => {
           <th>Name</th>
           <th>Email</th>
           <th>Balance</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>{list.map(createTableItem)}</tbody>

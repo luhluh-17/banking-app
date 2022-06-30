@@ -12,7 +12,7 @@ const LoginForm = props => {
   const handleFormSubmit = event => {
     // event.preventDefault()
     // validateLogin()
-    navigate('/dashboard')
+    navigate('/dashboard-customer')
   }
 
   const handleForgotPassword = event => {
@@ -68,7 +68,9 @@ const LoginForm = props => {
           Forgot password?
         </p>
         {reset ? (
-          <p id='pw-reset-alert'>Please contact our support hotline to reset password</p>
+          <p id='pw-reset-alert'>
+            Please contact our support hotline to reset password
+          </p>
         ) : null}
         {invalidLogin ? (
           <p id='invalid-login'>Wrong username or password</p>

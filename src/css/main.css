@@ -99,9 +99,14 @@ body {
   justify-content: space-between;
 }
 
-.flex-row {
+.flex-row, .flex-row-sb {
   display: flex;
   flex-direction: row;
+}
+
+.flex-row-sb {
+  justify-content: space-between;
+  gap: 1rem;
 }
 
 .flex-row-c {
@@ -184,6 +189,11 @@ body {
   color: var(--red-dark);
   letter-spacing: var(--letterSpacing);
   text-transform: capitalize;
+}
+
+.google-icon-md {
+  font-size: 4rem;
+  color: var(--grey-700);
 }
 
 section {
