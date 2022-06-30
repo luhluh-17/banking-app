@@ -3,18 +3,18 @@ export default class User {
     id,
     firstName,
     lastName,
+    balance = 0,
     email,
-    password,
-    balance,
-    expenses,
-    transactions
+    password = 'pass',
+    expenses = [],
+    transactions = []
   ) {
     this.id = id
     this.firstName = firstName
     this.lastName = lastName
-    this.email = email
-    this.password = password
     this.balance = balance
+    this.password = password
+    this.email = email
     this.expenses = expenses
     this.transactions = transactions
   }

@@ -1,9 +1,20 @@
 import React from 'react'
-import users from '../data/users'
+import User from '../../js/classes/user'
 import TableItem from './TableItem'
 
-const Table = () => {
-  const createTableItem = user => {
+const Table = ({ list }) => {
+  const createTableItem = item => {
+    const user = new User(
+      item.id,
+      item.firstName,
+      item.lastName,
+      item.balance,
+      item.email,
+      item.password,
+      item.expenses,
+      item.transactions
+    )
+
     return (
       <TableItem
         key={user.id}
@@ -24,7 +35,7 @@ const Table = () => {
           <th>Balance</th>
         </tr>
       </thead>
-      <tbody>{users.map(createTableItem)}</tbody>
+      <tbody>{list.map(createTableItem)}</tbody>
     </table>
   )
 }
