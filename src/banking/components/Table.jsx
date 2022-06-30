@@ -1,8 +1,7 @@
 import React from 'react'
-import users from '../data/users'
 import TableItem from './TableItem'
 
-const Table = () => {
+const Table = ({ list }) => {
   const createTableItem = user => {
     return (
       <TableItem
@@ -24,7 +23,7 @@ const Table = () => {
           <th>Balance</th>
         </tr>
       </thead>
-      <tbody>{users.map(createTableItem)}</tbody>
+      <tbody>{list.map(createTableItem)}</tbody>
     </table>
   )
 }
