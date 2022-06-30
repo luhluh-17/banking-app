@@ -13,6 +13,12 @@
   flex-direction: row;
 }
 
+.flex-row-sb {
+  @extend .flex-row;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
 .flex-row-c {
   display: flex;
   flex-direction: row;

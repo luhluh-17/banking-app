@@ -4,7 +4,7 @@ import SideNavbarHeading from './SideNavbarHeading'
 
 const SideNavbar = () => {
   const style = ({ isActive }) => (isActive ? 'link active' : 'link')
-  const path = '/dashboard'
+  const path = '/dashboard-employee'
 
   return (
     <nav className='flex-col-sb sidenavbar'>
