@@ -221,4 +221,8 @@ table thead {
   background-color: aquamarine;
 }
 
+inpuit::placeholder, input, button {
+  color: black;
+}
+
 /*# sourceMappingURL=App.css.map */
