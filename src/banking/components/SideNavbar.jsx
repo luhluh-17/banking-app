@@ -24,7 +24,7 @@ const SideNavbar = () => {
         </NavLink>
       </div>
 
-      <NavLink to='/login' className={style}>
+      <NavLink to='/customer-login' className={style}>
         <span className='material-symbols-outlined'>logout</span>
         Logout
       </NavLink>
