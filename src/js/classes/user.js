@@ -1,20 +1,19 @@
 export default class User {
   constructor(
-    id,
     firstName,
     lastName,
+    balance = 0,
     email,
-    password,
-    balance,
-    expenses,
-    transactions
+    password = 'pass',
+    expenses = [],
+    transactions = []
   ) {
-    this.id = id
+    this.id = new Date().getTime()
     this.firstName = firstName
     this.lastName = lastName
-    this.email = email
-    this.password = password
     this.balance = balance
+    this.password = password
+    this.email = email
     this.expenses = expenses
     this.transactions = transactions
   }
