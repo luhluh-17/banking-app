@@ -1,4 +1,5 @@
 import { capitalizeWord } from '../utils/helper'
+import { Transaction } from './transaction'
 
 export default class User {
   constructor(
@@ -9,7 +10,14 @@ export default class User {
     email,
     password = 'pass',
     expenses = [],
-    transactions = []
+    transactions = [
+      new Transaction(
+        new Date().getTime(),
+        'Add initial account balance',
+        'posted',
+        balance
+      ),
+    ]
   ) {
     this.id = id
     this.firstName = firstName
