@@ -9,8 +9,8 @@ const Table = ({ list }) => {
       item.firstName,
       item.lastName,
       item.balance,
-      item.password,
       item.email,
+      item.password,
       item.expenses,
       item.transactions
     )
