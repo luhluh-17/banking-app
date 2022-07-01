@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useState } from 'react'
 import Expenses_Row_Item from '../components/Expenses_Row_Item'
 import { UserContext } from '../helper/Context'
 const Expenses = () => {
+  const currentUser = useContext(UserContext)
   const [expenseName, setExpenseName] = useState('')
   const [expenseCost, setExpenseCost] = useState(0)
   const [expenseList, setExpenseList] = useState(currentUser.expenses)
-  const currentUser = useContext(UserContext)
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -15,7 +15,6 @@ const Expenses = () => {
         description: expenseName,
         amount: expenseCost,
       }
-
       setExpenseList(prev => [...prev, obj])
       setExpenseCost(0)
       setExpenseName('')
