@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
+import Button from '../components/Button'
+import Modal from '../components/Modal'
 import TableTransaction from '../components/TableTransaction'
 import User from '../../js/classes/user'
 import Transaction from '../../js/classes/transaction'
-import { getAllUsers } from '../../js/utils/localstorage'
-import Button from '../components/Button'
-import Modal from '../components/Modal'
+import { KEY_USERS, getAllUsers } from '../../js/utils/localstorage'
 
 function AccountDetails() {
   const amountRef = useRef(null)
@@ -30,7 +30,8 @@ function AccountDetails() {
   )
 
   const [user, setUser] = useState(selectedUser)
-
+  const [users, setUsers] = useState(getAllUsers())
+  console.log(users)
   const handleUpdate = action => {
     if (amountRef.current.value === '') return
 
@@ -38,19 +39,17 @@ function AccountDetails() {
     let updatedBalance = parseInt(user.balance)
 
     if (action === 'Withdraw') {
+      updatedBalance -= amount
       if (updatedBalance < 0) {
         alert('insufficient balance')
         return
       }
-      updatedBalance -= amount
     } else {
       updatedBalance += amount
     }
 
     const id = new Date().getTime()
     const transaction = new Transaction(id, action, 'Posted', amount)
-
-    const transactList = user.transactions
 
     setUser(state => {
       return new User(
@@ -61,7 +60,7 @@ function AccountDetails() {
         state.email,
         state.pass,
         state.expenses,
-        [...transactList, transaction]
+        [...state.transactions, transaction]
       )
     })
 
@@ -70,8 +69,19 @@ function AccountDetails() {
   }
 
   useEffect(() => {
-    console.log(user)
+    setUsers(state => {
+      const idx = getAllUsers().findIndex(u => u.id === user.id)
+      state[idx] = user
+      return state
+    })
   }, [user])
+
+  useEffect(
+    state => {
+      console.log(state)
+    },
+    [users]
+  )
 
   return (
     <>
@@ -119,6 +129,13 @@ function AccountDetails() {
           <div className='btn-container-header'>
             <h3>Transactions</h3>
             <div className='flex-row'>
+              <Button
+                className='btn-primary'
+                text='Save Transaction'
+                onClick={() =>
+                  localStorage.setItem(KEY_USERS, JSON.stringify(users))
+                }
+              />
               <Button
                 className={'btn-primary'}
                 text='Update Balance'
