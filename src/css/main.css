@@ -292,20 +292,29 @@ section {
 }
 
 table {
-  margin-top: 1rem;
+  box-shadow: var(--shadow-1);
   border-collapse: collapse;
+  margin-top: 1rem;
   width: 100%;
 }
 
 td,
 th {
-  border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
 }
 
+th {
+  background-color: var(--primary-800);
+  color: var(--white);
+}
+
+tr:nth-child(odd) {
+  background-color: var(--primary-50);
+}
+
 tr:nth-child(even) {
-  background-color: #dddddd;
+  background-color: var(--primary-100);
 }
 
 main {
