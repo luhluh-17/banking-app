@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react'
 import Fab from '../components/Fab'
+import Modal from '../components/Modal'
 import Table from '../components/Table'
 import User from '../../js/classes/user'
 import { KEY_USERS } from '../../js/variables'
@@ -9,6 +10,10 @@ const Accounts = () => {
   const lastNameRef = useRef(null)
   const emailRef = useRef(null)
   const balanceRef = useRef(null)
+
+  const [isDialogOpen, setIsDialogOpen] = useState(false)
+  const toggleDialog = () => setIsDialogOpen(bool => !bool)
+  const closeDialog = () => setIsDialogOpen(false)
 
   const list =
     localStorage.getItem(KEY_USERS) !== null
@@ -58,28 +63,62 @@ const Accounts = () => {
       <main>
         <input type='text' placeholder='Searchbar'></input>
         <Table list={users} />
-        <button onClick={() => localStorage.clear()}>Clear Local</button>
       </main>
 
-      <form onSubmit={handleSubmit} className='flex-col form'>
-        <div>
-          <label className='form-label'>First Name</label>
-          <input className='form-input' type='text' ref={firstNameRef} />
-        </div>
-        <div>
-          <label className='form-label'>Last Name</label>
-          <input className='form-input' type='text' ref={lastNameRef} />
-        </div>
-        <div>
-          <label className='form-label'>Email</label>
-          <input className='form-input' type='email' ref={emailRef} />
-        </div>
-        <div>
-          <label className='form-label'>Balance</label>
-          <input className='form-input' type='number' ref={balanceRef} />
-        </div>
-        <Fab icon='add' text='Create User' />
-      </form>
+      <Fab icon='add' text='Add User' onClick={toggleDialog} />
+
+      <Modal
+        className='flex-col'
+        title='Add User'
+        isOpen={isDialogOpen}
+        onRequestClose={closeDialog}
+      >
+        <form onSubmit={handleSubmit} className='flex-col'>
+          <div>
+            <label className='form-label'>Name</label>
+            <div className='flex-row'>
+              <input
+                className='form-input'
+                type='text'
+                placeholder='First'
+                ref={firstNameRef}
+              />
+              <input
+                className='form-input'
+                type='text'
+                placeholder='Last'
+                ref={lastNameRef}
+              />
+            </div>
+          </div>
+          <div>
+            <label className='form-label'>Email</label>
+            <input
+              className='form-input'
+              type='email'
+              placeholder='Email Address'
+              ref={emailRef}
+            />
+          </div>
+          <div>
+            <label className='form-label'>Balance</label>
+            <input
+              className='form-input'
+              type='number'
+              placeholder='Initial Amount'
+              ref={balanceRef}
+            />
+          </div>
+          <div className='dialog-btn-container'>
+            <button className='btn-cancel' onClick={closeDialog}>
+              Cancel
+            </button>
+            <button type='submit' className='btn-secondary'>
+              Create
+            </button>
+          </div>
+        </form>
+      </Modal>
     </>
   )
 }
