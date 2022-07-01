@@ -1,12 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 
-function Modal({
-  children,
-  title = '',
-  subtitle = '',
-  isOpen,
-  onRequestClose,
-}) {
+function Modal({ children, title = '', subtitle = '', isOpen, onClose }) {
   const dialogRef = useRef(null)
 
   useEffect(() => {
@@ -22,13 +16,13 @@ function Modal({
     const dialogNode = dialogRef.current
     const handleCancel = event => {
       event.preventDefault()
-      onRequestClose()
+      onClose()
     }
     dialogNode.addEventListener('cancel', handleCancel)
     return () => {
       dialogNode.removeEventListener('cancel', handleCancel)
     }
-  }, [onRequestClose])
+  }, [onClose])
 
   return (
     <dialog ref={dialogRef}>

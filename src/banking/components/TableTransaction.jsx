@@ -1,5 +1,5 @@
 import React from 'react'
-import { Transaction } from '../../js/classes/transaction'
+import Transaction from '../../js/classes/transaction'
 import TransactionItem from './TransactionItem'
 
 const TableTransaction = ({ list }) => {

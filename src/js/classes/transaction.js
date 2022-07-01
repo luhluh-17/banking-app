@@ -1,4 +1,4 @@
-export class Transaction {
+export default class Transaction {
   constructor(id, description, status, amount) {
     this.id = id
     this.description = description

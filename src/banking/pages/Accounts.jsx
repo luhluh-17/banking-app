@@ -3,7 +3,7 @@ import Fab from '../components/Fab'
 import Modal from '../components/Modal'
 import Table from '../components/Table'
 import User from '../../js/classes/user'
-import { KEY_USERS } from '../../js/variables'
+import { KEY_USERS, getAllUsers } from '../../js/utils/localstorage'
 
 const Accounts = () => {
   const firstNameRef = useRef(null)
@@ -15,11 +15,7 @@ const Accounts = () => {
   const toggleDialog = () => setIsDialogOpen(bool => !bool)
   const closeDialog = () => setIsDialogOpen(false)
 
-  const list =
-    localStorage.getItem(KEY_USERS) !== null
-      ? JSON.parse(localStorage.getItem(KEY_USERS))
-      : []
-  const [users, setUsers] = useState(list)
+  const [users, setUsers] = useState(getAllUsers())
 
   useEffect(
     () => localStorage.setItem(KEY_USERS, JSON.stringify(users)),
@@ -43,7 +39,6 @@ const Accounts = () => {
   const handleSubmit = event => {
     event.preventDefault()
 
-    // Show Error
     if (firstNameRef.current.value === '') return
     if (lastNameRef.current.value === '') return
     if (emailRef.current.value === '') return
@@ -56,23 +51,12 @@ const Accounts = () => {
     )
 
     resetState()
+    closeDialog()
   }
 
-  return (
-    <>
-      <main>
-        <input type='text' placeholder='Searchbar'></input>
-        <Table list={users} />
-      </main>
-
-      <Fab icon='add' text='Add User' onClick={toggleDialog} />
-
-      <Modal
-        className='flex-col'
-        title='Add User'
-        isOpen={isDialogOpen}
-        onRequestClose={closeDialog}
-      >
+  function Form() {
+    return (
+      <>
         <form onSubmit={handleSubmit} className='flex-col'>
           <div>
             <label className='form-label'>Name</label>
@@ -118,6 +102,26 @@ const Accounts = () => {
             </button>
           </div>
         </form>
+      </>
+    )
+  }
+
+  return (
+    <>
+      <main>
+        <input type='text' placeholder='Searchbar'></input>
+        <Table list={users} />
+      </main>
+
+      <Fab icon='add' text='Add User' onClick={toggleDialog} />
+
+      <Modal
+        className='flex-col'
+        title='Add User'
+        isOpen={isDialogOpen}
+        onClose={closeDialog}
+      >
+        <Form />
       </Modal>
     </>
   )

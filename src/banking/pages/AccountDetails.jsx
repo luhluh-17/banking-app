@@ -1,16 +1,15 @@
 import React, { useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { Transaction } from '../../js/classes/transaction'
-import User from '../../js/classes/user'
-import { KEY_USERS } from '../../js/variables'
 import TableTransaction from '../components/TableTransaction'
+import User from '../../js/classes/user'
+import Transaction from '../../js/classes/transaction'
+import { getAllUsers } from '../../js/utils/localstorage'
 
 function AccountDetails() {
   const amountRef = useRef(null)
 
   const { userId } = useParams()
-  const users = JSON.parse(localStorage.getItem(KEY_USERS))
-  const obj = users.find(item => item.id === parseInt(userId))
+  const obj = getAllUsers().find(item => item.id === parseInt(userId))
 
   const user = new User(
     obj.id,
