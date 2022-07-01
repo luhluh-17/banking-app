@@ -27,7 +27,7 @@ function Modal({ children, title = '', subtitle = '', isOpen, onClose }) {
   return (
     <dialog ref={dialogRef}>
       <div className='flex-col'>
-        <h2>{title}</h2>
+        <h3>{title}</h3>
         <h4>{subtitle}</h4>
         {children}
       </div>
