@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Transaction_Row = ({id, desc, status, date, amount}) => {
+const Transaction_Row = ({id, description, status, date, amount}) => {
   return (
     <tr>
         <td>{date}</td>
         <td>{id}</td>
-        <td>{desc}</td>
+        <td>{description}</td>
         <td>{status}</td>
         <td>{amount}</td>
     </tr>

@@ -6,7 +6,7 @@ const TransactionsList = () => {
   return (
     <div className="transactions-page">
       <div>
-        <table>
+        <table className='budget-table-transactions'>
           <thead>
             <tr>
               <th>DATE</th>
