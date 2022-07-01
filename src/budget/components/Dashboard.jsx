@@ -2,11 +2,11 @@ import React from 'react'
 import SidePanel from './SidePanel'
 import { Outlet } from 'react-router-dom'
 import { UserContext } from '../helper/Context'
-import User from '../data/User'
+import Users from '../data/User'
 
 const Dashboard = () => {
   return (
-    <UserContext.Provider value={User} >
+    <UserContext.Provider value={Users[0]} >
       <div className="dash-budget">
         <SidePanel />
         <div>

@@ -14,7 +14,7 @@
   }
 }
 
-table {
+.budget-table-transactions {
   border-collapse: collapse;
   box-shadow: 0px 5px 10px rgb(34, 33, 33);
   text-align: left;
@@ -29,11 +29,11 @@ table {
 
   th {
     letter-spacing: 0.1rem;
-    font-weight:900;
+    font-weight: 900;
   }
 
   thead {
-    border-top-left-radius:1rem ;
+    border-top-left-radius: 1rem;
     background-color: aquamarine;
   }
 }
