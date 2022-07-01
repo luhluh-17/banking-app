@@ -12,15 +12,16 @@ const LoginForm = props => {
   const [user, setUser] = useState({})
 
   const handleFormSubmit = event => {
-    // event.preventDefault()
-    val()
-    if (!invalidLogin) {
-      setUser(
-        Users.filter(
-          item => item.email === username && item.password === password
-        )
-      )
-    }
+    // // event.preventDefault()
+    // val()
+    console.log(invalidLogin)
+    // if (!invalidLogin) {
+    //   setUser(
+    //     Users.filter(
+    //       item => item.email === username && item.password === password
+    //     )
+    //   )
+    // }
     navigate('/dashboard-customer')
   }
 
