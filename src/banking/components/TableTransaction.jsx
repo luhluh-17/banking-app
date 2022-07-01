@@ -2,7 +2,7 @@ import React from 'react'
 import Transaction from '../../js/classes/transaction'
 import TableTransactionItem from './TableTransactionItem'
 
-const TableTransaction = ({ list }) => {
+const TableTransaction = ({ title, list }) => {
   const createTableItem = item => {
     const transaction = new Transaction(
       item.id,
@@ -23,18 +23,21 @@ const TableTransaction = ({ list }) => {
   }
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>Date</th>
-          <th>Description</th>
-          <th>Status</th>
-          <th>Amount</th>
-        </tr>
-      </thead>
-      <tbody>{list.map(createTableItem)}</tbody>
-    </table>
+    <section className='mt-1'>
+      <h3>{title}</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>{list.map(createTableItem)}</tbody>
+      </table>
+    </section>
   )
 }
 
