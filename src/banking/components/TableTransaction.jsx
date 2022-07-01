@@ -1,9 +1,8 @@
 import React from 'react'
-import Transaction from '../../js/classes/transaction'
-import Button from './Button'
 import TableTransactionItem from './TableTransactionItem'
+import Transaction from '../../js/classes/transaction'
 
-const TableTransaction = ({ title, list }) => {
+const TableTransaction = ({ list }) => {
   const createTableItem = item => {
     const transaction = new Transaction(
       item.id,
@@ -24,36 +23,18 @@ const TableTransaction = ({ title, list }) => {
   }
 
   return (
-    <section className='mt-1'>
-      <div className='btn-container-header'>
-        <h3>{title}</h3>
-        <div className='flex-row'>
-          <Button
-            className={'btn-primary'}
-            text='Update Balance'
-            onClick={() => console.log('tesr')}
-          />
-          <Button
-            className={'btn-primary'}
-            text='Send Money'
-            onClick={() => console.log('tesr')}
-          />
-        </div>
-      </div>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Date</th>
-            <th>Description</th>
-            <th>Status</th>
-            <th>Amount</th>
-          </tr>
-        </thead>
-        <tbody>{list.map(createTableItem)}</tbody>
-      </table>
-    </section>
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Date</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>{list.map(createTableItem)}</tbody>
+    </table>
   )
 }
 
