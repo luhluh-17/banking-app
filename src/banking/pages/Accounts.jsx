@@ -46,7 +46,7 @@ const Accounts = () => {
     addItem(
       firstNameRef.current.value,
       lastNameRef.current.value,
-      balanceRef.current.value,
+      Number(balanceRef.current.value),
       emailRef.current.value
     )
 
