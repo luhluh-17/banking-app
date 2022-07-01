@@ -1,9 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react'
-import Fab from '../components/Fab'
 import Modal from '../components/Modal'
 import TableUser from '../components/TableUser'
 import User from '../../js/classes/user'
 import { KEY_USERS, getAllUsers } from '../../js/utils/localstorage'
+import Button from '../components/Button'
 
 const Accounts = () => {
   const firstNameRef = useRef(null)
@@ -95,12 +95,12 @@ const Accounts = () => {
             />
           </div>
           <div className='dialog-btn-container'>
-            <button className='btn-cancel' onClick={closeDialog}>
-              Cancel
-            </button>
-            <button type='submit' className='btn-secondary'>
-              Create
-            </button>
+            <Button
+              text='Cancel'
+              className='btn-cancel'
+              onClick={toggleDialog}
+            />
+            <Button text='Create' className='btn-secondary' />
           </div>
         </form>
       </>
@@ -114,7 +114,12 @@ const Accounts = () => {
         <TableUser list={users} />
       </main>
 
-      <Fab icon='add' text='Add User' onClick={toggleDialog} />
+      <Button
+        icon='add'
+        text='Add User'
+        className='btn-secondary fab'
+        onClick={toggleDialog}
+      />
 
       <Modal
         className='flex-col'
