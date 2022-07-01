@@ -17,7 +17,7 @@ const TableTransaction = ({ list }) => {
         id={transaction.id}
         desc={transaction.description}
         status={transaction.status}
-        amount={transaction.amount}
+        amount={transaction.formattedAmount}
       />
     )
   }
