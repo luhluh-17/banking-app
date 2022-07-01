@@ -9,33 +9,23 @@ const LoginForm = props => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
-  const [user, setUser] = useState({})
 
-  const handleFormSubmit = event => {
-    // // event.preventDefault()
-    // val()
-    console.log(invalidLogin)
-    // if (!invalidLogin) {
-    //   setUser(
-    //     Users.filter(
-    //       item => item.email === username && item.password === password
-    //     )
-    //   )
-    // }
-    navigate('/dashboard-customer')
+  const handleFormSubmit = e => {
+    e.preventDefault()
+    const user = Users.find(user => {
+      return user.email === username && user.password === password
+    })
+
+    if (user !== undefined) {
+      navigate(`/dashboard-customer/${user.id}`)
+    } else {
+      setInvalidLogin(true)
+    }
   }
 
   const handleForgotPassword = event => {
     event.preventDefault()
     setreset(true)
-  }
-
-  const val = () => {
-    Users.forEach(element => {
-      if (element.email === username && element.password === password) {
-        setInvalidLogin(false)
-      }
-    })
   }
 
   return (
@@ -81,4 +71,3 @@ const LoginForm = props => {
 }
 
 export default LoginForm
-

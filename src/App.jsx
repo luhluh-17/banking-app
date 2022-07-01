@@ -32,6 +32,7 @@ const App = () => {
       </Route>
 
       <Route path="dashboard-customer" element={<CustomerDashboard />}>
+        <Route path=':userId'/>
         <Route path="overview" element={<CustomerOverview />} />
         <Route path="transactions" element={<CustomerTransactions />} />
         <Route path="send" element={<CustomerSendMoney />} />
