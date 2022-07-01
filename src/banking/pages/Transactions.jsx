@@ -2,9 +2,9 @@ import React from 'react'
 
 function Transactions() {
   return (
-    <section className='flex-col'>
+    <main className='flex-col'>
       <h1>Transactions Page</h1>
-    </section>
+    </main>
   )
 }
 
