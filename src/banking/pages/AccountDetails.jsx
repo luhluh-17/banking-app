@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import TableTransaction from '../components/TableTransaction'
 import User from '../../js/classes/user'
@@ -18,7 +18,7 @@ function AccountDetails() {
   const toggleDialog = () => setIsDialogOpen(bool => !bool)
   const closeDialog = () => setIsDialogOpen(false)
 
-  const user = new User(
+  const selectedUser = new User(
     obj.id,
     obj.firstName,
     obj.lastName,
@@ -29,32 +29,49 @@ function AccountDetails() {
     obj.transactions
   )
 
-  const [balance, setBalance] = useState(parseInt(user.balance))
-  const [transactions, setTransactions] = useState(user.transactions)
+  const [user, setUser] = useState(selectedUser)
 
   const handleUpdate = action => {
     if (amountRef.current.value === '') return
 
     const amount = parseInt(amountRef.current.value)
+    let updatedBalance = parseInt(user.balance)
+
     if (action === 'Withdraw') {
-      const updatedBalance = balance - amount
       if (updatedBalance < 0) {
         alert('insufficient balance')
         return
       }
-      setBalance(updatedBalance)
+      updatedBalance -= amount
     } else {
-      setBalance(balance + amount)
+      updatedBalance += amount
     }
 
     const id = new Date().getTime()
     const transaction = new Transaction(id, action, 'Posted', amount)
 
-    setTransactions(state => [...state, transaction])
+    const transactList = user.transactions
+
+    setUser(state => {
+      return new User(
+        state.id,
+        state.firstName,
+        state.lastName,
+        updatedBalance,
+        state.email,
+        state.pass,
+        state.expenses,
+        [...transactList, transaction]
+      )
+    })
 
     amountRef.current.value = ''
     closeDialog()
   }
+
+  useEffect(() => {
+    console.log(user)
+  }, [user])
 
   return (
     <>
@@ -93,7 +110,7 @@ function AccountDetails() {
             </div>
           </div>
           <div>
-            <h2>{balance}</h2>
+            <h2>{user.formattedBalance}</h2>
             <h4>Current Balance</h4>
           </div>
         </section>
@@ -114,7 +131,7 @@ function AccountDetails() {
               />
             </div>
           </div>
-          <TableTransaction list={transactions} />
+          <TableTransaction list={user.transactions} />
         </section>
       </main>
 
