@@ -90,6 +90,7 @@ const Accounts = () => {
               className='form-input'
               type='number'
               placeholder='Initial Amount'
+              step={'.01'}
               ref={balanceRef}
             />
           </div>
