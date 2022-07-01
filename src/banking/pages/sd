@@ -1,0 +1,36 @@
+<section className='flex-row'>
+        <section className='flex-col-sb'>
+          <div>
+            <div>
+              <label className='form-label'>Amount</label>
+              <input className='form-input' type='number' ref={amountRef} />
+            </div>
+          </div>
+
+          <div>
+            <button className='btn' onClick={handleWithdraw}>
+              Withdraw
+            </button>
+            <button className='btn' onClick={handleDeposit}>
+              Deposit
+            </button>
+          </div>
+        </section>
+
+        <section className='flex-col'>
+          <div>
+            <div>
+              <label className='form-label'>Amount</label>
+              <input className='form-input' type='number' />
+            </div>
+            <div>
+              <label className='form-label'>Recipient</label>
+              <input className='form-input' type='text' />
+            </div>
+          </div>
+
+          <div>
+            <button className='btn'>Send</button>
+          </div>
+        </section>
+      </section>

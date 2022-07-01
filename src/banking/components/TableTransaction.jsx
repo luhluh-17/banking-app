@@ -1,5 +1,6 @@
 import React from 'react'
 import Transaction from '../../js/classes/transaction'
+import Button from './Button'
 import TableTransactionItem from './TableTransactionItem'
 
 const TableTransaction = ({ title, list }) => {
@@ -24,7 +25,22 @@ const TableTransaction = ({ title, list }) => {
 
   return (
     <section className='mt-1'>
-      <h3>{title}</h3>
+      <div className='btn-container-header'>
+        <h3>{title}</h3>
+        <div className='flex-row'>
+          <Button
+            className={'btn-primary'}
+            text='Update Balance'
+            onClick={() => console.log('tesr')}
+          />
+          <Button
+            className={'btn-primary'}
+            text='Send Money'
+            onClick={() => console.log('tesr')}
+          />
+        </div>
+      </div>
+
       <table>
         <thead>
           <tr>
