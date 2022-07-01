@@ -261,11 +261,16 @@ section {
 }
 
 .navbar-heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: white;
   width: 100%;
-  padding: 3rem 1rem;
+  padding: 1.5rem 1rem;
   background-color: var(--primary-900);
-  text-align: center;
+}
+.navbar-heading img {
+  width: 8rem;
 }
 
 .link {

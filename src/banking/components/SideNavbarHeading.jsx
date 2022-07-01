@@ -1,9 +1,10 @@
 import React from 'react'
+import Logo from '../../assets/logo-white-min.png'
 
 function NavbarHeading() {
   return (
-    <div className='flex-col navbar-heading'>
-      <img src='../../assets/logo.png' alt='company logo' />
+    <div className='navbar-heading'>
+      <img src={Logo} alt='company logo' />
     </div>
   )
 }
