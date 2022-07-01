@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react'
 import Fab from '../components/Fab'
 import Modal from '../components/Modal'
-import Table from '../components/Table'
+import TableUser from '../components/TableUser'
 import User from '../../js/classes/user'
 import { KEY_USERS, getAllUsers } from '../../js/utils/localstorage'
 
@@ -111,7 +111,7 @@ const Accounts = () => {
     <>
       <main>
         <input type='text' placeholder='Searchbar'></input>
-        <Table list={users} />
+        <TableUser list={users} />
       </main>
 
       <Fab icon='add' text='Add User' onClick={toggleDialog} />
