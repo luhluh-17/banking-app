@@ -10,7 +10,9 @@ const PanelData = [
 ]
 
 const SidePanel = () => {
-  const { firstName } = useContext(UserContext)
+  const {firstName} = useContext(UserContext)
+
+
   return (
     <div className="sideBar-budget">
       <div className="logo-budget">

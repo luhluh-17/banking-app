@@ -3,22 +3,22 @@ import Overview_Bal from '../components/Overview_Bal'
 import Overview_Card from '../components/Overview_Card'
 import Chart_Bar from '../components/Chart_Bar'
 import Users from '../data/User'
+import { UserContext } from '../helper/Context'
 
 const Overview = () => {
+  const { expenses } = useContext(UserContext)
   const [userData, setUserData] = useState({
-    labels: Users[0].expenses.map(item => item.name),
+    labels: expenses.map(item => item.name),
     datasets: [
       {
         label: 'Expenses',
-        data: Users[0].expenses.map(item => item.cost),
-       
+        data: expenses.map(item => item.cost),
+
         backgroundColor: ['hsla(224, 84%, 34%)', 'rgb(242, 169, 11)'],
         borderWidth: 1,
       },
     ],
   })
-  const user = JSON.parse(localStorage.getItem('users'))
-  console.log(user)
 
   return (
     <section className="dash-sec">

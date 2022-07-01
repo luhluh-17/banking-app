@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Users from '../data/User'
+import { currentUser } from '../data/User'
 // import { employees } from '../data/employees'
 
 const LoginForm = props => {
@@ -16,6 +17,7 @@ const LoginForm = props => {
       return user.email === username && user.password === password
     })
 
+    localStorage.setItem('currentUser', JSON.stringify(user))
     if (user !== undefined) {
       navigate(`/dashboard-customer/${user.id}`)
     } else {

@@ -4,7 +4,7 @@ import Chip from '../../budget/images/chip.png'
 import { UserContext } from '../helper/Context'
 
 const Overview_Card = () => {
-  const {accountNumber} = useContext(UserContext)
+  const {id} = useContext(UserContext)
   return (
     <div className="card">
      
@@ -14,7 +14,7 @@ const Overview_Card = () => {
           <img className="chip-logo" src={Chip} />
         </div>
         <div className="num-visa">
-          <span>{accountNumber}</span>
+          <span>{id}</span>
           <img src={Visa} className="visa-logo" />
         </div>
       </div>

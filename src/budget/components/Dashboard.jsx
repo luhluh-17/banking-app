@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import SidePanel from './SidePanel'
 import { Outlet, useParams } from 'react-router-dom'
 import { UserContext } from '../helper/Context'
@@ -7,9 +7,11 @@ import Users from '../data/User'
 const Dashboard = () => {
   const { userId } = useParams()
 
-  const currentUser = Users.find(user => user.id === Number(userId))
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'))
+  useEffect(() => {
+    localStorage.setItem('currentUser', JSON.stringify(currentUser))
+  }, [currentUser])
 
-  console.log(currentUser)
   return (
     <UserContext.Provider value={currentUser}>
       <div className="dash-budget">
