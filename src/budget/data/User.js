@@ -1,3 +1,4 @@
+import {user} from '../components/LoginForm'
 // const User = {
 //   firstName: 'Stanley',
 //   lastName: 'Hugo',
