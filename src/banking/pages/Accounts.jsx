@@ -100,7 +100,7 @@ const Accounts = () => {
               className='btn-cancel'
               onClick={toggleDialog}
             />
-            <Button text='Create' className='btn-secondary' />
+            <Button type='submit' text='Create' className='btn-secondary' />
           </div>
         </form>
       </>
@@ -121,12 +121,7 @@ const Accounts = () => {
         onClick={toggleDialog}
       />
 
-      <Modal
-        className='flex-col'
-        title='Add User'
-        isOpen={isDialogOpen}
-        onClose={closeDialog}
-      >
+      <Modal title='Add User' isOpen={isDialogOpen} onClose={closeDialog}>
         <Form />
       </Modal>
     </>
