@@ -13,8 +13,8 @@ export default class User {
     transactions = [
       new Transaction(
         new Date().getTime(),
-        'Add initial account balance',
-        'posted',
+        'Initial balance',
+        'Posted',
         balance
       ),
     ]
