@@ -8,9 +8,7 @@ const Dashboard = () => {
   const { userId } = useParams()
 
   const currentUser = JSON.parse(localStorage.getItem('currentUser'))
-  useEffect(() => {
-    localStorage.setItem('currentUser', JSON.stringify(currentUser))
-  }, [currentUser])
+
 
   return (
     <UserContext.Provider value={currentUser}>

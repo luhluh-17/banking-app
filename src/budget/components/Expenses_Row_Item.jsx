@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { UserContext } from '../helper/Context'
 
 const Expenses_Row_Item = ({
-  desc,
+  description,
   amount,
   setFilteredList,
   expenseList,
@@ -19,7 +19,7 @@ const Expenses_Row_Item = ({
   }
   return (
     <tr>
-      <td>{desc}</td>
+      <td>{description}</td>
       <td>{amount}</td>
       <td>
         <button>edit</button>

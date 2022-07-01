@@ -1,25 +1,39 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Expenses_Row_Item from '../components/Expenses_Row_Item'
 import { UserContext } from '../helper/Context'
 const Expenses = () => {
   const [expenseName, setExpenseName] = useState('')
   const [expenseCost, setExpenseCost] = useState(0)
-  const [expenseList, setExpenseList] = useState([])
-  const { transactions } = useContext(UserContext)
+  const [expenseList, setExpenseList] = useState(currentUser.expenses)
+  const currentUser = useContext(UserContext)
 
   const handleSubmit = e => {
     e.preventDefault()
     if (expenseName && expenseCost) {
       const obj = {
         id: new Date().getTime().toString(),
-        desc: expenseName,
+        description: expenseName,
         amount: expenseCost,
       }
+
       setExpenseList(prev => [...prev, obj])
       setExpenseCost(0)
       setExpenseName('')
     }
   }
+
+  useEffect(() => {
+    currentUser.expenses = expenseList
+    localStorage.setItem('currentUser', JSON.stringify(currentUser))
+  }, [expenseList])
+
+  useEffect(() => {
+    const usersList = JSON.parse(localStorage.getItem('users'))
+    const idx = usersList.findIndex(item => item.id === currentUser.id)
+    usersList[idx] = { ...usersList[idx], expenses: currentUser.expenses }
+    localStorage.setItem('users', JSON.stringify(usersList))
+  }, [currentUser])
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -54,7 +68,14 @@ const Expenses = () => {
         </thead>
         <tbody>
           {expenseList.map((item, index) => {
-            return <Expenses_Row_Item key={index} {...item} setFilteredList={setExpenseList} expenseList={expenseList} />
+            return (
+              <Expenses_Row_Item
+                key={index}
+                {...item}
+                setFilteredList={setExpenseList}
+                expenseList={expenseList}
+              />
+            )
           })}
         </tbody>
       </table>
