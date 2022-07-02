@@ -3,7 +3,7 @@ import Expenses_Row_Item from '../components/Expenses_Row_Item'
 import { UserContext } from '../helper/Context'
 
 const Expenses = () => {
-  const {user, setUser}= useContext(UserContext)
+  const { user, setUser } = useContext(UserContext)
   const [expenseName, setExpenseName] = useState('')
   const [expenseCost, setExpenseCost] = useState(0)
   const [expenseList, setExpenseList] = useState(user.expenses)
@@ -12,7 +12,7 @@ const Expenses = () => {
     e.preventDefault()
     if (expenseName && expenseCost) {
       const obj = {
-        id: new Date().getTime().toString(),
+        id: new Date().getTime(),
         description: expenseName,
         amount: expenseCost,
       }
@@ -21,24 +21,12 @@ const Expenses = () => {
       setExpenseName('')
     }
   }
-  
+
   useEffect(() => {
-    setUser(prev=> {
-      return {...prev, expenses: expenseList}
+    setUser(prev => {
+      return { ...prev, expenses: expenseList }
     })
   }, [expenseList])
-
-  // useEffect(()=>{
-  //   currentUser.expenses = expenseList
-  //   localStorage.setItem('currentUser', JSON.stringify(currentUser))
-  // }, [expenseList])
-
-  // useEffect(() => {
-  //   const usersList = JSON.parse(localStorage.getItem('users'))
-  //   const idx = usersList.findIndex(item => item.id === currentUser.id)
-  //   usersList[idx] = { ...usersList[idx], expenses: currentUser.expenses }
-  //   localStorage.setItem('users', JSON.stringify(usersList))
-  // }, [currentUser])
 
   return (
     <main>
@@ -62,7 +50,9 @@ const Expenses = () => {
             onChange={e => setExpenseCost(e.target.value)}
           />
         </div>
-        <button type="submit" className='btn-secondary'>+ Add</button>
+        <button type="submit" className="btn-secondary">
+          + Add
+        </button>
       </form>
       <table>
         <thead>

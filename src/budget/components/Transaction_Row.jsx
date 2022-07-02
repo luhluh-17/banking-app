@@ -1,9 +1,10 @@
 import React from 'react'
 
 const Transaction_Row = ({id, description, status, date, amount}) => {
+  const newDate = new Date(id)
   return (
     <tr>
-        <td>{date}</td>
+        <td>{newDate.toLocaleString()}</td>
         <td>{id}</td>
         <td>{description}</td>
         <td>{status}</td>

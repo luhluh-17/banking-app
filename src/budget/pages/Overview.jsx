@@ -6,13 +6,13 @@ import Users from '../data/User'
 import { UserContext } from '../helper/Context'
 
 const Overview = () => {
-  const { expenses } = useContext(UserContext)
+  const { user} = useContext(UserContext)
   const [userData, setUserData] = useState({
-    labels: expenses.map(item => item.name),
+    labels: user.expenses.map(item => item.name),
     datasets: [
       {
         label: 'Expenses',
-        data: expenses.map(item => item.cost),
+        data: user.expenses.map(item => item.cost),
 
         backgroundColor: ['hsla(224, 84%, 34%)', 'rgb(242, 169, 11)'],
         borderWidth: 1,

@@ -10,7 +10,7 @@ const PanelData = [
 ]
 
 const SidePanel = () => {
-  const {firstName} = useContext(UserContext)
+  const {user} = useContext(UserContext)
 
 
   return (
@@ -19,7 +19,7 @@ const SidePanel = () => {
         <span className="material-symbols-outlined">account_circle</span>
         <div>
           <h1>Greetings,</h1>
-          <h1>{firstName}</h1>
+          <h1>{user.firstName}</h1>
         </div>
       </div>
 

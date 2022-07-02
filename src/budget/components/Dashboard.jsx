@@ -21,7 +21,6 @@ const Dashboard = () => {
   return (
     <UserContext.Provider value={{ user, setUser }}>
       <div className="flex-row-ng">
-        <h1>{currentUser.firstName}</h1>
         <SidePanel />
         <div>
           <Outlet />

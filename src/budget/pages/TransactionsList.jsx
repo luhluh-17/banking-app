@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import Transaction_Row from '../components/Transaction_Row'
 import { UserContext } from '../helper/Context'
 const TransactionsList = () => {
-  const currentUser = useContext(UserContext)
+  const {user} = useContext(UserContext)
   return (
     <div className="transactions-page">
       <div>
@@ -17,7 +17,7 @@ const TransactionsList = () => {
             </tr>
           </thead>
           <tbody>
-            {currentUser.transactions.map(obj => {
+            {user.transactions.map(obj => {
               return <Transaction_Row {...obj} />
             })}
           </tbody>

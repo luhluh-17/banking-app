@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { UserContext } from '../helper/Context'
 
 const Overview_Bal = () => {
-  const { balance } = useContext(UserContext)
+  const { user } = useContext(UserContext)
 
   const formatCurrency = number => {
     return new Intl.NumberFormat('en-US', {
@@ -13,7 +13,7 @@ const Overview_Bal = () => {
   return (
     <div className="balance">
       <h2>Current Balance</h2>
-      <span>{formatCurrency(balance)}</span>
+      <span>{formatCurrency(user.balance)}</span>
     </div>
   )
 }
