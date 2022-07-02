@@ -1,6 +1,12 @@
 .flex-col {
   display: flex;
   flex-direction: column;
+  gap: 1rem;
+}
+
+.flex-col-ng {
+  display: flex;
+  flex-direction: column;
 }
 
 .flex-col-sb {
@@ -11,18 +17,17 @@
 .flex-row {
   display: flex;
   flex-direction: row;
+  gap: 1rem;
+}
+
+.flex-row-ng {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
 }
 
 .flex-row-sb {
   @extend .flex-row;
   justify-content: space-between;
-  gap: 1rem;
-}
-
-.flex-row-c {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
   gap: 1rem;
 }

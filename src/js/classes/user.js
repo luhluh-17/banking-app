@@ -1,5 +1,5 @@
 import { capitalizeWord } from '../utils/helper'
-import { Transaction } from './transaction'
+import Transaction from './transaction'
 
 export default class User {
   constructor(
@@ -13,8 +13,8 @@ export default class User {
     transactions = [
       new Transaction(
         new Date().getTime(),
-        'Add initial account balance',
-        'posted',
+        'Initial balance',
+        'Posted',
         balance
       ),
     ]

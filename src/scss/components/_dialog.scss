@@ -1,0 +1,16 @@
+dialog {
+  background: var(--white);
+  border: none;
+  border-radius: var(--borderRadius);
+  box-shadow: var(--shadow-2);
+  width: 25rem;
+  padding: 2rem 2.5rem 1.5rem 2.5rem;
+}
+
+.dialog-btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}

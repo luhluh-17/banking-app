@@ -1,6 +1,6 @@
 import React from 'react'
-import { Transaction } from '../../js/classes/transaction'
-import TransactionItem from './TransactionItem'
+import TableTransactionItem from './TableTransactionItem'
+import Transaction from '../../js/classes/transaction'
 
 const TableTransaction = ({ list }) => {
   const createTableItem = item => {
@@ -12,12 +12,12 @@ const TableTransaction = ({ list }) => {
     )
 
     return (
-      <TransactionItem
+      <TableTransactionItem
         key={transaction.id}
         id={transaction.id}
         desc={transaction.description}
         status={transaction.status}
-        amount={transaction.amount}
+        amount={transaction.formattedAmount}
       />
     )
   }
@@ -26,6 +26,7 @@ const TableTransaction = ({ list }) => {
     <table>
       <thead>
         <tr>
+          <th>Id</th>
           <th>Date</th>
           <th>Description</th>
           <th>Status</th>
