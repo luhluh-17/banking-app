@@ -8,14 +8,15 @@ const Expenses_Row_Item = ({
   expenseList,
   id,
 }) => {
-  const { transactions } = useContext(UserContext)
+  const currentUser = useContext(UserContext)
   const handleDelete = id => {
     setFilteredList(expenseList.filter(item => item.id !== id))
   }
 
   const handleAddTransaction = id => {
     const index = expenseList.findIndex(item => item.id === id)
-    transactions.push(expenseList[index])
+    currentUser.transactions.push(expenseList[index])
+    console.log(currentUser)
   }
   return (
     <tr>
