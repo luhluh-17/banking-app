@@ -1,9 +1,7 @@
 import React from 'react'
 
 const SendMoney = () => {
-  return (
-    <div>SendMoney</div>
-  )
+  return <main>SendMoney</main>
 }
 
 export default SendMoney

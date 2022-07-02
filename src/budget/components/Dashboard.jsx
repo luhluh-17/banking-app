@@ -20,11 +20,9 @@ const Dashboard = () => {
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
-      <div className="flex-row-ng">
+      <div className='flex-row-ng'>
         <SidePanel />
-        <div>
-          <Outlet />
-        </div>
+        <Outlet />
       </div>
     </UserContext.Provider>
   )

@@ -14,17 +14,17 @@ const SidePanel = () => {
 
   return (
     <div className='flex-col-sb sidenavbar'>
-      <div className='logo-budget'>
+      <div className='flex-col'>
         <span className='material-symbols-outlined'>account_circle</span>
         <div>
-          <h1>Greetings,</h1>
-          <h1>{user.firstName}</h1>
+          <h1>Hello {user.firstName}</h1>
         </div>
       </div>
-
-      {PanelData.map((item, index) => {
-        return <SidePanelItem key={index} {...item} />
-      })}
+      <div className='flex-col'>
+        {PanelData.map((item, index) => {
+          return <SidePanelItem key={index} {...item} />
+        })}
+      </div>
     </div>
   )
 }

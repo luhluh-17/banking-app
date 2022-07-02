@@ -20,22 +20,22 @@ const Overview = () => {
   })
 
   return (
-    <section className='dash-sec'>
-      <div className='dash-content'>
-        <section className='tab-header'>
+    <main>
+      <div>
+        <section>
           <h1>Overview</h1>
         </section>
-        <div className='overview-top'>
-          <section className='bal-card'>
+        <div>
+          <section>
             <OverviewCard />
             <OverviewBal />
           </section>
-          <section className='barCon'>
+          <section>
             <ChartBar chartData={userData} />
           </section>
         </div>
       </div>
-    </section>
+    </main>
   )
 }
 

@@ -4,7 +4,7 @@ import { UserContext } from '../helper/Context'
 const TransactionsList = () => {
   const { user } = useContext(UserContext)
   return (
-    <div className='transactions-page'>
+    <main>
       <div>
         <table className='budget-table-transactions'>
           <thead>
@@ -23,7 +23,7 @@ const TransactionsList = () => {
           </tbody>
         </table>
       </div>
-    </div>
+    </main>
   )
 }
 
