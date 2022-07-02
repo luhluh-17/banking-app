@@ -1,9 +1,0 @@
-@use './base' as *;
-@use './abstracts/' as *;
-@use './pages/' as *;
-
-
-
-input::placeholder, input, button{
-    color: black;
-}
