@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
-import Expenses_Row_Item from '../components/Expenses_Row_Item'
+import Button from '../components/Button'
+import ExpensesRowItem from '../components/ExpensesRowItem'
 import { UserContext } from '../helper/Context'
 
 const Expenses = () => {
@@ -32,27 +33,25 @@ const Expenses = () => {
     <main>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="expense-name">Description</label>
+          <label htmlFor='expense-name'>Description</label>
           <input
-            id="expense-name"
-            type="text"
+            id='expense-name'
+            type='text'
             value={expenseName}
             onChange={e => setExpenseName(e.target.value)}
           />
         </div>
         <div>
-          <label htmlFor="expense-cost">Cost</label>
+          <label htmlFor='expense-cost'>Cost</label>
           <input
-            id="expense-cost"
-            type="number"
-            min="0"
+            id='expense-cost'
+            type='number'
+            min='0'
             value={expenseCost}
             onChange={e => setExpenseCost(e.target.value)}
           />
         </div>
-        <button type="submit" className="btn-secondary">
-          + Add
-        </button>
+        <Button type='submit' icon='add' text='Add' className='btn-secondary' />
       </form>
       <table>
         <thead>
@@ -65,7 +64,7 @@ const Expenses = () => {
         <tbody>
           {expenseList.map((item, index) => {
             return (
-              <Expenses_Row_Item
+              <ExpensesRowItem
                 key={index}
                 {...item}
                 onChangeExpenseList={setExpenseList}

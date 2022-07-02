@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { UserContext } from '../helper/Context'
-import SideItem from './SidePanel_Item'
+import SidePanelItem from './SidePanelItem'
 
 const PanelData = [
   { icon: 'apps', title: 'Overview' },
@@ -10,23 +10,21 @@ const PanelData = [
 ]
 
 const SidePanel = () => {
-  const {user} = useContext(UserContext)
-
+  const { user } = useContext(UserContext)
 
   return (
-    <div className="flex-col-sb sidenavbar">
-      <div className="logo-budget">
-        <span className="material-symbols-outlined">account_circle</span>
-        <div>
-          <h1>Greetings,</h1>
-          <h1>{user.firstName}</h1>
-        </div>
-      </div>
+    <nav className='flex-col-sb sidenavbar'>
+      <div className='flex-col-ng'>
+        <header className='navbar-heading'>
+          <h2>Hello {user.firstName},</h2>
+        </header>
 
-      {PanelData.map((item, index) => {
-        return <SideItem key={index} {...item} />
-      })}
-    </div>
+        {PanelData.map((item, index) => {
+          return <SidePanelItem key={index} {...item} />
+        })}
+      </div>
+      <SidePanelItem icon='logout' title='Logout' />
+    </nav>
   )
 }
 
