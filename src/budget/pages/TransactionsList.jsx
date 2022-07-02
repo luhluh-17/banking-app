@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
-import Transaction_Row from '../components/Transaction_Row'
+import TransactionRow from '../components/TransactionRow'
 import { UserContext } from '../helper/Context'
 const TransactionsList = () => {
-  const {user} = useContext(UserContext)
+  const { user } = useContext(UserContext)
   return (
-    <div className="transactions-page">
+    <div className='transactions-page'>
       <div>
         <table className='budget-table-transactions'>
           <thead>
@@ -18,7 +18,7 @@ const TransactionsList = () => {
           </thead>
           <tbody>
             {user.transactions.map(obj => {
-              return <Transaction_Row {...obj} />
+              return <TransactionRow {...obj} />
             })}
           </tbody>
         </table>

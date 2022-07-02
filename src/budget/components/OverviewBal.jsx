@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { UserContext } from '../helper/Context'
 
-const Overview_Bal = () => {
+const OverviewBal = () => {
   const { user } = useContext(UserContext)
 
   const formatCurrency = number => {
@@ -11,11 +11,11 @@ const Overview_Bal = () => {
     }).format(number)
   }
   return (
-    <div className="balance">
+    <div className='balance'>
       <h2>Current Balance</h2>
       <span>{formatCurrency(user.balance)}</span>
     </div>
   )
 }
 
-export default Overview_Bal
+export default OverviewBal
