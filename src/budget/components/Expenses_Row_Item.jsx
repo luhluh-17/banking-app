@@ -8,15 +8,17 @@ const Expenses_Row_Item = ({
   expenseList,
   id,
 }) => {
-  const currentUser = useContext(UserContext)
+  const store = useContext(UserContext)
   const handleDelete = id => {
     onChangeExpenseList(expenseList.filter(item => item.id !== id))
   }
 
   const handleAddTransaction = id => {
     const index = expenseList.findIndex(item => item.id === id)
-    currentUser.transactions.push(expenseList[index])
-    console.log(currentUser)
+    store.user.transactions.push(expenseList[index])
+    localStorage.setItem('currentUser', JSON.stringify(store.user))
+    localStorage.setItem()
+    handleDelete(id)
   }
   return (
     <tr>

@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Expenses_Row_Item from '../components/Expenses_Row_Item'
 import { UserContext } from '../helper/Context'
+
 const Expenses = () => {
-  const currentUser = useContext(UserContext)
+  const {user, setUser}= useContext(UserContext)
   const [expenseName, setExpenseName] = useState('')
   const [expenseCost, setExpenseCost] = useState(0)
-  const [expenseList, setExpenseList] = useState(currentUser.expenses)
+  const [expenseList, setExpenseList] = useState(user.expenses)
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -20,18 +21,24 @@ const Expenses = () => {
       setExpenseName('')
     }
   }
-
+  
   useEffect(() => {
-    currentUser.expenses = expenseList
-    localStorage.setItem('currentUser', JSON.stringify(currentUser))
+    setUser(prev=> {
+      return {...prev, expenses: expenseList}
+    })
   }, [expenseList])
 
-  useEffect(() => {
-    const usersList = JSON.parse(localStorage.getItem('users'))
-    const idx = usersList.findIndex(item => item.id === currentUser.id)
-    usersList[idx] = { ...usersList[idx], expenses: currentUser.expenses }
-    localStorage.setItem('users', JSON.stringify(usersList))
-  }, [currentUser])
+  // useEffect(()=>{
+  //   currentUser.expenses = expenseList
+  //   localStorage.setItem('currentUser', JSON.stringify(currentUser))
+  // }, [expenseList])
+
+  // useEffect(() => {
+  //   const usersList = JSON.parse(localStorage.getItem('users'))
+  //   const idx = usersList.findIndex(item => item.id === currentUser.id)
+  //   usersList[idx] = { ...usersList[idx], expenses: currentUser.expenses }
+  //   localStorage.setItem('users', JSON.stringify(usersList))
+  // }, [currentUser])
 
   return (
     <main>
