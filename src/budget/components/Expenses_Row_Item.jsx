@@ -2,24 +2,36 @@ import React, { useContext } from 'react'
 import { UserContext } from '../helper/Context'
 
 const Expenses_Row_Item = ({
-  desc,
+  description,
   amount,
-  setFilteredList,
+  onChangeExpenseList,
   expenseList,
   id,
 }) => {
-  const { transactions } = useContext(UserContext)
+  const { user, setUser } = useContext(UserContext)
   const handleDelete = id => {
-    setFilteredList(expenseList.filter(item => item.id !== id))
+    onChangeExpenseList(expenseList.filter(item => item.id !== id))
   }
 
   const handleAddTransaction = id => {
     const index = expenseList.findIndex(item => item.id === id)
-    transactions.push(expenseList[index])
+    const newBalance = user.balance - amount
+    if (user.balance < amount) {
+      alert('nope')
+    } else {
+      setUser(prev => {
+        return {
+          ...prev,
+          balance: newBalance,
+          transactions: [...prev.transactions, expenseList[index]],
+        }
+      })
+      handleDelete(id)
+    }
   }
   return (
     <tr>
-      <td>{desc}</td>
+      <td>{description}</td>
       <td>{amount}</td>
       <td>
         <button>edit</button>

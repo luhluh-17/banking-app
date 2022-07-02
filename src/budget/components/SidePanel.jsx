@@ -10,14 +10,16 @@ const PanelData = [
 ]
 
 const SidePanel = () => {
-  const { firstName } = useContext(UserContext)
+  const {user} = useContext(UserContext)
+
+
   return (
-    <div className="sideBar-budget">
+    <div className="flex-col-sb sidenavbar">
       <div className="logo-budget">
         <span className="material-symbols-outlined">account_circle</span>
         <div>
           <h1>Greetings,</h1>
-          <h1>{firstName}</h1>
+          <h1>{user.firstName}</h1>
         </div>
       </div>
 

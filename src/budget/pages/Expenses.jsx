@@ -1,18 +1,19 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Expenses_Row_Item from '../components/Expenses_Row_Item'
 import { UserContext } from '../helper/Context'
+
 const Expenses = () => {
+  const { user, setUser } = useContext(UserContext)
   const [expenseName, setExpenseName] = useState('')
   const [expenseCost, setExpenseCost] = useState(0)
-  const [expenseList, setExpenseList] = useState([])
-  const { transactions } = useContext(UserContext)
+  const [expenseList, setExpenseList] = useState(user.expenses)
 
   const handleSubmit = e => {
     e.preventDefault()
     if (expenseName && expenseCost) {
       const obj = {
-        id: new Date().getTime().toString(),
-        desc: expenseName,
+        id: new Date().getTime(),
+        description: expenseName,
         amount: expenseCost,
       }
       setExpenseList(prev => [...prev, obj])
@@ -20,8 +21,15 @@ const Expenses = () => {
       setExpenseName('')
     }
   }
+
+  useEffect(() => {
+    setUser(prev => {
+      return { ...prev, expenses: expenseList }
+    })
+  }, [expenseList])
+
   return (
-    <div>
+    <main>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="expense-name">Description</label>
@@ -42,7 +50,9 @@ const Expenses = () => {
             onChange={e => setExpenseCost(e.target.value)}
           />
         </div>
-        <button type="submit">+ Add</button>
+        <button type="submit" className="btn-secondary">
+          + Add
+        </button>
       </form>
       <table>
         <thead>
@@ -54,11 +64,18 @@ const Expenses = () => {
         </thead>
         <tbody>
           {expenseList.map((item, index) => {
-            return <Expenses_Row_Item key={index} {...item} setFilteredList={setExpenseList} expenseList={expenseList} />
+            return (
+              <Expenses_Row_Item
+                key={index}
+                {...item}
+                onChangeExpenseList={setExpenseList}
+                expenseList={expenseList}
+              />
+            )
           })}
         </tbody>
       </table>
-    </div>
+    </main>
   )
 }
 
