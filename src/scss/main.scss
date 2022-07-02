@@ -2,10 +2,13 @@
 @use 'base/reset';
 @use 'base/typography';
 @use 'utils/display';
+@use 'utils/margin';
 @use 'components/button';
+@use 'components/dialog';
 @use 'components/form';
-@use 'components/google-icons';
+@use 'components/icon';
 @use 'components/section';
 @use 'components/sidenavbar';
-@use 'components/tables';
+@use 'components/table';
 @use 'layout/main';
+@use 'pages/account-details';

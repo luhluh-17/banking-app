@@ -1,8 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react'
-import Fab from '../components/Fab'
-import Table from '../components/Table'
+import Modal from '../components/Modal'
+import TableUser from '../components/TableUser'
 import User from '../../js/classes/user'
-import { KEY_USERS } from '../../js/variables'
+import { KEY_USERS, getAllUsers } from '../../js/utils/localstorage'
+import Button from '../components/Button'
 
 const Accounts = () => {
   const firstNameRef = useRef(null)
@@ -10,11 +11,11 @@ const Accounts = () => {
   const emailRef = useRef(null)
   const balanceRef = useRef(null)
 
-  const list =
-    localStorage.getItem(KEY_USERS) !== null
-      ? JSON.parse(localStorage.getItem(KEY_USERS))
-      : []
-  const [users, setUsers] = useState(list)
+  const [isDialogOpen, setIsDialogOpen] = useState(false)
+  const toggleDialog = () => setIsDialogOpen(bool => !bool)
+  const closeDialog = () => setIsDialogOpen(false)
+
+  const [users, setUsers] = useState(getAllUsers())
 
   useEffect(
     () => localStorage.setItem(KEY_USERS, JSON.stringify(users)),
@@ -38,7 +39,6 @@ const Accounts = () => {
   const handleSubmit = event => {
     event.preventDefault()
 
-    // Show Error
     if (firstNameRef.current.value === '') return
     if (lastNameRef.current.value === '') return
     if (emailRef.current.value === '') return
@@ -46,40 +46,84 @@ const Accounts = () => {
     addItem(
       firstNameRef.current.value,
       lastNameRef.current.value,
-      balanceRef.current.value,
+      Number(balanceRef.current.value),
       emailRef.current.value
     )
 
     resetState()
+    closeDialog()
+  }
+
+  function Form() {
+    return (
+      <>
+        <form onSubmit={handleSubmit} className='flex-col'>
+          <div>
+            <label className='form-label'>Name</label>
+            <div className='flex-row'>
+              <input
+                className='form-input'
+                type='text'
+                placeholder='First'
+                ref={firstNameRef}
+              />
+              <input
+                className='form-input'
+                type='text'
+                placeholder='Last'
+                ref={lastNameRef}
+              />
+            </div>
+          </div>
+          <div>
+            <label className='form-label'>Email</label>
+            <input
+              className='form-input'
+              type='email'
+              placeholder='Email Address'
+              ref={emailRef}
+            />
+          </div>
+          <div>
+            <label className='form-label'>Balance</label>
+            <input
+              className='form-input'
+              type='number'
+              placeholder='Initial Amount'
+              step={'.01'}
+              ref={balanceRef}
+            />
+          </div>
+          <div className='dialog-btn-container'>
+            <Button
+              text='Cancel'
+              className='btn-cancel'
+              onClick={toggleDialog}
+            />
+            <Button type='submit' text='Create' className='btn-secondary' />
+          </div>
+        </form>
+      </>
+    )
   }
 
   return (
     <>
       <main>
         <input type='text' placeholder='Searchbar'></input>
-        <Table list={users} />
-        <button onClick={() => localStorage.clear()}>Clear Local</button>
+        <TableUser list={users} />
       </main>
 
-      <form onSubmit={handleSubmit} className='flex-col form'>
-        <div>
-          <label className='form-label'>First Name</label>
-          <input className='form-input' type='text' ref={firstNameRef} />
-        </div>
-        <div>
-          <label className='form-label'>Last Name</label>
-          <input className='form-input' type='text' ref={lastNameRef} />
-        </div>
-        <div>
-          <label className='form-label'>Email</label>
-          <input className='form-input' type='email' ref={emailRef} />
-        </div>
-        <div>
-          <label className='form-label'>Balance</label>
-          <input className='form-input' type='number' ref={balanceRef} />
-        </div>
-        <Fab icon='add' text='Create User' />
-      </form>
+      <Button
+        icon='add'
+        text='Add User'
+        className='btn-secondary fab'
+        onClick={toggleDialog}
+      />
+
+      <Modal title='Add User' isOpen={isDialogOpen} onClose={closeDialog}>
+        <Form />
+      </Modal>
     </>
   )
 }

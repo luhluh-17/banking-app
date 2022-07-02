@@ -4,7 +4,7 @@ import SideNavbar from '../components/SideNavbar'
 
 const Dashboard = () => {
   return (
-    <div className='flex-row'>
+    <div className='flex-row-ng'>
       <SideNavbar />
       <Outlet />
     </div>

@@ -1,8 +1,8 @@
 import React from 'react'
 import User from '../../js/classes/user'
-import TableItem from './TableItem'
+import TableItem from './TableUserItem'
 
-const Table = ({ list }) => {
+const TableUser = ({ list }) => {
   const createTableItem = item => {
     const user = new User(
       item.id,
@@ -30,10 +30,10 @@ const Table = ({ list }) => {
     <table>
       <thead>
         <tr>
+          <th>Id</th>
           <th>Name</th>
           <th>Email</th>
           <th>Balance</th>
-          <th>Actions</th>
         </tr>
       </thead>
       <tbody>{list.map(createTableItem)}</tbody>
@@ -41,4 +41,4 @@ const Table = ({ list }) => {
   )
 }
 
-export default Table
+export default TableUser

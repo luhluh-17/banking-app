@@ -8,7 +8,7 @@ const SideNavbar = () => {
 
   return (
     <nav className='flex-col-sb sidenavbar'>
-      <div className='flex-col'>
+      <div className='flex-col-ng'>
         <SideNavbarHeading />
         <NavLink to={path} className={style} end={true}>
           <span className='material-symbols-outlined'>dashboard</span>
