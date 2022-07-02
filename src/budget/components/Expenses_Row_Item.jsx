@@ -16,15 +16,18 @@ const Expenses_Row_Item = ({
   const handleAddTransaction = id => {
     const index = expenseList.findIndex(item => item.id === id)
     const newBalance = user.balance - amount
-    setUser(prev => {
-      return {
-        ...prev,
-        balance: newBalance,
-        transactions: [...prev.transactions, expenseList[index]],
-      }
-    })
-
-    handleDelete(id)
+    if (user.balance < amount) {
+      alert('nope')
+    } else {
+      setUser(prev => {
+        return {
+          ...prev,
+          balance: newBalance,
+          transactions: [...prev.transactions, expenseList[index]],
+        }
+      })
+      handleDelete(id)
+    }
   }
   return (
     <tr>
