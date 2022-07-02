@@ -4,13 +4,13 @@ import { UserContext } from '../helper/Context'
 const Expenses_Row_Item = ({
   description,
   amount,
-  setFilteredList,
+  onChangeExpenseList,
   expenseList,
   id,
 }) => {
   const currentUser = useContext(UserContext)
   const handleDelete = id => {
-    setFilteredList(expenseList.filter(item => item.id !== id))
+    onChangeExpenseList(expenseList.filter(item => item.id !== id))
   }
 
   const handleAddTransaction = id => {

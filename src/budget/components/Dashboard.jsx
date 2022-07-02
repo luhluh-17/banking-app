@@ -12,7 +12,7 @@ const Dashboard = () => {
 
   return (
     <UserContext.Provider value={currentUser}>
-      <div className="dash-budget">
+      <div className="flex-row-ng">
         <SidePanel />
         <div>
           <Outlet />

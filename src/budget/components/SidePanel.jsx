@@ -14,7 +14,7 @@ const SidePanel = () => {
 
 
   return (
-    <div className="sideBar-budget">
+    <div className="flex-col-sb sidenavbar">
       <div className="logo-budget">
         <span className="material-symbols-outlined">account_circle</span>
         <div>

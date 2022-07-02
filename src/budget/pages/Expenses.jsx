@@ -34,7 +34,7 @@ const Expenses = () => {
   }, [currentUser])
 
   return (
-    <div>
+    <main>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="expense-name">Description</label>
@@ -55,7 +55,7 @@ const Expenses = () => {
             onChange={e => setExpenseCost(e.target.value)}
           />
         </div>
-        <button type="submit">+ Add</button>
+        <button type="submit" className='btn-secondary'>+ Add</button>
       </form>
       <table>
         <thead>
@@ -71,14 +71,14 @@ const Expenses = () => {
               <Expenses_Row_Item
                 key={index}
                 {...item}
-                setFilteredList={setExpenseList}
+                onChangeExpenseList={setExpenseList}
                 expenseList={expenseList}
               />
             )
           })}
         </tbody>
       </table>
-    </div>
+    </main>
   )
 }
 
