@@ -13,19 +13,18 @@ const SidePanel = () => {
   const { user } = useContext(UserContext)
 
   return (
-    <div className='flex-col-sb sidenavbar'>
-      <div className='flex-col'>
-        <span className='material-symbols-outlined'>account_circle</span>
-        <div>
-          <h1>Hello {user.firstName}</h1>
-        </div>
-      </div>
-      <div className='flex-col'>
+    <nav className='flex-col-sb sidenavbar'>
+      <div className='flex-col-ng'>
+        <header className='navbar-heading'>
+          <h2>Hello {user.firstName},</h2>
+        </header>
+
         {PanelData.map((item, index) => {
           return <SidePanelItem key={index} {...item} />
         })}
       </div>
-    </div>
+      <SidePanelItem icon='logout' title='Logout' />
+    </nav>
   )
 }
 

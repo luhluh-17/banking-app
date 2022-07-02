@@ -10,6 +10,7 @@ const OverviewBal = () => {
       currency: 'USD',
     }).format(number)
   }
+
   return (
     <div className='balance'>
       <h2>Current Balance</h2>
