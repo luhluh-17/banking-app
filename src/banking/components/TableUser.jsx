@@ -1,6 +1,9 @@
 import React from 'react'
-import User from '../../js/classes/user'
+import Table from './Table'
 import TableItem from './TableUserItem'
+import User from '../../js/classes/user'
+
+const TABLE_HEAD = ['ID', 'NAME', 'EMAIL', 'BALANCE']
 
 const TableUser = ({ list }) => {
   const createTableItem = item => {
@@ -27,17 +30,10 @@ const TableUser = ({ list }) => {
   }
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Balance</th>
-        </tr>
-      </thead>
-      <tbody>{list.map(createTableItem)}</tbody>
-    </table>
+    <>
+      <input type='text' placeholder='Searchbar' />
+      <Table headings={TABLE_HEAD} data={list.map(createTableItem)} />
+    </>
   )
 }
 
