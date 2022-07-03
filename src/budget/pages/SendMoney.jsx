@@ -52,11 +52,13 @@ const SendMoney = () => {
     setSelectedAmount(0)
     setSelectedUser('')
   }
+
   useEffect(() => {
     const idx = Users.findIndex(item => item.id === secondUser.id)
     Users[idx] = secondUser
     localStorage.setItem('users', JSON.stringify(Users))
   }, [secondUser])
+
   return (
     <main>
       <h1>Send Money</h1>

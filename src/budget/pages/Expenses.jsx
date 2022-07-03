@@ -35,10 +35,19 @@ const Expenses = () => {
     })
   }, [expenseList])
 
+  const getTotal = () => {
+    const costArr = expenseList.map(a => Number(a.amount))
+    const total = costArr.reduce((x, y) => x + y, 0)
+    return total
+  }
+
   return (
     <>
       <main>
         <h1>Expenses</h1>
+        <span>Current Balance: {user.balance}</span>
+        <span>Total Expenses :{getTotal()}</span>
+        <span>Expected Balance: {user.balance - getTotal()}</span>
         <table>
           <thead>
             <tr>
