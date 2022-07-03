@@ -8,6 +8,7 @@ import AccountDetailsHeading from '../parts/AccountDetailsHeading'
 
 import User from '../../js/classes/user'
 import { KEY_USERS, getAllUsers } from '../../js/utils/localstorage'
+import ModalSendMoney from '../parts/ModalSendMoney'
 
 function AccountDetails() {
   const navigate = useNavigate()
@@ -29,7 +30,14 @@ function AccountDetails() {
   const [user, setUser] = useState(selectedUser)
   const [users, setUsers] = useState(getAllUsers())
 
-  const [isDialogOpen, setIsDialogOpen] = useState(false)
+  const [isDialogBalanceOpen, setIsDialogBalanceOpen] = useState(false)
+  const [isDialogSendOpen, setIsDialogSendOpen] = useState(false)
+
+  const handleSave = () =>
+    localStorage.setItem(KEY_USERS, JSON.stringify(users))
+
+  const toggleBalanceDialog = () => setIsDialogBalanceOpen(bool => !bool)
+  const toggleSendDialog = () => setIsDialogSendOpen(bool => !bool)
 
   useEffect(() => {
     setUsers(state => {
@@ -74,14 +82,39 @@ function AccountDetails() {
         <TableTransaction
           list={user.transactions}
           users={users}
-          onToggleChange={setIsDialogOpen}
-        />
+          onToggleChange={setIsDialogBalanceOpen}
+        >
+          <div className='flex-row'>
+            <Button
+              className='btn-primary'
+              text='Save Transaction'
+              onClick={handleSave}
+            />
+            <Button
+              className={'btn-primary'}
+              text='Update Balance'
+              onClick={toggleBalanceDialog}
+            />
+            <Button
+              className={'btn-primary'}
+              text='Send Money'
+              onClick={toggleSendDialog}
+            />
+          </div>
+        </TableTransaction>
       </main>
       <ModalUpdateBalance
         user={user}
         onUserChange={setUser}
-        isOpen={isDialogOpen}
-        onDialogChange={setIsDialogOpen}
+        isOpen={isDialogBalanceOpen}
+        onDialogChange={setIsDialogBalanceOpen}
+      />
+      <ModalSendMoney
+        onUsersChange={setUsers}
+        sender={user}
+        onSenderChange={setUser}
+        isOpen={isDialogSendOpen}
+        onDialogChange={setIsDialogSendOpen}
       />
     </>
   )
