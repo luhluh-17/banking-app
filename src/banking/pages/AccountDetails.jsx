@@ -1,72 +1,34 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import Button from '../components/Button'
-import Modal from '../components/Modal'
 import TableTransaction from '../components/TableTransaction'
 import User from '../../js/classes/user'
-import Transaction from '../../js/classes/transaction'
 import { KEY_USERS, getAllUsers } from '../../js/utils/localstorage'
+import ModalUpdateBalance from '../parts/ModalUpdateBalance'
 
 function AccountDetails() {
-  const amountRef = useRef(null)
   const navigate = useNavigate()
 
   const { userId } = useParams()
-  const obj = getAllUsers().find(item => item.id === parseInt(userId))
+  const _user = getAllUsers().find(item => item.id === parseInt(userId))
 
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const toggleDialog = () => setIsDialogOpen(bool => !bool)
-  const closeDialog = () => setIsDialogOpen(false)
 
   const selectedUser = new User(
-    obj.id,
-    obj.firstName,
-    obj.lastName,
-    obj.balance,
-    obj.email,
-    obj.password,
-    obj.expenses,
-    obj.transactions
+    _user.id,
+    _user.firstName,
+    _user.lastName,
+    _user.balance,
+    _user.email,
+    _user.password,
+    _user.expenses,
+    _user.transactions
   )
 
   const [user, setUser] = useState(selectedUser)
   const [users, setUsers] = useState(getAllUsers())
   console.log(users)
-  const handleUpdate = action => {
-    if (amountRef.current.value === '') return
-
-    const amount = parseInt(amountRef.current.value)
-    let updatedBalance = parseInt(user.balance)
-
-    if (action === 'Withdraw') {
-      updatedBalance -= amount
-      if (updatedBalance < 0) {
-        alert('insufficient balance')
-        return
-      }
-    } else {
-      updatedBalance += amount
-    }
-
-    const id = new Date().getTime()
-    const transaction = new Transaction(id, action, 'Posted', amount)
-
-    setUser(state => {
-      return new User(
-        state.id,
-        state.firstName,
-        state.lastName,
-        updatedBalance,
-        state.email,
-        state.pass,
-        state.expenses,
-        [...state.transactions, transaction]
-      )
-    })
-
-    amountRef.current.value = ''
-    closeDialog()
-  }
 
   useEffect(() => {
     setUsers(state => {
@@ -76,12 +38,10 @@ function AccountDetails() {
     })
   }, [user])
 
-  useEffect(
-    state => {
-      console.log(state)
-    },
-    [users]
-  )
+  // TODO: Fix use effect not storing data
+  useEffect(() => {
+    localStorage.setItem(KEY_USERS, JSON.stringify(users))
+  }, [users])
 
   return (
     <>
@@ -101,7 +61,6 @@ function AccountDetails() {
               className='btn-secondary-border'
               onClick={() => navigate(-1)}
             />
-
             <Button
               icon={'delete'}
               text='Delete'
@@ -151,38 +110,12 @@ function AccountDetails() {
           <TableTransaction list={user.transactions} />
         </section>
       </main>
-
-      <Modal title='Update Balance' isOpen={isDialogOpen} onClose={closeDialog}>
-        <form>
-          <div>
-            <label className='form-label'>Amount</label>
-            <input
-              className='form-input'
-              type='number'
-              placeholder='Enter Amount'
-              step={'.01'}
-              ref={amountRef}
-            />
-          </div>
-          <div className='dialog-btn-container'>
-            <Button
-              text='Cancel'
-              className='btn-primary'
-              onClick={toggleDialog}
-            />
-            <Button
-              text='Deposit'
-              className='btn-primary'
-              onClick={() => handleUpdate('Deposit')}
-            />
-            <Button
-              text='Withdraw'
-              className='btn-primary'
-              onClick={() => handleUpdate('Withdraw')}
-            />
-          </div>
-        </form>
-      </Modal>
+      <ModalUpdateBalance
+        user={user}
+        onUserChange={setUser}
+        isOpen={isDialogOpen}
+        onDialogChange={setIsDialogOpen}
+      />
     </>
   )
 }
