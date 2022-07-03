@@ -18,8 +18,8 @@ const TransactionsList = () => {
             </tr>
           </thead>
           <tbody>
-            {user.transactions.map(obj => {
-              return <TransactionRow {...obj} />
+            {user.transactions.map((obj, index) => {
+              return <TransactionRow key={index} {...obj} />
             })}
           </tbody>
         </table>
