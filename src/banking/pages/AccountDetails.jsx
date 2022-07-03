@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
+
 import Button from '../components/Button'
 import TableTransaction from '../components/TableTransaction'
+import ModalUpdateBalance from '../parts/ModalUpdateBalance'
+import AccountDetailsHeading from '../parts/AccountDetailsHeading'
+
 import User from '../../js/classes/user'
 import { KEY_USERS, getAllUsers } from '../../js/utils/localstorage'
-import ModalUpdateBalance from '../parts/ModalUpdateBalance'
 
 function AccountDetails() {
   const navigate = useNavigate()
 
   const { userId } = useParams()
   const _user = getAllUsers().find(item => item.id === parseInt(userId))
-
-  const [isDialogOpen, setIsDialogOpen] = useState(false)
-  const toggleDialog = () => setIsDialogOpen(bool => !bool)
 
   const selectedUser = new User(
     _user.id,
@@ -28,7 +28,8 @@ function AccountDetails() {
 
   const [user, setUser] = useState(selectedUser)
   const [users, setUsers] = useState(getAllUsers())
-  console.log(users)
+
+  const [isDialogOpen, setIsDialogOpen] = useState(false)
 
   useEffect(() => {
     setUsers(state => {
@@ -53,7 +54,6 @@ function AccountDetails() {
             className='btn-primary-border'
             onClick={() => navigate(-1)}
           />
-
           <div className='flex-row'>
             <Button
               icon={'edit'}
@@ -70,45 +70,12 @@ function AccountDetails() {
           </div>
         </div>
 
-        <section className='account-details'>
-          <div className='flex-row'>
-            <div>
-              <h5>{user.id}</h5>
-              <h2>{user.name}</h2>
-              <h4>{user.email}</h4>
-            </div>
-          </div>
-          <div>
-            <h2>{user.formattedBalance}</h2>
-            <h4>Current Balance</h4>
-          </div>
-        </section>
-
-        <section className='mt-1'>
-          <div className='btn-container-header'>
-            <h3>Transactions</h3>
-            <div className='flex-row'>
-              <Button
-                className='btn-primary'
-                text='Save Transaction'
-                onClick={() =>
-                  localStorage.setItem(KEY_USERS, JSON.stringify(users))
-                }
-              />
-              <Button
-                className={'btn-primary'}
-                text='Update Balance'
-                onClick={toggleDialog}
-              />
-              <Button
-                className={'btn-primary'}
-                text='Send Money'
-                onClick={toggleDialog}
-              />
-            </div>
-          </div>
-          <TableTransaction list={user.transactions} />
-        </section>
+        <AccountDetailsHeading user={user} />
+        <TableTransaction
+          list={user.transactions}
+          users={users}
+          onToggleChange={setIsDialogOpen}
+        />
       </main>
       <ModalUpdateBalance
         user={user}

@@ -1,8 +1,17 @@
 import React from 'react'
-import TableTransactionItem from './TableTransactionItem'
+import Table from './Table'
+import Button from './Button'
 import Transaction from '../../js/classes/transaction'
+import { KEY_USERS } from '../../js/utils/localstorage'
 
-const TableTransaction = ({ list }) => {
+const TABLE_HEAD = ['ID', 'DATE', 'DESCRIPTION', 'STATUS', 'AMOUNT']
+
+const TableTransaction = ({ list, users, onToggleChange }) => {
+  const handleSave = () =>
+    localStorage.setItem(KEY_USERS, JSON.stringify(users))
+
+  const toggleDialog = () => onToggleChange(bool => !bool)
+
   const createTableItem = item => {
     const transaction = new Transaction(
       item.id,
@@ -11,30 +20,42 @@ const TableTransaction = ({ list }) => {
       item.amount
     )
 
+    const date = new Date(transaction.id)
     return (
-      <TableTransactionItem
-        key={transaction.id}
-        id={transaction.id}
-        desc={transaction.description}
-        status={transaction.status}
-        amount={transaction.formattedAmount}
-      />
+      <tr key={transaction.id}>
+        <td>{transaction.id}</td>
+        <td>{date.toLocaleString()}</td>
+        <td>{transaction.description}</td>
+        <td>{transaction.status}</td>
+        <td>{transaction.formattedAmount}</td>
+      </tr>
     )
   }
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>Date</th>
-          <th>Description</th>
-          <th>Status</th>
-          <th>Amount</th>
-        </tr>
-      </thead>
-      <tbody>{list.map(createTableItem)}</tbody>
-    </table>
+    <section className='mt-1'>
+      <div className='btn-container-header'>
+        <h3>Transactions</h3>
+        <div className='flex-row'>
+          <Button
+            className='btn-primary'
+            text='Save Transaction'
+            onClick={handleSave}
+          />
+          <Button
+            className={'btn-primary'}
+            text='Update Balance'
+            onClick={toggleDialog}
+          />
+          <Button
+            className={'btn-primary'}
+            text='Send Money'
+            onClick={toggleDialog}
+          />
+        </div>
+      </div>
+      <Table headings={TABLE_HEAD} data={list.map(createTableItem)} />
+    </section>
   )
 }
 
