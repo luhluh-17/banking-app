@@ -5,7 +5,8 @@ const TransactionsList = () => {
   const { user } = useContext(UserContext)
   return (
     <main>
-      <div>
+      <h1>Transactions</h1>
+      <div className='budget-transactions-container'>
         <table className='budget-table-transactions'>
           <thead>
             <tr>
@@ -17,8 +18,8 @@ const TransactionsList = () => {
             </tr>
           </thead>
           <tbody>
-            {user.transactions.map(obj => {
-              return <TransactionRow {...obj} />
+            {user.transactions.map((obj, index) => {
+              return <TransactionRow key={index} {...obj} />
             })}
           </tbody>
         </table>

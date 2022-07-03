@@ -21,10 +21,8 @@ const Overview = () => {
 
   return (
     <main>
+      <h1>Overview</h1>
       <div>
-        <section>
-          <h1>Overview</h1>
-        </section>
         <div>
           <section>
             <OverviewCard />
