@@ -259,6 +259,55 @@ dialog {
   margin-top: 1.5rem;
 }
 
+.budget-modal-overlay {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(66, 69, 73, 0.3647058824);
+}
+
+.budget-modal-container {
+  height: 25vw;
+  width: 30vw;
+  background-color: var(--white);
+  padding: 2%;
+}
+.budget-modal-container h3 {
+  margin: 1.3rem 0;
+}
+
+.budget-modal {
+  display: flex;
+  flex-direction: column;
+}
+.budget-modal div {
+  margin: 3% 0;
+  font-weight: 500;
+  gap: 0.5rem;
+}
+.budget-modal div input {
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  border-radius: var(--borderRadius);
+  background: var(--backgroundColor);
+  border: 1px solid var(--grey-200);
+}
+
+.d-f {
+  display: flex;
+}
+
+.fd-c {
+  flex-direction: column;
+}
+
+.jc-fe {
+  justify-content: flex-end;
+}
+
 .form {
   width: 30vw;
   max-width: 400px;
@@ -375,6 +424,14 @@ tr:nth-child(odd) {
 
 tr:nth-child(even) {
   background-color: var(--primary-100);
+}
+
+.budget-transactions-container {
+  width: 100%;
+}
+
+.budget-table-transactions {
+  width: 100%;
 }
 
 main {

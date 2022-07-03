@@ -29,16 +29,32 @@ const Expenses_Row_Item = ({
       handleDelete(id)
     }
   }
+
+  const formatCurrency = number => {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'PHP',
+    }).format(number)
+  }
   return (
     <tr>
       <td>{description}</td>
-      <td>{amount}</td>
-      <td>
-        <button>edit</button>
-        <button type="button" onClick={() => handleDelete(id)}>
-          delete
+      <td>{formatCurrency(amount)}</td>
+      <td style={{ display: 'flex', gap: '1rem' }}>
+        <button className="btn-primary">Edit</button>
+        <button
+          type="button"
+          onClick={() => handleDelete(id)}
+          className="btn-primary"
+        >
+          Delete
         </button>
-        <button onClick={() => handleAddTransaction(id)}>Pay now</button>
+        <button
+          onClick={() => handleAddTransaction(id)}
+          className="btn-secondary"
+        >
+          Pay now
+        </button>
       </td>
     </tr>
   )
