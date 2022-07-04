@@ -1,8 +1,12 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
+import Table from './Table'
 import User from '../../js/classes/user'
-import TableItem from './TableUserItem'
+
+const TABLE_HEAD = ['ID', 'NAME', 'EMAIL', 'BALANCE']
 
 const TableUser = ({ list }) => {
+  const navigate = useNavigate()
   const createTableItem = item => {
     const user = new User(
       item.id,
@@ -15,31 +19,23 @@ const TableUser = ({ list }) => {
       item.transactions
     )
 
+    const goToAccount = () =>
+      navigate(`/dashboard-employee/accounts/${user.id}`)
+
     return (
-      <TableItem
-        key={user.id}
-        id={user.id}
-        name={user.name}
-        email={user.email}
-        balance={user.formattedBalance}
-      />
+      <tr onClick={goToAccount}>
+        <td>{user.id}</td>
+        <td>{user.name}</td>
+        <td>{user.email}</td>
+        <td>{user.formattedBalance}</td>
+      </tr>
     )
   }
 
   return (
-    <div className='table-div'>
-      <table>
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Balance</th>
-          </tr>
-        </thead>
-        <tbody>{list.map(createTableItem)}</tbody>
-      </table>
-    </div>
+    <>
+      <Table headings={TABLE_HEAD} data={list.map(createTableItem)} />
+    </>
   )
 }
 
