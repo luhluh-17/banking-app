@@ -115,8 +115,8 @@ const Accounts = () => {
     <>
       <main>
         <h2 className='title'>Accounts</h2> 
-        <div className='search-div'>
-          <input type='text' placeholder='🔎︎' className='search-bar'></input>
+        <div className='input-div'>
+          <input type='text' placeholder='🔎︎' className='input-field'></input>
         </div>
         <TableUser list={users} />
       </main>
@@ -124,7 +124,7 @@ const Accounts = () => {
       <Button
         icon='add'
         text='Add User'
-        className='btn'
+        className='btn float'
         onClick={toggleDialog}
       />
 

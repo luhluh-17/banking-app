@@ -6,6 +6,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500;700&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -184,6 +186,9 @@ input[type=submit]:hover {
   width: 150px;
   margin-bottom: 30px;
 }
+.sidepanel h2 {
+  margin-bottom: 50px;
+}
 
 .tabs {
   display: flex;
@@ -218,20 +223,22 @@ main .title {
   margin-bottom: 50px;
 }
 
-.search-div {
+.input-div {
   padding-bottom: 20px;
   margin-bottom: 50px;
   border-bottom: 2px solid #e9e9e9;
-}
-.search-div .search-bar {
-  background-color: #e9e9e9;
-  font-size: 16px;
   width: 300px;
 }
-.search-div ::placeholder {
+.input-div ::placeholder {
   text-align: right;
   color: #9EA9AF;
   font-size: 20px;
+}
+
+.input-field {
+  background-color: #e9e9e9;
+  font-size: 16px;
+  width: 100%;
 }
 
 .table-div {
@@ -277,21 +284,24 @@ tr:hover {
 }
 
 .btn {
-  position: absolute;
-  top: 30px;
-  right: 50px;
   padding: 10px 15px;
   border: none;
   background-color: #FFB20C;
   transition: all 300ms ease;
-  color: #fff;
   font-size: 16px;
   border-radius: 10px;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 .btn:hover {
   transform: translateY(-3px);
+}
+
+.btn.float {
+  position: absolute;
+  top: 30px;
+  right: 50px;
 }
 
 dialog {
@@ -345,29 +355,27 @@ dialog {
   border-bottom: 2px solid #e9e9e9;
   margin-bottom: 30px;
 }
-.account-details h2 {
-  color: #0B2972;
-}
 .account-details div {
   margin-bottom: 30px;
 }
 
-.transactions {
+.bal {
+  color: #0B2972;
+}
+
+.transactions, .expenses {
   position: relative;
 }
-.transactions .btn-container {
+.transactions .btn-container, .expenses .btn-container {
   top: 0;
 }
-.transactions .btn {
-  position: static;
-}
-.transactions tr {
+.transactions tr, .expenses tr {
   cursor: default;
 }
-.transactions tr:hover {
+.transactions tr:hover, .expenses tr:hover {
   background-color: #fff;
 }
-.transactions .table-div {
+.transactions .table-div, .expenses .table-div {
   height: 200px;
 }
 
@@ -387,6 +395,76 @@ dialog {
 }
 .icon:hover {
   color: #FFB20C;
+}
+
+.card {
+  width: 280px;
+  height: 155px;
+  background-color: #0B2972;
+  border-radius: 15px;
+  padding: 20px;
+  position: relative;
+}
+.card p {
+  color: #fff;
+}
+.card .chip {
+  width: 15%;
+}
+.card .visa-logo {
+  width: 20%;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+.card span {
+  font-size: 16px;
+  color: white;
+}
+
+.balance {
+  border: none;
+  background-color: #e9e9e9;
+  width: fit-content;
+  height: fit-content;
+  padding: 30px 50px;
+  margin-top: 30px;
+  border-radius: 15px;
+}
+.balance h2 {
+  color: #778186;
+}
+.balance h4 {
+  border-top: 1px solid #9EA9AF;
+  padding-top: 20px;
+  margin-top: 20px;
+}
+
+.overview-container {
+  padding-top: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.bar-chart {
+  width: 45vw;
+  margin: 0 50px;
+}
+
+.send-money .btn {
+  margin-top: 20px;
+}
+
+.three-col {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding-bottom: 30px;
+  border-bottom: 2px solid #e9e9e9;
+}
+
+.icon {
+  margin: auto 0;
 }
 
 /*# sourceMappingURL=main.css.map */

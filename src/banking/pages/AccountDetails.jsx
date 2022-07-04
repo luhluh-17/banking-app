@@ -103,7 +103,7 @@ function AccountDetails() {
             </div>
           
             <div>
-              <h2>{user.formattedBalance}</h2>
+              <h2 className='bal'>{user.formattedBalance}</h2>
               <h4>Current Balance</h4>
             </div>
           </div>

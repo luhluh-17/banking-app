@@ -19,7 +19,7 @@ const LoginForm = () => {
 
     localStorage.setItem('currentUser', JSON.stringify(user))
     if (user !== undefined) {
-      navigate(`/dashboard-customer/${user.id}`)
+      navigate(`/dashboard-customer/overview`)
     } else {
       setInvalidLogin(true)
     }

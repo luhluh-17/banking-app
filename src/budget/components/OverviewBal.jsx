@@ -13,10 +13,12 @@ const OverviewBal = () => {
 
   return (
     <div className='balance'>
-      <h2>Current Balance</h2>
-      <span>{formatCurrency(user.balance)}</span>
+      <h2>{formatCurrency(user.balance)}</h2>
+      <h4>Current Balance</h4>
+      
     </div>
   )
 }
 
 export default OverviewBal
+

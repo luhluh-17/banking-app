@@ -4,25 +4,21 @@
   border-bottom: 2px solid $grey;
   margin-bottom: 30px;
 
-  h2 {
-    color: $blue;
-  }
-
   div {
     margin-bottom: 30px;
   }
 
 }
 
-.transactions {
+.bal{
+  color: $blue;
+}
+
+.transactions, .expenses {
  position: relative;
 
  .btn-container {
   top: 0
- }
-
- .btn {
-  position: static;
  }
 
  tr{

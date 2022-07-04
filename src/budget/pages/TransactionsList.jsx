@@ -5,8 +5,8 @@ const TransactionsList = () => {
   const { user } = useContext(UserContext)
   return (
     <main>
-      <h1>Transactions</h1>
-      <div className='budget-transactions-container'>
+      <h2 className='title'>Transactions</h2>
+      <div className='table-div transactions'>
         <table className='budget-table-transactions'>
           <thead>
             <tr>
