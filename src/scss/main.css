@@ -1,0 +1,392 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  color: #1F1F1F;
+  text-decoration: none;
+}
+
+body {
+  background-color: #fff;
+}
+
+h1 {
+  font-size: 60px;
+  font-weight: 900;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+p {
+  font-size: 16px;
+}
+
+h4 {
+  color: #9EA9AF;
+}
+
+input {
+  height: 40px;
+  margin-bottom: 10px;
+  border: none;
+  padding: 0 10px;
+  font-size: 20px;
+  border-radius: 5px;
+}
+input:focus {
+  outline: 2px solid #FFB20C;
+  border-color: transparent;
+}
+
+::placeholder {
+  font-size: 16px;
+  color: #9EA9AF;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px;
+  border-bottom: 1px solid #9EA9AF;
+}
+header .menu-link {
+  padding: 0 20px;
+}
+
+.logo-s {
+  width: 100px;
+  margin: 15px;
+}
+
+.login-btn {
+  font-size: 16px;
+  padding: 15px 25px;
+  border: none;
+  border-radius: 50px;
+  background-color: #FFB20C;
+  color: white;
+}
+
+.hero-section {
+  background-image: url(../assets/home-bg.jpg);
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 3px 4px 7px #1F1F1F;
+}
+
+.hero-section h1 {
+  width: 60%;
+  color: white;
+  text-align: center;
+}
+
+footer {
+  color: #e9e9e9;
+  padding: 20px 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  text-align: center;
+}
+
+footer .login-btn {
+  background-color: transparent;
+  border: 1px solid #FFB20C;
+  color: #1F1F1F;
+}
+
+.two-col {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+.two-col .col {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.two-col .col-two {
+  background-color: #0B2972;
+}
+
+.logo {
+  width: 50%;
+}
+
+form {
+  width: 50%;
+  padding: 30px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+form label {
+  padding-bottom: 10px;
+  color: #9EA9AF;
+}
+form h3 {
+  padding-bottom: 30px;
+  text-align: center;
+  color: #fff;
+}
+form a, form p {
+  font-size: 12px;
+  color: #9EA9AF;
+  text-decoration: none;
+  text-align: center;
+}
+form p {
+  padding: 5px 0;
+}
+
+input[type=submit] {
+  width: 100%;
+  margin-top: 20px;
+  color: #fff;
+  text-shadow: 3px 4px 7px #1F1F1F;
+  background-color: #FFB20C;
+  border: none;
+  cursor: pointer;
+  transition: all 300ms ease;
+}
+input[type=submit]:hover {
+  transform: translateY(-3px);
+}
+
+.sidepanel {
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+.sidepanel .logo-s {
+  width: 150px;
+  margin-bottom: 30px;
+}
+
+.tabs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.nav {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px;
+  border-left: 5px solid transparent;
+}
+.nav span {
+  padding: 0 25px;
+  color: #FFB20C;
+}
+
+.active {
+  border-left: 5px solid #FFB20C;
+}
+
+main {
+  background-color: #FAF9FA;
+  width: 80vw;
+  padding: 30px 70px;
+}
+main .title {
+  color: #9EA9AF;
+  margin-bottom: 50px;
+}
+
+.search-div {
+  padding-bottom: 20px;
+  margin-bottom: 50px;
+  border-bottom: 2px solid #e9e9e9;
+}
+.search-div .search-bar {
+  background-color: #e9e9e9;
+  font-size: 16px;
+  width: 300px;
+}
+.search-div ::placeholder {
+  text-align: right;
+  color: #9EA9AF;
+  font-size: 20px;
+}
+
+.table-div {
+  height: 360px;
+  overflow-y: scroll;
+}
+.table-div::-webkit-scrollbar {
+  display: none;
+}
+
+table {
+  width: 100%;
+  border-radius: 15px;
+  border-collapse: separate;
+  border-spacing: 0 15px;
+  position: relative;
+}
+table th {
+  text-align: left;
+  background-color: #e9e9e9;
+  color: #9EA9AF;
+  position: sticky;
+  top: 0;
+  cursor: default;
+}
+table th:hover {
+  background-color: #e9e9e9;
+}
+table tr {
+  background-color: #fff;
+  cursor: pointer;
+}
+table td, table th {
+  padding: 10px 20px;
+}
+
+tr:hover {
+  background-color: #FFB20C;
+}
+
+.link {
+  width: 100%;
+}
+
+.btn {
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  padding: 10px 15px;
+  border: none;
+  background-color: #FFB20C;
+  transition: all 300ms ease;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+dialog {
+  border: none;
+}
+
+.modal {
+  background-color: #0B2972;
+  width: 50vw;
+  height: 65vh;
+  position: fixed;
+  top: 15%;
+  left: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+}
+.modal h3, .modal h4 {
+  color: white;
+}
+.modal form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.modal form div {
+  display: flex;
+}
+.modal form .btn {
+  position: static;
+  margin: 20px 10px;
+}
+.modal .row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.modal .col {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0 10px;
+}
+
+.account-details {
+  border-bottom: 2px solid #e9e9e9;
+  margin-bottom: 30px;
+}
+.account-details h2 {
+  color: #0B2972;
+}
+.account-details div {
+  margin-bottom: 30px;
+}
+
+.transactions {
+  position: relative;
+}
+.transactions .btn-container {
+  top: 0;
+}
+.transactions .btn {
+  position: static;
+}
+.transactions tr {
+  cursor: default;
+}
+.transactions tr:hover {
+  background-color: #fff;
+}
+.transactions .table-div {
+  height: 200px;
+}
+
+.btn-container {
+  width: 50%;
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.icon {
+  color: #9EA9AF;
+  cursor: pointer;
+  padding-right: 10px;
+}
+.icon:hover {
+  color: #FFB20C;
+}
+
+/*# sourceMappingURL=main.css.map */

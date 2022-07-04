@@ -4,7 +4,7 @@ import Users from '../data/User'
 import { currentUser } from '../data/User'
 // import { employees } from '../data/employees'
 
-const LoginForm = props => {
+const LoginForm = () => {
   const [reset, setreset] = useState(false)
   const [invalidLogin, setInvalidLogin] = useState(null)
   const [username, setUsername] = useState('')

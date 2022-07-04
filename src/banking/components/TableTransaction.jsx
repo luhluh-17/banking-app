@@ -23,18 +23,20 @@ const TableTransaction = ({ list }) => {
   }
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>Date</th>
-          <th>Description</th>
-          <th>Status</th>
-          <th>Amount</th>
-        </tr>
-      </thead>
-      <tbody>{list.map(createTableItem)}</tbody>
-    </table>
+    <div className='table-div'>
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>{list.map(createTableItem)}</tbody>
+      </table>
+    </div>
   )
 }
 
