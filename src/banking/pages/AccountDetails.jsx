@@ -2,19 +2,19 @@ import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
 import Button from '../components/Button'
+import AccountDetailsHeading from '../parts/AccountDetailsHeading'
 import TableTransaction from '../components/TableTransaction'
 import ModalUpdateBalance from '../parts/ModalUpdateBalance'
-import AccountDetailsHeading from '../parts/AccountDetailsHeading'
+import ModalSendMoney from '../parts/ModalSendMoney'
 
 import User from '../../js/classes/user'
 import { KEY_USERS, getAllUsers } from '../../js/utils/localstorage'
-import ModalSendMoney from '../parts/ModalSendMoney'
 
 function AccountDetails() {
   const navigate = useNavigate()
 
   const { userId } = useParams()
-  const _user = getAllUsers().find(item => item.id === parseInt(userId))
+  const _user = getAllUsers().find(item => item.id === Number(userId))
 
   const selectedUser = new User(
     _user.id,
@@ -39,15 +39,6 @@ function AccountDetails() {
   const toggleBalanceDialog = () => setIsDialogBalanceOpen(bool => !bool)
   const toggleSendDialog = () => setIsDialogSendOpen(bool => !bool)
 
-  useEffect(() => {
-    setUsers(state => {
-      const idx = getAllUsers().findIndex(u => u.id === user.id)
-      state[idx] = user
-      return state
-    })
-  }, [user])
-
-  // TODO: Fix use effect not storing data
   useEffect(() => {
     localStorage.setItem(KEY_USERS, JSON.stringify(users))
   }, [users])
@@ -104,6 +95,7 @@ function AccountDetails() {
         </TableTransaction>
       </main>
       <ModalUpdateBalance
+        onUsersChange={setUsers}
         user={user}
         onUserChange={setUser}
         isOpen={isDialogBalanceOpen}
