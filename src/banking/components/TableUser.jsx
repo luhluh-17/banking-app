@@ -34,7 +34,6 @@ const TableUser = ({ list }) => {
 
   return (
     <>
-      <input type='text' placeholder='Searchbar' />
       <Table headings={TABLE_HEAD} data={list.map(createTableItem)} />
     </>
   )

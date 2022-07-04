@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
 import Button from '../components/Button'
-import AccountDetailsHeading from '../parts/AccountDetailsHeading'
 import TableTransaction from '../components/TableTransaction'
 import ModalUpdateBalance from '../parts/ModalUpdateBalance'
 import ModalSendMoney from '../parts/ModalSendMoney'
@@ -90,9 +89,7 @@ function AccountDetails() {
             <Button
               className='btn'
               text='Save Transaction'
-              onClick={() =>
-                localStorage.setItem(KEY_USERS, JSON.stringify(users))
-              }
+              onClick={handleSave}
             />
             <Button
               className={'btn'}
