@@ -21,7 +21,10 @@ const Overview = () => {
 
   return (
     <main>
-      <h2 className='title'>Overview</h2>
+      <div className='sticky'>
+        <h2 className='title'>Overview</h2>
+      </div>
+      
       <div>
         <div className='overview-container'>
           <section>

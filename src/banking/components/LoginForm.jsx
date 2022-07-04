@@ -41,7 +41,7 @@ const LoginForm = () => {
 
   return (
     <div className='col col-two'>
-      <form id='login-form' onSubmit={handleFormSubmit}>
+      <form className='login-form' onSubmit={handleFormSubmit}>
         <h3>Employee Login</h3>
 
         <label htmlFor='username'>Employee ID</label>

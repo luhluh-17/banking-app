@@ -18,9 +18,11 @@ const Accounts = () => {
   return (
     <>
       <main>
+        <div className='sticky'>
         <h2 className='title'>Accounts</h2>
         <div className='input-div'>
           <input type='text' placeholder='🔎︎' className='input-field'></input>
+        </div>
         </div>
         <TableUser list={users} />
       </main>

@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { UserContext } from '../helper/Context'
 import SidePanelItem from './SidePanelItem'
 import Logo from '../../assets/logo.png'
+import { NavLink } from 'react-router-dom'
 
 const PanelData = [
   { icon: 'apps', title: 'Overview' },
@@ -26,7 +27,11 @@ const SidePanel = () => {
           return <SidePanelItem key={index} {...item} />
         })}
       </div>
-      <SidePanelItem icon='logout' title='Logout' />
+
+      <NavLink to='/customer-login' className={`${SidePanelItem.style} nav`}>
+        <span className='material-symbols-outlined'>logout</span>
+        Logout
+      </NavLink>
     </nav>
   )
 }

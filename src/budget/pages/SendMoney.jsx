@@ -62,7 +62,10 @@ const SendMoney = () => {
 
   return (
     <main>
-      <h2 className='title'>Send Money</h2>
+      <div className='sticky'>
+        <h2 className='title'>Send Money</h2>
+      </div>
+      
       <form onSubmit={handleSendMoney} className='send-money'>
         <label htmlFor="">Send to</label>
         <input

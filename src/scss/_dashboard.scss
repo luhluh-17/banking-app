@@ -4,7 +4,9 @@ main {
 
   background-color: $light-grey;
   width: 80vw;
-  padding: 30px 70px;
+  height: 100vh;
+  padding: 0 70px 30px 70px;
+  overflow-y: scroll;
 
   .title {
     color: $dark-grey;

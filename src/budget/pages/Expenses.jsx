@@ -45,20 +45,22 @@ const Expenses = () => {
   return (
     <>
       <main>
-        <h2 className='title'>Expenses</h2>
-        <div className='three-col'>
-        <div>
-          <h2 className='bal'>{user.balance}</h2>
-          <h4>Current Balance</h4>
-        </div>
-        <div>
-          <h2 className='bal'>{getTotal()}</h2>
-          <h4>Total Expenses</h4>
-        </div>
-        <div>
-          <h2 className='bal'>{user.balance - getTotal()}</h2>
-          <h4>Expected Balance</h4>
-        </div>
+        <div className='sticky'>
+          <h2 className='title'>Expenses</h2>
+          <div className='three-col'>
+            <div>
+              <h2 className='bal'>{user.balance}</h2>
+              <h4>Current Balance</h4>
+            </div>
+            <div>
+              <h2 className='bal'>{getTotal()}</h2>
+              <h4>Total Expenses</h4>
+            </div>
+            <div>
+              <h2 className='bal'>{user.balance - getTotal()}</h2>
+              <h4>Expected Balance</h4>
+            </div>
+          </div>
         </div>
         
         <div className='table-div expenses'>

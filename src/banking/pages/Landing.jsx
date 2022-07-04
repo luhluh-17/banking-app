@@ -21,19 +21,19 @@ const Landing = () => {
     <React.Fragment>
     <header>
       <img src={require('../../assets/logo.png')} className='logo-s'/>
-      <div>
+      <div className='menu'>
         <a href="#" className='menu-link'>Home</a>
         <a href="#" className='menu-link'>About Us</a>
         <a href="#" className='menu-link'>Contact</a>
       </div>
-      <button className='login-btn' onClick={handleCustomerLoginBtn}>Customer Login</button>
+      <button className='btn round' onClick={handleCustomerLoginBtn}>Customer Login</button>
     </header>
     <main className='hero-section'>
       <h1>Finally, a better banking experience</h1>
     </main>
     <footer>
       <p>DISCLAIMER: This site is for educational purposes only</p>
-      <button className='login-btn'onClick={handleEmployeeLoginBtn}>Employee Login</button>
+      <button className='btn outline round'onClick={handleEmployeeLoginBtn}>Employee Login</button>
     </footer>
     </React.Fragment>
   )

@@ -45,30 +45,7 @@ function AccountDetails() {
   return (
     <>
       <main>
-        <div className='btn-container'>
-          <div>
-            <span
-              className='material-symbols-outlined icon'
-              onClick={() => navigate(-1)}
-            >
-              edit
-            </span>
-            <span
-              className='material-symbols-outlined icon'
-              onClick={() => navigate(-1)}
-            >
-              delete
-            </span>
-          </div>
-          <span
-            className='material-symbols-outlined icon'
-            onClick={() => navigate(-1)}
-          >
-            arrow_back
-          </span>
-        </div>
-
-        <section>
+        <section className='account-details-wrapper sticky'>
           <div className='account-details'>
             <div>
               <h2>{user.name}</h2>
@@ -80,6 +57,28 @@ function AccountDetails() {
               <h2 className='bal'>{user.formattedBalance}</h2>
               <h4>Current Balance</h4>
             </div>
+          </div>
+          <div className='icon-container'>
+            <div>
+              <span
+                className='material-symbols-outlined icon'
+                onClick={() => navigate(-1)}
+              >
+                edit
+              </span>
+              <span
+                className='material-symbols-outlined icon'
+                onClick={() => navigate(-1)}
+              >
+                delete
+              </span>
+            </div>
+            <span
+              className='material-symbols-outlined icon back'
+              onClick={() => navigate(-1)}
+            >
+              arrow_back
+            </span>
           </div>
         </section>
 
