@@ -17,7 +17,7 @@ function AccountDetails() {
   const [users, setUsers] = useState(getAllUsers())
 
   const { userId } = useParams()
-  const _user = users.find(item => item.id === Number(userId))
+  const _user = getAllUsers().find(item => item.id === Number(userId))
   const selectedUser = new User(
     _user.id,
     _user.firstName,
