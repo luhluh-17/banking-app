@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import Button from '../components/Button'
 import ExpensesRowItem from '../components/ExpensesRowItem'
 import { UserContext } from '../helper/Context'
+import OverviewBal from '../components/OverviewBal'
 
 const Expenses = () => {
   const { user, setUser } = useContext(UserContext)
@@ -44,16 +45,29 @@ const Expenses = () => {
   return (
     <>
       <main>
-        <h1>Expenses</h1>
-        <span>Current Balance: {user.balance}</span>
-        <span>Total Expenses :{getTotal()}</span>
-        <span>Expected Balance: {user.balance - getTotal()}</span>
+        <h2 className='title'>Expenses</h2>
+        <div className='three-col'>
+        <div>
+          <h2 className='bal'>{user.balance}</h2>
+          <h4>Current Balance</h4>
+        </div>
+        <div>
+          <h2 className='bal'>{getTotal()}</h2>
+          <h4>Total Expenses</h4>
+        </div>
+        <div>
+          <h2 className='bal'>{user.balance - getTotal()}</h2>
+          <h4>Expected Balance</h4>
+        </div>
+        </div>
+        
+        <div className='table-div expenses'>
         <table>
           <thead>
             <tr>
-              <td>Name</td>
-              <td>Cost</td>
-              <td></td>
+              <th>Name</th>
+              <th>Cost</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -69,16 +83,17 @@ const Expenses = () => {
             })}
           </tbody>
         </table>
-        <button className="btn-primary" onClick={handleModal}>
-          +
+        </div>
+        
+        <button className="btn float" onClick={handleModal}>
+          Add Expense
         </button>
       </main>
       {modalOpen && (
-        <div className="budget-modal-overlay">
-          <div className="budget-modal-container">
+        <div className="modal">
             <h3>Add Expense</h3>
-            <form className="budget-modal" onSubmit={handleSubmit}>
-              <div className="d-f fd-c">
+            <form onSubmit={handleSubmit}>
+              <div className="col">
                 <label htmlFor="expense-name">Description</label>
                 <input
                   id="expense-name"
@@ -87,7 +102,7 @@ const Expenses = () => {
                   onChange={e => setExpenseName(e.target.value)}
                 />
               </div>
-              <div className="d-f fd-c">
+              <div className="col">
                 <label htmlFor="expense-cost">Cost</label>
                 <input
                   id="expense-cost"
@@ -97,22 +112,22 @@ const Expenses = () => {
                   onChange={e => setExpenseCost(e.target.value)}
                 />
               </div>
-              <div className="d-f jc-fe">
+              <div>
                 <Button
                   text="Cancel"
-                  className="btn-cancel"
+                  className="btn"
                   onClick={handleModal}
                 />
                 <Button
                   type="submit"
                   icon="add"
                   text="Add"
-                  className="btn-secondary"
+                  className="btn"
                 />
               </div>
             </form>
-          </div>
         </div>
+        
       )}
     </>
   )

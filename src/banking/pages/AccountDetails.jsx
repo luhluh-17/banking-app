@@ -85,76 +85,59 @@ function AccountDetails() {
 
   return (
     <>
-      <main className='flex-col'>
-        <div className='btn-container-header'>
-          <Button
-            icon={'arrow_back'}
-            text='Back'
-            className='btn-primary-border'
-            onClick={() => navigate(-1)}
-          />
-
-          <div className='flex-row'>
-            <Button
-              icon={'edit'}
-              text='Edit'
-              className='btn-secondary-border'
-              onClick={() => navigate(-1)}
-            />
-
-            <Button
-              icon={'delete'}
-              text='Delete'
-              className='btn-danger-border'
-              onClick={() => navigate(-1)}
-            />
+      <main>
+        <div className='btn-container'>
+          <div>
+          <span className="material-symbols-outlined icon" onClick={() => navigate(-1)}>edit</span>
+          <span className="material-symbols-outlined icon" onClick={() => navigate(-1)}>delete</span>
           </div>
+          <span className="material-symbols-outlined icon" onClick={() => navigate(-1)}>arrow_back</span>
         </div>
 
-        <section className='account-details'>
-          <div className='flex-row'>
+        <section>
+          <div className='account-details'>
             <div>
-              <h5>{user.id}</h5>
               <h2>{user.name}</h2>
-              <h4>{user.email}</h4>
+              <p>{user.id}</p>
+              <p>{user.email}</p>
             </div>
-          </div>
-          <div>
-            <h2>{user.formattedBalance}</h2>
-            <h4>Current Balance</h4>
+          
+            <div>
+              <h2 className='bal'>{user.formattedBalance}</h2>
+              <h4>Current Balance</h4>
+            </div>
           </div>
         </section>
 
-        <section className='mt-1'>
-          <div className='btn-container-header'>
-            <h3>Transactions</h3>
-            <div className='flex-row'>
-              <Button
-                className='btn-primary'
-                text='Save Transaction'
-                onClick={() =>
-                  localStorage.setItem(KEY_USERS, JSON.stringify(users))
-                }
-              />
-              <Button
-                className={'btn-primary'}
-                text='Update Balance'
-                onClick={toggleDialog}
-              />
-              <Button
-                className={'btn-primary'}
-                text='Send Money'
-                onClick={toggleDialog}
-              />
-            </div>
+        <section className='transactions'>
+          <h2 className='title'>Transactions</h2>
+          <div className='btn-container'>
+            <Button
+              className='btn'
+              text='Save Transaction'
+              onClick={() =>
+                localStorage.setItem(KEY_USERS, JSON.stringify(users))
+              }
+            />
+            <Button
+              className={'btn'}
+              text='Update Balance'
+              onClick={toggleDialog}
+            />
+            <Button
+              className={'btn'}
+              text='Send Money'
+              onClick={toggleDialog}
+            />
           </div>
+
           <TableTransaction list={user.transactions} />
         </section>
       </main>
 
       <Modal title='Update Balance' isOpen={isDialogOpen} onClose={closeDialog}>
         <form>
-          <div>
+          <div className='col'>
             <label className='form-label'>Amount</label>
             <input
               className='form-input'
@@ -164,20 +147,20 @@ function AccountDetails() {
               ref={amountRef}
             />
           </div>
-          <div className='dialog-btn-container'>
+          <div>
             <Button
               text='Cancel'
-              className='btn-primary'
+              className='btn'
               onClick={toggleDialog}
             />
             <Button
               text='Deposit'
-              className='btn-primary'
+              className='btn'
               onClick={() => handleUpdate('Deposit')}
             />
             <Button
               text='Withdraw'
-              className='btn-primary'
+              className='btn'
               onClick={() => handleUpdate('Withdraw')}
             />
           </div>

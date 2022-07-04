@@ -1,0 +1,54 @@
+@import 'variables';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font;
+  color: $black;
+  text-decoration: none;
+  
+}
+
+body {
+  background-color: $white;
+  
+}
+
+h1 {
+  font-size: 60px;
+  font-weight: 900;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+p {
+  font-size: 16px;
+}
+
+h4 {
+  color: $dark-grey;
+}
+
+
+input {
+  height: 40px;
+  margin-bottom: 10px;
+  border: none;
+  padding: 0 10px;
+  font-size: 20px;
+  border-radius: 5px;
+
+  &:focus {
+    outline: 2px solid $yellow;
+    border-color: transparent;
+  }
+}
+
+::placeholder {
+  font-size: 16px;
+  color: $dark-grey;
+}

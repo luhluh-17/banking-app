@@ -21,9 +21,9 @@ const Overview = () => {
 
   return (
     <main>
-      <h1>Overview</h1>
+      <h2 className='title'>Overview</h2>
       <div>
-        <div>
+        <div className='overview-container'>
           <section>
             <OverviewCard />
             <OverviewBal />

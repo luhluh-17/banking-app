@@ -1,0 +1,57 @@
+@import 'variables';
+
+.account-details {
+  border-bottom: 2px solid $grey;
+  margin-bottom: 30px;
+
+  div {
+    margin-bottom: 30px;
+  }
+
+}
+
+.bal{
+  color: $blue;
+}
+
+.transactions, .expenses {
+ position: relative;
+
+ .btn-container {
+  top: 0
+ }
+
+ tr{
+  cursor: default;
+
+  &:hover {
+    background-color: $white;
+  }
+ }
+
+ .table-div {
+  height: 200px;
+ }
+}
+
+.btn-container {
+  width: 50%;
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+
+.icon {
+  color: $dark-grey;
+  cursor: pointer;
+  padding-right: 10px;
+  
+
+  &:hover {
+    color: $yellow;
+  }
+}

@@ -1,0 +1,20 @@
+@import 'variables';
+
+.send-money {
+  .btn {
+    margin-top: 20px;
+  }
+}
+
+.three-col {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding-bottom: 30px;
+  border-bottom: 2px solid $grey;
+
+}
+
+.icon {
+  margin: auto 0;
+}

@@ -27,17 +27,19 @@ const TableUser = ({ list }) => {
   }
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Balance</th>
-        </tr>
-      </thead>
-      <tbody>{list.map(createTableItem)}</tbody>
-    </table>
+    <div className='table-div'>
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Balance</th>
+          </tr>
+        </thead>
+        <tbody>{list.map(createTableItem)}</tbody>
+      </table>
+    </div>
   )
 }
 

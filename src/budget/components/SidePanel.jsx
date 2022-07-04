@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { UserContext } from '../helper/Context'
 import SidePanelItem from './SidePanelItem'
+import Logo from '../../assets/logo.png'
 
 const PanelData = [
   { icon: 'apps', title: 'Overview' },
@@ -13,11 +14,13 @@ const SidePanel = () => {
   const { user } = useContext(UserContext)
 
   return (
-    <nav className='flex-col-sb sidenavbar'>
-      <div className='flex-col-ng'>
-        <header className='navbar-heading'>
-          <h2>Hello {user.firstName},</h2>
-        </header>
+    <nav className='sidepanel'>
+      
+      <div className='tabs'>
+        <img src={Logo} alt='company logo' className='logo-s' />
+
+      <h2>Hello {user.firstName},</h2>
+
 
         {PanelData.map((item, index) => {
           return <SidePanelItem key={index} {...item} />
