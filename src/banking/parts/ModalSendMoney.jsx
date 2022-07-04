@@ -27,7 +27,7 @@ function ModalSendMoney({
     const transactId = new Date().getTime()
     const transaction = new Transaction(
       transactId,
-      `Send Money to ${sender.id}`,
+      `Send Money to ${receiver.name}`,
       'Posted',
       amount
     )
@@ -53,7 +53,7 @@ function ModalSendMoney({
     console.log('receiver', receiver)
     const transaction = new Transaction(
       transactId,
-      `Receive Money from ${receiver.id}`,
+      `Receive Money from ${receiver.name}`,
       'Posted',
       amount
     )
