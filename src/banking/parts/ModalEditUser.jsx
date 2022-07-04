@@ -1,14 +1,19 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef } from 'react'
 import Button from '../components/Button'
 import Modal from '../components/Modal'
-import { KEY_USERS } from '../../js/utils/localstorage'
+import { getAllUsers, saveData } from '../../js/utils/localstorage'
+import User from '../../js/classes/user'
 
-function ModalEditUser({ isOpen, onToggleChange, user, users, onUsersChange }) {
+function ModalEditUser({
+  user,
+  onUserChange,
+  users,
+  onUsersChange,
+  isOpen,
+  onToggleChange,
+}) {
   const toggleDialog = () => onToggleChange(bool => !bool)
-  const closeDialog = () => {
-    onToggleChange(false)
-    localStorage.setItem(KEY_USERS, JSON.stringify(users))
-  }
+  const closeDialog = () => onToggleChange(false)
 
   const firstNameRef = useRef(null)
   const lastNameRef = useRef(null)
@@ -17,14 +22,28 @@ function ModalEditUser({ isOpen, onToggleChange, user, users, onUsersChange }) {
   const updateItem = (firstName, lastName, email) => {
     onUsersChange(state => {
       const newState = state
-      const idx = users.findIndex(u => u.id === user.id)
+      const idx = getAllUsers().findIndex(u => u.id === user.id)
       newState[idx] = {
         ...newState[idx],
         firstName: firstName,
         lastName: lastName,
         email: email,
       }
+      saveData(newState)
       return newState
+    })
+
+    onUserChange(state => {
+      return new User(
+        state.id,
+        firstName,
+        lastName,
+        state.balance,
+        email,
+        state.pass,
+        state.expenses,
+        state.transactions
+      )
     })
   }
 
@@ -44,14 +63,9 @@ function ModalEditUser({ isOpen, onToggleChange, user, users, onUsersChange }) {
     closeDialog()
   }
 
-  useEffect(() => {
-    onUsersChange(users)
-  })
-
   // NOT WORKING
   // useEffect(() => {
-  //   console.log(users)
-  //   localStorage.setItem(KEY_USERS, JSON.stringify(users))
+  //   console.log('UseEffect', users)
   // }, [users])
 
   return (
