@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 
 import Button from '../components/Button'
 import TableTransaction from '../components/TableTransaction'
+import AccountDetailsHeading from '../parts/AccountDetailsHeading'
 import ModalUpdateBalance from '../parts/ModalUpdateBalance'
 import ModalSendMoney from '../parts/ModalSendMoney'
 
@@ -38,6 +39,13 @@ function AccountDetails() {
   const toggleBalanceDialog = () => setIsDialogBalanceOpen(bool => !bool)
   const toggleSendDialog = () => setIsDialogSendOpen(bool => !bool)
 
+  const handleDelete = id => {
+    const updatedUsers = users.filter(u => u.id !== id)
+    console.log('UpdatedList', updatedUsers)
+    setUsers(updatedUsers)
+    navigate(-1)
+  }
+
   useEffect(() => {
     localStorage.setItem(KEY_USERS, JSON.stringify(users))
   }, [users])
@@ -55,7 +63,7 @@ function AccountDetails() {
             </span>
             <span
               className='material-symbols-outlined icon'
-              onClick={() => navigate(-1)}
+              onClick={() => handleDelete(user.id)}
             >
               delete
             </span>
@@ -68,20 +76,7 @@ function AccountDetails() {
           </span>
         </div>
 
-        <section>
-          <div className='account-details'>
-            <div>
-              <h2>{user.name}</h2>
-              <p>{user.id}</p>
-              <p>{user.email}</p>
-            </div>
-
-            <div>
-              <h2 className='bal'>{user.formattedBalance}</h2>
-              <h4>Current Balance</h4>
-            </div>
-          </div>
-        </section>
+        <AccountDetailsHeading user={user} />
 
         <section className='transactions'>
           <h2 className='title'>Transactions</h2>

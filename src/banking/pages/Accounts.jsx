@@ -10,6 +10,7 @@ const Accounts = () => {
   const [searchKeyword, setSearchKeyword] = useState('')
 
   const toggleDialog = () => setIsDialogOpen(bool => !bool)
+
   useEffect(
     () => localStorage.setItem(KEY_USERS, JSON.stringify(users)),
     [users]
@@ -40,7 +41,11 @@ const Accounts = () => {
             onChange={handleSearch}
           />
         </div>
-        <TableUser list={filteredUsers} />
+        <TableUser
+          list={filteredUsers}
+          users={users}
+          onUsersChange={setUsers}
+        />
       </main>
 
       <Button
