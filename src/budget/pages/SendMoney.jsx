@@ -2,13 +2,15 @@ import React, { useContext, useEffect, useState } from 'react'
 import Users from '../data/User'
 import { UserContext } from '../helper/Context'
 import Button from '../../banking/components/Button'
+import InsufficientPrompt from '../components/InsufficientPrompt'
 const SendMoney = () => {
   const { user, setUser } = useContext(UserContext)
-  const [selectedUser, setSelectedUser] = useState('')
+  const [selectedUser, setSelectedUser] = useState()
   const [selectedAmount, setSelectedAmount] = useState()
   const filteredUsers = Users.filter(item => item.firstName !== user.firstName)
   const [recipient, setRecipient] = useState({})
   const [confirmSend, setConfirmSend] = useState(false)
+  const [modalOpen, setModalOpen] = useState(false)
 
   const updateSenderTransaction = () => {
     const newBalance = user.balance - selectedAmount
@@ -50,7 +52,7 @@ const SendMoney = () => {
       updateSenderTransaction()
       updateRecipientTransaction()
     } else {
-      alert('not enough')
+      setModalOpen(true)
     }
     setSelectedAmount(0)
     setSelectedUser('')
@@ -59,7 +61,7 @@ const SendMoney = () => {
   useEffect(() => {
     const idx = Users.findIndex(item => item.id === recipient.id)
     Users[idx] = recipient
-    console.log(Users[idx])
+  
     localStorage.setItem('users', JSON.stringify(Users))
   }, [confirmSend])
 
@@ -103,6 +105,9 @@ const SendMoney = () => {
           Send Money
         </button>
       </form>
+      {modalOpen && (
+        <InsufficientPrompt onChangeModalOpen={setModalOpen}/>
+      )}
     </main>
   )
 }
