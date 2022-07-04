@@ -21,3 +21,6 @@ export const getUser = id => {
     user.transactions
   )
 }
+
+export const saveData = data =>
+  localStorage.setItem(KEY_USERS, JSON.stringify(data))
