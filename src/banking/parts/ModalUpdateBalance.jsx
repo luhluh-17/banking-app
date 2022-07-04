@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef } from 'react'
 import Button from '../components/Button'
 import Modal from '../components/Modal'
 import User from '../../js/classes/user'
@@ -19,8 +19,8 @@ function ModalUpdateBalance({
   const handleUpdate = action => {
     if (amountRef.current.value === '') return
 
-    const amount = parseInt(amountRef.current.value)
-    let updatedBalance = parseInt(user.balance)
+    const amount = Number(amountRef.current.value)
+    let updatedBalance = Number(user.balance)
 
     if (action === 'Withdraw') {
       updatedBalance -= amount
@@ -41,23 +41,23 @@ function ModalUpdateBalance({
       const idx = getAllUsers().findIndex(u => u.id === user.id)
       newState[idx] = {
         ...newState[idx],
-        transactions: [...newState[idx].transactions, transaction],
+        transactions: [...newState[idx].transactions],
       }
       return newState
     })
 
-    // onUserChange(state => {
-    //   return new User(
-    //     state.id,
-    //     state.firstName,
-    //     state.lastName,
-    //     updatedBalance,
-    //     state.email,
-    //     state.pass,
-    //     state.expenses,
-    //     [...state.transactions, transaction]
-    //   )
-    // })
+    onUserChange(state => {
+      return new User(
+        state.id,
+        state.firstName,
+        state.lastName,
+        updatedBalance,
+        state.email,
+        state.pass,
+        state.expenses,
+        [...state.transactions, transaction]
+      )
+    })
 
     amountRef.current.value = ''
     closeDialog()
