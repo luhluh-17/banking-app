@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import Button from '../components/Button'
 import TableTransaction from '../components/TableTransaction'
 import AccountDetailsHeading from '../parts/AccountDetailsHeading'
+import ModalEditUser from '../parts/ModalEditUser'
 import ModalUpdateBalance from '../parts/ModalUpdateBalance'
 import ModalSendMoney from '../parts/ModalSendMoney'
 
@@ -13,9 +14,10 @@ import { KEY_USERS, getAllUsers } from '../../js/utils/localstorage'
 function AccountDetails() {
   const navigate = useNavigate()
 
-  const { userId } = useParams()
-  const _user = getAllUsers().find(item => item.id === Number(userId))
+  const [users, setUsers] = useState(getAllUsers())
 
+  const { userId } = useParams()
+  const _user = users.find(item => item.id === Number(userId))
   const selectedUser = new User(
     _user.id,
     _user.firstName,
@@ -28,20 +30,20 @@ function AccountDetails() {
   )
 
   const [user, setUser] = useState(selectedUser)
-  const [users, setUsers] = useState(getAllUsers())
 
+  const [isDialogUpdateOpen, setIsDialogUpdateOpen] = useState(false)
   const [isDialogBalanceOpen, setIsDialogBalanceOpen] = useState(false)
   const [isDialogSendOpen, setIsDialogSendOpen] = useState(false)
+
+  const toggleUpdateDialog = () => setIsDialogUpdateOpen(bool => !bool)
+  const toggleBalanceDialog = () => setIsDialogBalanceOpen(bool => !bool)
+  const toggleSendDialog = () => setIsDialogSendOpen(bool => !bool)
 
   const handleSave = () =>
     localStorage.setItem(KEY_USERS, JSON.stringify(users))
 
-  const toggleBalanceDialog = () => setIsDialogBalanceOpen(bool => !bool)
-  const toggleSendDialog = () => setIsDialogSendOpen(bool => !bool)
-
   const handleDelete = id => {
     const updatedUsers = users.filter(u => u.id !== id)
-    console.log('UpdatedList', updatedUsers)
     setUsers(updatedUsers)
     navigate(-1)
   }
@@ -57,7 +59,7 @@ function AccountDetails() {
           <div>
             <span
               className='material-symbols-outlined icon'
-              onClick={() => navigate(-1)}
+              onClick={toggleUpdateDialog}
             >
               edit
             </span>
@@ -101,6 +103,14 @@ function AccountDetails() {
         </section>
       </main>
 
+      <ModalEditUser
+        isOpen={isDialogUpdateOpen}
+        onToggleChange={setIsDialogUpdateOpen}
+        user={user}
+        users={users}
+        onUsersChange={setUsers}
+      />
+
       <ModalUpdateBalance
         onUsersChange={setUsers}
         user={user}
@@ -108,6 +118,7 @@ function AccountDetails() {
         isOpen={isDialogBalanceOpen}
         onDialogChange={setIsDialogBalanceOpen}
       />
+
       <ModalSendMoney
         onUsersChange={setUsers}
         sender={user}
