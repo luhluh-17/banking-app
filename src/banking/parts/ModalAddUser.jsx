@@ -46,46 +46,38 @@ function ModalAddUser({ isOpen, onToggleChange, onUsersChange }) {
 
   return (
     <Modal title='Add User' isOpen={isOpen} onClose={closeDialog}>
-      <form onSubmit={handleSubmit} className='flex-col'>
-        <div>
-          <label className='form-label'>Name</label>
-          <div className='flex-row'>
+      <form onSubmit={handleSubmit}>
+        <div className='row'>
+          <div className='col'>
+            <label>First Name</label>
+            <input type='text' placeholder='First Name' ref={firstNameRef} />
+          </div>
+          <div className='col'>
+            <label>Last Name</label>
+            <input type='text' placeholder='Last Name' ref={lastNameRef} />
+          </div>
+        </div>
+
+        <div className='row'>
+          <div className='col'>
+            <label className=''>Email</label>
+            <input type='email' placeholder='Email Address' ref={emailRef} />
+          </div>
+          <div className='col'>
+            <label>Balance</label>
             <input
               className='form-input'
-              type='text'
-              placeholder='First'
-              ref={firstNameRef}
-            />
-            <input
-              className='form-input'
-              type='text'
-              placeholder='Last'
-              ref={lastNameRef}
+              type='number'
+              placeholder='Initial Amount'
+              step={'.01'}
+              ref={balanceRef}
             />
           </div>
         </div>
+
         <div>
-          <label className='form-label'>Email</label>
-          <input
-            className='form-input'
-            type='email'
-            placeholder='Email Address'
-            ref={emailRef}
-          />
-        </div>
-        <div>
-          <label className='form-label'>Balance</label>
-          <input
-            className='form-input'
-            type='number'
-            placeholder='Initial Amount'
-            step={'.01'}
-            ref={balanceRef}
-          />
-        </div>
-        <div className='dialog-btn-container'>
-          <Button text='Cancel' className='btn-cancel' onClick={toggleDialog} />
-          <Button type='submit' text='Create' className='btn-secondary' />
+          <Button text='Cancel' className='btn' onClick={toggleDialog} />
+          <Button type='submit' text='Create' className='btn' />
         </div>
       </form>
     </Modal>

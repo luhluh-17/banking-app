@@ -26,7 +26,7 @@ const TableTransaction = ({ list, children }) => {
   }
 
   return (
-    <section className='mt-1'>
+    <section>
       <div className='btn-container-header'>
         <h3>Transactions</h3>
         {children}

@@ -98,7 +98,7 @@ function ModalSendMoney({
   return (
     <Modal title='Send Money' isOpen={isOpen} onClose={closeDialog}>
       <form onSubmit={handleSubmit} className='flex-col'>
-        <div>
+        <div className='col'>
           <label className='form-label'>Receiver</label>
           <input
             className='form-input'
@@ -107,7 +107,7 @@ function ModalSendMoney({
             ref={idRef}
           />
         </div>
-        <div>
+        <div className='col'>
           <label className='form-label'>Amount</label>
           <input
             className='form-input'
@@ -118,8 +118,8 @@ function ModalSendMoney({
           />
         </div>
         <div className='dialog-btn-container'>
-          <Button text='Cancel' className='btn-cancel' onClick={toggleDialog} />
-          <Button type='submit' text='Send' className='btn-secondary' />
+          <Button text='Cancel' className='btn' onClick={toggleDialog} />
+          <Button type='submit' text='Send' className='btn' />
         </div>
       </form>
     </Modal>

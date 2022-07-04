@@ -1,12 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate }  from 'react-router-dom'
 
 function TableItem({ id, name, email, balance, callback }) {
+  const navigate = useNavigate()
+  const goToAccount = () => navigate(`/dashboard-employee/accounts/${id}`)
   return (
-    <tr>
-      <td>
-        <Link to={`/dashboard-employee/accounts/${id}`}>{id}</Link>
-      </td>
+    <tr onClick={goToAccount}>
+      <td>{id}</td>
       <td>{name}</td>
       <td>{email}</td>
       <td>{balance}</td>

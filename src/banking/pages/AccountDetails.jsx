@@ -45,55 +45,70 @@ function AccountDetails() {
 
   return (
     <>
-      <main className='flex-col'>
-        <div className='btn-container-header'>
-          <Button
-            icon={'arrow_back'}
-            text='Back'
-            className='btn-primary-border'
-            onClick={() => navigate(-1)}
-          />
-          <div className='flex-row'>
-            <Button
-              icon={'edit'}
-              text='Edit'
-              className='btn-secondary-border'
+      <main>
+        <div className='btn-container'>
+          <div>
+            <span
+              className='material-symbols-outlined icon'
               onClick={() => navigate(-1)}
-            />
-            <Button
-              icon={'delete'}
-              text='Delete'
-              className='btn-danger-border'
+            >
+              edit
+            </span>
+            <span
+              className='material-symbols-outlined icon'
               onClick={() => navigate(-1)}
-            />
+            >
+              delete
+            </span>
           </div>
+          <span
+            className='material-symbols-outlined icon'
+            onClick={() => navigate(-1)}
+          >
+            arrow_back
+          </span>
         </div>
 
-        <AccountDetailsHeading user={user} />
-        <TableTransaction
-          list={user.transactions}
-          users={users}
-          onToggleChange={setIsDialogBalanceOpen}
-        >
-          <div className='flex-row'>
+        <section>
+          <div className='account-details'>
+            <div>
+              <h2>{user.name}</h2>
+              <p>{user.id}</p>
+              <p>{user.email}</p>
+            </div>
+
+            <div>
+              <h2 className='bal'>{user.formattedBalance}</h2>
+              <h4>Current Balance</h4>
+            </div>
+          </div>
+        </section>
+
+        <section className='transactions'>
+          <h2 className='title'>Transactions</h2>
+          <div className='btn-container'>
             <Button
-              className='btn-primary'
+              className='btn'
               text='Save Transaction'
-              onClick={handleSave}
+              onClick={() =>
+                localStorage.setItem(KEY_USERS, JSON.stringify(users))
+              }
             />
             <Button
-              className={'btn-primary'}
+              className={'btn'}
               text='Update Balance'
               onClick={toggleBalanceDialog}
             />
             <Button
-              className={'btn-primary'}
+              className={'btn'}
               text='Send Money'
               onClick={toggleSendDialog}
             />
           </div>
-        </TableTransaction>
+          <TableTransaction list={user.transactions} />
+        </section>
       </main>
+
       <ModalUpdateBalance
         onUsersChange={setUsers}
         user={user}

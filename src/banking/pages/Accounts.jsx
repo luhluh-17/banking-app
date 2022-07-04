@@ -18,14 +18,19 @@ const Accounts = () => {
   return (
     <>
       <main>
+        <h2 className='title'>Accounts</h2>
+        <div className='input-div'>
+          <input type='text' placeholder='🔎︎' className='input-field'></input>
+        </div>
         <TableUser list={users} />
-        <Button
-          icon='add'
-          text='Add User'
-          className='btn-secondary fab'
-          onClick={toggleDialog}
-        />
       </main>
+
+      <Button
+        icon='add'
+        text='Add User'
+        className='btn float'
+        onClick={toggleDialog}
+      />
 
       <ModalAddUser
         isOpen={isDialogOpen}

@@ -2,8 +2,8 @@ import React from 'react'
 
 const Overview = () => {
   return (
-    <main className='flex-col'>
-      <h1>Overview Page</h1>
+    <main>
+      <h2 className='title'>Overview</h2>
       <p>Content goes here</p>
     </main>
   )

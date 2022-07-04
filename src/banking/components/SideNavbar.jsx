@@ -7,24 +7,24 @@ const SideNavbar = () => {
   const path = '/dashboard-employee'
 
   return (
-    <nav className='flex-col-sb sidenavbar'>
-      <div className='flex-col-ng'>
+    <nav className='sidepanel'>
+      <div className='tabs'>
         <SideNavbarHeading />
-        <NavLink to={path} className={style} end={true}>
+        <NavLink to={path} className={`${style} nav`} end={true}>
           <span className='material-symbols-outlined'>dashboard</span>
           Overview
         </NavLink>
-        <NavLink to={`${path}/accounts`} className={style}>
+        <NavLink to={`${path}/accounts`} className={`${style} nav`}>
           <span className='material-symbols-outlined'>group</span>
           Accounts
         </NavLink>
-        <NavLink to={`${path}/transactions`} className={style}>
+        <NavLink to={`${path}/transactions`} className={`${style} nav`}>
           <span className='material-symbols-outlined'>receipt_long</span>
           Transactions
         </NavLink>
       </div>
 
-      <NavLink to='/customer-login' className={style}>
+      <NavLink to='/employee-login' className={`${style} nav`}>
         <span className='material-symbols-outlined'>logout</span>
         Logout
       </NavLink>

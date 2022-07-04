@@ -1,0 +1,62 @@
+@import 'variables';
+
+.card {
+  width: 280px;
+  height: 155px;
+  background-color: $blue;
+  border-radius: 15px;
+  padding: 20px;
+  position: relative;
+  
+  p {
+    color: $white;
+  }
+
+  .chip {
+    width: 15%;
+  }
+
+  .visa-logo {
+    width: 20%;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  span {
+    font-size: 16px;
+    color: white;
+  }
+  
+}
+
+.balance {
+  border: none;
+  background-color: $grey;
+  width: fit-content;
+  height: fit-content;
+  padding: 30px 50px;
+  margin-top: 30px;
+  border-radius: 15px;
+
+  h2 {
+    color: $bold-grey;
+  }
+
+  h4 {
+    border-top: 1px solid $dark-grey;
+    padding-top: 20px;
+    margin-top: 20px;
+  }
+}
+
+.overview-container {
+  padding-top: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.bar-chart {
+  width: 45vw;
+  margin: 0 50px;
+}

@@ -8,9 +8,9 @@ const OverviewCard = () => {
   return (
     <div className='card'>
       <div className='visa-card'>
-        <h3>platinum</h3>
+        <p>Platinum</p>
         <div>
-          <img className='chip-logo' src={Chip} />
+          <img className='chip' src={Chip} />
         </div>
         <div className='num-visa'>
           <span>{id}</span>

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { employees } from '../data/employees'
 
-const LoginForm = props => {
+const LoginForm = () => {
   const [reset, setreset] = useState(false)
   const [invalidLogin, setInvalidLogin] = useState(false)
   const [username, setUsername] = useState('')

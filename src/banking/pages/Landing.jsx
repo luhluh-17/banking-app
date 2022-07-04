@@ -1,6 +1,5 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import '../../css/landingPage.css'
 
 
 const Landing = () => {
@@ -22,6 +21,11 @@ const Landing = () => {
     <React.Fragment>
     <header>
       <img src={require('../../assets/logo.png')} className='logo-s'/>
+      <div>
+        <a href="#" className='menu-link'>Home</a>
+        <a href="#" className='menu-link'>About Us</a>
+        <a href="#" className='menu-link'>Contact</a>
+      </div>
       <button className='login-btn' onClick={handleCustomerLoginBtn}>Customer Login</button>
     </header>
     <main className='hero-section'>

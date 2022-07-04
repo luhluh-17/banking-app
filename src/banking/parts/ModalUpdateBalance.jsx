@@ -66,7 +66,7 @@ function ModalUpdateBalance({
   return (
     <Modal title='Update Balance' isOpen={isOpen} onClose={closeDialog}>
       <form>
-        <div>
+        <div className='col'>
           <label className='form-label'>Amount</label>
           <input
             className='form-input'
@@ -76,20 +76,16 @@ function ModalUpdateBalance({
             ref={amountRef}
           />
         </div>
-        <div className='dialog-btn-container'>
-          <Button
-            text='Cancel'
-            className='btn-primary'
-            onClick={toggleDialog}
-          />
+        <div>
+          <Button text='Cancel' className='btn' onClick={toggleDialog} />
           <Button
             text='Deposit'
-            className='btn-primary'
+            className='btn'
             onClick={() => handleUpdate('Deposit')}
           />
           <Button
             text='Withdraw'
-            className='btn-primary'
+            className='btn'
             onClick={() => handleUpdate('Withdraw')}
           />
         </div>
