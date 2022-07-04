@@ -1,97 +1,71 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
+
 import Button from '../components/Button'
-import Modal from '../components/Modal'
 import TableTransaction from '../components/TableTransaction'
+import ModalUpdateBalance from '../parts/ModalUpdateBalance'
+import ModalSendMoney from '../parts/ModalSendMoney'
+
 import User from '../../js/classes/user'
-import Transaction from '../../js/classes/transaction'
 import { KEY_USERS, getAllUsers } from '../../js/utils/localstorage'
 
 function AccountDetails() {
-  const amountRef = useRef(null)
   const navigate = useNavigate()
 
   const { userId } = useParams()
-  const obj = getAllUsers().find(item => item.id === parseInt(userId))
-
-  const [isDialogOpen, setIsDialogOpen] = useState(false)
-  const toggleDialog = () => setIsDialogOpen(bool => !bool)
-  const closeDialog = () => setIsDialogOpen(false)
+  const _user = getAllUsers().find(item => item.id === Number(userId))
 
   const selectedUser = new User(
-    obj.id,
-    obj.firstName,
-    obj.lastName,
-    obj.balance,
-    obj.email,
-    obj.password,
-    obj.expenses,
-    obj.transactions
+    _user.id,
+    _user.firstName,
+    _user.lastName,
+    _user.balance,
+    _user.email,
+    _user.password,
+    _user.expenses,
+    _user.transactions
   )
 
   const [user, setUser] = useState(selectedUser)
   const [users, setUsers] = useState(getAllUsers())
-  console.log(users)
-  const handleUpdate = action => {
-    if (amountRef.current.value === '') return
 
-    const amount = parseInt(amountRef.current.value)
-    let updatedBalance = parseInt(user.balance)
+  const [isDialogBalanceOpen, setIsDialogBalanceOpen] = useState(false)
+  const [isDialogSendOpen, setIsDialogSendOpen] = useState(false)
 
-    if (action === 'Withdraw') {
-      updatedBalance -= amount
-      if (updatedBalance < 0) {
-        alert('insufficient balance')
-        return
-      }
-    } else {
-      updatedBalance += amount
-    }
+  const handleSave = () =>
+    localStorage.setItem(KEY_USERS, JSON.stringify(users))
 
-    const id = new Date().getTime()
-    const transaction = new Transaction(id, action, 'Posted', amount)
-
-    setUser(state => {
-      return new User(
-        state.id,
-        state.firstName,
-        state.lastName,
-        updatedBalance,
-        state.email,
-        state.pass,
-        state.expenses,
-        [...state.transactions, transaction]
-      )
-    })
-
-    amountRef.current.value = ''
-    closeDialog()
-  }
+  const toggleBalanceDialog = () => setIsDialogBalanceOpen(bool => !bool)
+  const toggleSendDialog = () => setIsDialogSendOpen(bool => !bool)
 
   useEffect(() => {
-    setUsers(state => {
-      const idx = getAllUsers().findIndex(u => u.id === user.id)
-      state[idx] = user
-      return state
-    })
-  }, [user])
-
-  useEffect(
-    state => {
-      console.log(state)
-    },
-    [users]
-  )
+    localStorage.setItem(KEY_USERS, JSON.stringify(users))
+  }, [users])
 
   return (
     <>
       <main>
         <div className='btn-container'>
           <div>
-          <span className="material-symbols-outlined icon" onClick={() => navigate(-1)}>edit</span>
-          <span className="material-symbols-outlined icon" onClick={() => navigate(-1)}>delete</span>
+            <span
+              className='material-symbols-outlined icon'
+              onClick={() => navigate(-1)}
+            >
+              edit
+            </span>
+            <span
+              className='material-symbols-outlined icon'
+              onClick={() => navigate(-1)}
+            >
+              delete
+            </span>
           </div>
-          <span className="material-symbols-outlined icon" onClick={() => navigate(-1)}>arrow_back</span>
+          <span
+            className='material-symbols-outlined icon'
+            onClick={() => navigate(-1)}
+          >
+            arrow_back
+          </span>
         </div>
 
         <section>
@@ -101,7 +75,7 @@ function AccountDetails() {
               <p>{user.id}</p>
               <p>{user.email}</p>
             </div>
-          
+
             <div>
               <h2 className='bal'>{user.formattedBalance}</h2>
               <h4>Current Balance</h4>
@@ -115,57 +89,37 @@ function AccountDetails() {
             <Button
               className='btn'
               text='Save Transaction'
-              onClick={() =>
-                localStorage.setItem(KEY_USERS, JSON.stringify(users))
-              }
+              onClick={handleSave}
             />
             <Button
               className={'btn'}
               text='Update Balance'
-              onClick={toggleDialog}
+              onClick={toggleBalanceDialog}
             />
             <Button
               className={'btn'}
               text='Send Money'
-              onClick={toggleDialog}
+              onClick={toggleSendDialog}
             />
           </div>
-
           <TableTransaction list={user.transactions} />
         </section>
       </main>
 
-      <Modal title='Update Balance' isOpen={isDialogOpen} onClose={closeDialog}>
-        <form>
-          <div className='col'>
-            <label className='form-label'>Amount</label>
-            <input
-              className='form-input'
-              type='number'
-              placeholder='Enter Amount'
-              step={'.01'}
-              ref={amountRef}
-            />
-          </div>
-          <div>
-            <Button
-              text='Cancel'
-              className='btn'
-              onClick={toggleDialog}
-            />
-            <Button
-              text='Deposit'
-              className='btn'
-              onClick={() => handleUpdate('Deposit')}
-            />
-            <Button
-              text='Withdraw'
-              className='btn'
-              onClick={() => handleUpdate('Withdraw')}
-            />
-          </div>
-        </form>
-      </Modal>
+      <ModalUpdateBalance
+        onUsersChange={setUsers}
+        user={user}
+        onUserChange={setUser}
+        isOpen={isDialogBalanceOpen}
+        onDialogChange={setIsDialogBalanceOpen}
+      />
+      <ModalSendMoney
+        onUsersChange={setUsers}
+        sender={user}
+        onSenderChange={setUser}
+        isOpen={isDialogSendOpen}
+        onDialogChange={setIsDialogSendOpen}
+      />
     </>
   )
 }
