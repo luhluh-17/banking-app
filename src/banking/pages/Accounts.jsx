@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import TableUser from '../components/TableUser'
 import Button from '../components/Button'
 import ModalAddUser from '../parts/ModalAddUser'
-import { KEY_USERS, getAllUsers } from '../../js/utils/localstorage'
+import { getAllUsers, saveData } from '../../js/utils/localstorage'
 
 const Accounts = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false)
@@ -11,10 +11,10 @@ const Accounts = () => {
 
   const toggleDialog = () => setIsDialogOpen(bool => !bool)
 
-  useEffect(
-    () => localStorage.setItem(KEY_USERS, JSON.stringify(users)),
-    [users]
-  )
+  useEffect(() => {
+    saveData(users)
+    console.log('Accounts', users)
+  }, [users])
 
   const handleSearch = e => {
     const val = e.target.value
