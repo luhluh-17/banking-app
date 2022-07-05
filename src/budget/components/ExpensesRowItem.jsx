@@ -41,13 +41,14 @@ const Expenses_Row_Item = ({
       <td>{description}</td>
       <td>{formatCurrency(amount)}</td>
       <td style={{ display: 'flex', gap: '1rem' }}>
-        <span className="material-symbols-outlined icon">edit</span>
-        <span className="material-symbols-outlined icon" onClick={() => handleDelete(id)}>delete</span>
-
-        <button
-          onClick={() => handleAddTransaction(id)}
-          className="btn"
+        <span
+          className="material-symbols-outlined icon"
+          onClick={() => handleDelete(id)}
         >
+          delete
+        </span>
+
+        <button onClick={() => handleAddTransaction(id)} className="btn">
           Pay now
         </button>
       </td>
