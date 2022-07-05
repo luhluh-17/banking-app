@@ -18,7 +18,9 @@ const Overview = () => {
 
   return (
     <main>
-      <h2 className='title'>Welcome Admin</h2>
+      <div className="sticky">
+        <h2 className="title">Welcome Admin</h2>
+      </div>
       <Bar data={chartData} />
     </main>
   )

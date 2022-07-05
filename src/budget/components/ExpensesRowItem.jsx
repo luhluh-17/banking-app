@@ -17,7 +17,7 @@ const Expenses_Row_Item = ({
     const index = expenseList.findIndex(item => item.id === id)
     const newBalance = user.balance - amount
     if (user.balance < amount) {
-      alert('nope')
+      alert('Insufficient Balance')
     } else {
       setUser(prev => {
         return {
