@@ -3,6 +3,7 @@ import Button from '../components/Button'
 import ExpensesRowItem from '../components/ExpensesRowItem'
 import { UserContext } from '../helper/Context'
 import OverviewBal from '../components/OverviewBal'
+import ModalExpense from '../components/ModalExpense'
 
 const Expenses = () => {
   const { user, setUser } = useContext(UserContext)
@@ -97,34 +98,15 @@ const Expenses = () => {
         </button>
       </main>
       {modalOpen && (
-        <div className="modal">
-          <h3>Add Expense</h3>
-          <form onSubmit={handleSubmit}>
-            <div className="col">
-              <label htmlFor="expense-name">Description</label>
-              <input
-                id="expense-name"
-                type="text"
-                value={expenseName}
-                onChange={e => setExpenseName(e.target.value)}
-              />
-            </div>
-            <div className="col">
-              <label htmlFor="expense-cost">Cost</label>
-              <input
-                id="expense-cost"
-                type="number"
-                min="0"
-                value={expenseCost}
-                onChange={e => setExpenseCost(e.target.value)}
-              />
-            </div>
-            <div>
-              <Button text="Cancel" className="btn" onClick={handleModal} />
-              <Button type="submit" icon="add" text="Add" className="btn" />
-            </div>
-          </form>
-        </div>
+        <ModalExpense
+          onSubmit={handleSubmit}
+          onChangeExpenseName={setExpenseName}
+          onChangeExpenseCost={setExpenseCost}
+          expenseName={expenseName}
+          expenseCost={expenseCost}
+          onToggle={handleModal}
+          title="Add expense"
+        />
       )}
     </>
   )
