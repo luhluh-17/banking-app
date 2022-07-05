@@ -3,6 +3,8 @@ import DUMMY_USERS_DATA from '../data/users'
 
 export const KEY_USERS = 'users'
 
+export const findUserIndex = id => getAllUsers().findIndex(u => u.id === id)
+
 export const getAllUsers = () => {
   const users = localStorage.getItem(KEY_USERS)
   return users !== null ? JSON.parse(users) : DUMMY_USERS_DATA

@@ -1,20 +1,21 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import Button from '../components/Button'
 import Modal from '../components/Modal'
 import User from '../../js/classes/user'
 import Transaction from '../../js/classes/transaction'
-import { getAllUsers } from '../../js/utils/localstorage'
+import { findUserIndex, saveData } from '../../js/utils/localstorage'
 
 function ModalUpdateBalance({
-  onUsersChange,
   user,
   onUserChange,
+  users,
+  onUsersChange,
   isOpen,
-  onDialogChange,
+  onToggleChange,
 }) {
   const amountRef = useRef(null)
-  const closeDialog = () => onDialogChange(false)
-  const toggleDialog = () => onDialogChange(bool => !bool)
+  const toggleDialog = () => onToggleChange(bool => !bool)
+  const closeDialog = () => onToggleChange(false)
 
   const handleUpdate = action => {
     if (amountRef.current.value === '') return
@@ -35,17 +36,6 @@ function ModalUpdateBalance({
     const id = new Date().getTime()
     const transaction = new Transaction(id, action, 'Posted', amount)
 
-    onUsersChange(state => {
-      const newState = state
-      console.log(newState)
-      const idx = getAllUsers().findIndex(u => u.id === user.id)
-      newState[idx] = {
-        ...newState[idx],
-        transactions: [...newState[idx].transactions],
-      }
-      return newState
-    })
-
     onUserChange(state => {
       return new User(
         state.id,
@@ -62,6 +52,21 @@ function ModalUpdateBalance({
     amountRef.current.value = ''
     closeDialog()
   }
+
+  useEffect(() => {
+    onUsersChange(state => {
+      const newState = state
+      const idx = findUserIndex(user.id)
+      newState[idx] = user
+      saveData(newState)
+      return newState
+    })
+  }, [user])
+
+  // NOT WORKING
+  // useEffect(()=> {
+  //   saveData(users)
+  // }, [users])
 
   return (
     <Modal title='Update Balance' isOpen={isOpen} onClose={closeDialog}>
