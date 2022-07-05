@@ -23,7 +23,7 @@ const TableUser = ({ list }) => {
       navigate(`/dashboard-employee/accounts/${user.id}`)
 
     return (
-      <tr onClick={goToAccount}>
+      <tr key={user.id} onClick={goToAccount}>
         <td>{user.id}</td>
         <td>{user.name}</td>
         <td>{user.email}</td>

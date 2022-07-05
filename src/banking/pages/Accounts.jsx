@@ -6,13 +6,26 @@ import { KEY_USERS, getAllUsers } from '../../js/utils/localstorage'
 
 const Accounts = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false)
-  const toggleDialog = () => setIsDialogOpen(bool => !bool)
-
   const [users, setUsers] = useState(getAllUsers())
+  const [searchKeyword, setSearchKeyword] = useState('')
+
+  const toggleDialog = () => setIsDialogOpen(bool => !bool)
 
   useEffect(
     () => localStorage.setItem(KEY_USERS, JSON.stringify(users)),
     [users]
+  )
+
+  const handleSearch = e => {
+    const val = e.target.value
+    setSearchKeyword(val)
+  }
+
+  const filteredUsers = users.filter(
+    user =>
+      user.id.toString().toLowerCase().includes(searchKeyword.toLowerCase()) ||
+      user.firstName.toLowerCase().includes(searchKeyword.toLowerCase()) ||
+      user.lastName.toLowerCase().includes(searchKeyword.toLowerCase())
   )
 
   return (
@@ -20,9 +33,19 @@ const Accounts = () => {
       <main>
         <h2 className='title'>Accounts</h2>
         <div className='input-div'>
-          <input type='text' placeholder='🔎︎' className='input-field'></input>
+          <input
+            type='text'
+            placeholder='🔎︎'
+            className='input-field'
+            value={searchKeyword}
+            onChange={handleSearch}
+          />
         </div>
-        <TableUser list={users} />
+        <TableUser
+          list={filteredUsers}
+          users={users}
+          onUsersChange={setUsers}
+        />
       </main>
 
       <Button

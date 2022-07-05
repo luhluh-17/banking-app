@@ -1,33 +1,37 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Button from '../components/Button'
 import Modal from '../components/Modal'
-import { getUser, getAllUsers } from '../../js/utils/localstorage'
 import Transaction from '../../js/classes/transaction'
 import User from '../../js/classes/user'
+import { getUser, findUserIndex, saveData } from '../../js/utils/localstorage'
 
 function ModalSendMoney({
-  onUsersChange,
   sender,
   onSenderChange,
+  users,
+  onUsersChange,
   isOpen,
-  onDialogChange,
+  onToggleChange,
 }) {
-  const [receiver, setReceiver] = useState()
-
+  const [receiver, setReceiver] = useState({ id: -1 })
   const idRef = useRef(null)
   const amountRef = useRef(null)
 
-  const updateSender = amount => {
+  const toggleDialog = () => onToggleChange(bool => !bool)
+  const closeDialog = () => onToggleChange(false)
+
+  const updateSender = (id, amount) => {
     let updatedBalance = Number(sender.balance) - amount
     if (updatedBalance < 0) {
       alert('insufficient balance')
       return
     }
 
+    const receiver = getUser(id)
     const transactId = new Date().getTime()
     const transaction = new Transaction(
       transactId,
-      `Send Money to ${sender.id}`,
+      `Send Money to ${receiver.name}`,
       'Posted',
       amount
     )
@@ -46,30 +50,31 @@ function ModalSendMoney({
     })
   }
 
-  const updateReceiver = amount => {
+  const updateReceiver = (id, amount) => {
     let updatedBalance = Number(sender.balance) + amount
 
+    const receiver = getUser(id)
+
     const transactId = new Date().getTime()
-    console.log('receiver', receiver)
     const transaction = new Transaction(
       transactId,
-      `Receive Money from ${receiver.id}`,
+      `Receive Money from ${sender.name}`,
       'Posted',
       amount
     )
 
-    setReceiver(state => {
-      return new User(
-        state.id,
-        state.firstName,
-        state.lastName,
+    setReceiver(
+      new User(
+        receiver.id,
+        receiver.firstName,
+        receiver.lastName,
         updatedBalance,
-        state.email,
-        state.pass,
-        state.expenses,
-        [...state.transactions, transaction]
+        receiver.email,
+        receiver.pass,
+        receiver.expenses,
+        [...receiver.transactions, transaction]
       )
-    })
+    )
   }
 
   const resetState = () => {
@@ -77,23 +82,34 @@ function ModalSendMoney({
     amountRef.current.value = ''
   }
 
-  const toggleDialog = () => onDialogChange(bool => !bool)
-  const closeDialog = () => onDialogChange(false)
-
   const handleSubmit = event => {
     event.preventDefault()
 
     const id = Number(idRef.current.value)
     const amount = Number(amountRef.current.value)
-
     setReceiver(getUser(id))
 
-    updateSender(amount)
+    updateReceiver(id, amount)
+    updateSender(id, amount)
     resetState()
     closeDialog()
   }
 
-  useEffect(() => {}, [receiver])
+  useEffect(() => {
+    onUsersChange(state => {
+      const newState = state
+      const senderIdx = findUserIndex(sender.id)
+      newState[senderIdx] = sender
+
+      if (receiver.id !== -1) {
+        const receiverIdx = findUserIndex(receiver.id)
+        newState[receiverIdx] = receiver
+      }
+
+      saveData(newState)
+      return newState
+    })
+  }, [sender])
 
   return (
     <Modal title='Send Money' isOpen={isOpen} onClose={closeDialog}>
