@@ -32,15 +32,16 @@ const Accounts = () => {
     <>
       <main>
         <div className='sticky'>
-        <h2 className='title'>Accounts</h2>
-        <div className='input-div'>
-          <input
-            type='text'
-            placeholder='🔎︎'
-            className='input-field'
-            value={searchKeyword}
-            onChange={handleSearch}
-          />
+          <h2 className='title'>Accounts</h2>
+          <div className='input-div'>
+            <input
+              type='text'
+              placeholder='🔎︎'
+              className='input-field'
+              value={searchKeyword}
+              onChange={handleSearch}
+            />
+          </div>
         </div>
         <TableUser
           list={filteredUsers}

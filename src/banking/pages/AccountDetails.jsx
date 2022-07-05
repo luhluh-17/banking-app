@@ -65,13 +65,13 @@ function AccountDetails() {
             <div>
               <span
                 className='material-symbols-outlined icon'
-                onClick={() => navigate(-1)}
+                onClick={toggleUpdateDialog}
               >
                 edit
               </span>
               <span
                 className='material-symbols-outlined icon'
-                onClick={() => navigate(-1)}
+                onClick={() => handleDelete(user.id)}
               >
                 delete
               </span>
@@ -84,28 +84,6 @@ function AccountDetails() {
             </span>
           </div>
         </section>
-        <div className='btn-container'>
-          <div>
-            <span
-              className='material-symbols-outlined icon'
-              onClick={toggleUpdateDialog}
-            >
-              edit
-            </span>
-            <span
-              className='material-symbols-outlined icon'
-              onClick={() => handleDelete(user.id)}
-            >
-              delete
-            </span>
-          </div>
-          <span
-            className='material-symbols-outlined icon'
-            onClick={() => navigate(-1)}
-          >
-            arrow_back
-          </span>
-        </div>
 
         <AccountDetailsHeading user={user} />
 
