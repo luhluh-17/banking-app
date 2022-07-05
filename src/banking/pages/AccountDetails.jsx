@@ -39,18 +39,11 @@ function AccountDetails() {
   const toggleBalanceDialog = () => setIsDialogBalanceOpen(bool => !bool)
   const toggleSendDialog = () => setIsDialogSendOpen(bool => !bool)
 
-  const handleSave = () =>
-    localStorage.setItem(KEY_USERS, JSON.stringify(users))
-
   const handleDelete = id => {
     const updatedUsers = users.filter(u => u.id !== id)
     setUsers(updatedUsers)
     navigate(-1)
   }
-
-  useEffect(() => {
-    localStorage.setItem(KEY_USERS, JSON.stringify(users))
-  }, [users])
 
   return (
     <>
@@ -84,11 +77,6 @@ function AccountDetails() {
           <h2 className='title'>Transactions</h2>
           <div className='btn-container'>
             <Button
-              className='btn'
-              text='Save Transaction'
-              onClick={handleSave}
-            />
-            <Button
               className={'btn'}
               text='Update Balance'
               onClick={toggleBalanceDialog}
@@ -104,27 +92,30 @@ function AccountDetails() {
       </main>
 
       <ModalEditUser
-        isOpen={isDialogUpdateOpen}
-        onToggleChange={setIsDialogUpdateOpen}
         user={user}
+        onUserChange={setUser}
         users={users}
         onUsersChange={setUsers}
+        isOpen={isDialogUpdateOpen}
+        onToggleChange={setIsDialogUpdateOpen}
       />
 
       <ModalUpdateBalance
-        onUsersChange={setUsers}
         user={user}
         onUserChange={setUser}
+        users={users}
+        onUsersChange={setUsers}
         isOpen={isDialogBalanceOpen}
-        onDialogChange={setIsDialogBalanceOpen}
+        onToggleChange={setIsDialogBalanceOpen}
       />
 
       <ModalSendMoney
-        onUsersChange={setUsers}
         sender={user}
         onSenderChange={setUser}
+        users={users}
+        onUsersChange={setUsers}
         isOpen={isDialogSendOpen}
-        onDialogChange={setIsDialogSendOpen}
+        onToggleChange={setIsDialogSendOpen}
       />
     </>
   )
