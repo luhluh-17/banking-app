@@ -4,9 +4,8 @@ const Overview = () => {
   return (
     <main>
       <div className='sticky'>
-        <h2 className='title'>Overview</h2>
+      <h2 className='title'>Welcome Admin</h2>
       </div>
-      
     </main>
   )
 }
