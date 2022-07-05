@@ -2,7 +2,7 @@ import React from 'react'
 import Table from './Table'
 import Transaction from '../../js/classes/transaction'
 
-const TABLE_HEAD = ['ID', 'DATE', 'DESCRIPTION', 'STATUS', 'AMOUNT']
+const TABLE_HEAD = ['ID', 'DATE', 'DESCRIPTION', 'AMOUNT']
 
 const TableTransaction = ({ list }) => {
   const createTableItem = item => {
@@ -19,7 +19,6 @@ const TableTransaction = ({ list }) => {
         <td>{transaction.id}</td>
         <td>{date.toLocaleString()}</td>
         <td>{transaction.description}</td>
-        <td>{transaction.status}</td>
         <td>{transaction.formattedAmount}</td>
       </tr>
     )
