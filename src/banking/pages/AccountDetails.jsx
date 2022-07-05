@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
 import Button from '../components/Button'
@@ -9,7 +9,7 @@ import ModalUpdateBalance from '../parts/ModalUpdateBalance'
 import ModalSendMoney from '../parts/ModalSendMoney'
 
 import User from '../../js/classes/user'
-import { getAllUsers } from '../../js/utils/localstorage'
+import { getAllUsers, saveData } from '../../js/utils/localstorage'
 
 function AccountDetails() {
   const navigate = useNavigate()
@@ -44,6 +44,10 @@ function AccountDetails() {
     setUsers(updatedUsers)
     navigate(-1)
   }
+
+  useEffect(() => {
+    saveData(users)
+  }, [users])
 
   return (
     <>
