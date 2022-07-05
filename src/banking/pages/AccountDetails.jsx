@@ -53,18 +53,7 @@ function AccountDetails() {
     <>
       <main>
         <section className='account-details-wrapper sticky'>
-          <div className='account-details'>
-            <div>
-              <h2>{user.name}</h2>
-              <p>{user.id}</p>
-              <p>{user.email}</p>
-            </div>
-
-            <div>
-              <h2 className='bal'>{user.formattedBalance}</h2>
-              <h4>Current Balance</h4>
-            </div>
-          </div>
+          <AccountDetailsHeading user={user} />
           <div className='icon-container'>
             <div>
               <span
@@ -88,8 +77,6 @@ function AccountDetails() {
             </span>
           </div>
         </section>
-
-        <AccountDetailsHeading user={user} />
 
         <section className='transactions'>
           <h2 className='title'>Transactions</h2>

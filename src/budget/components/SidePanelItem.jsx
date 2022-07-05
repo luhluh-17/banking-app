@@ -10,5 +10,4 @@ const SidePanelItem = ({ icon, title }) => {
     </NavLink>
   )
 }
-
 export default SidePanelItem

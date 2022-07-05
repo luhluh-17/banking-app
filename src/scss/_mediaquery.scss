@@ -14,10 +14,27 @@
   .col.col-two {
     width: 100%;
   }
+
+  
 }
 
 @media (max-width: 850px) {
   .login-form {
     padding: 10vw;
   }
+}
+
+@media (max-width: 770px) {
+  .nav {
+    font-size: 0;
+  }
+
+  .sidepanel {
+    width: 10vw;
+  }
+
+  main {
+    width: 90vw;
+  }
+  
 }

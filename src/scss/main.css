@@ -18,6 +18,7 @@
   font-family: "Poppins", sans-serif;
   color: #1F1F1F;
   text-decoration: none;
+  font-size: 2.7vmin;
 }
 
 body {
@@ -27,6 +28,10 @@ body {
 h1 {
   font-size: 10vmin;
   font-weight: 900;
+}
+
+h2 {
+  font-size: 4vmin;
 }
 
 h3 {
@@ -63,11 +68,10 @@ input:focus {
 
 .btn {
   width: fit-content;
-  padding: 15px 20px;
+  padding: 1.5vmin 2vmin;
   border: none;
   background-color: #FFB20C;
   transition: all 300ms ease;
-  font-size: 1rem;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -226,16 +230,16 @@ input[type=submit]:hover, button[type=submit]:hover {
 }
 
 .sidepanel {
-  width: 20vw;
+  width: 20%;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 20px 1.5%;
 }
 .sidepanel .logo-s {
-  width: 150px;
+  width: 70%;
   margin-bottom: 30px;
 }
 .sidepanel h2 {
@@ -253,11 +257,12 @@ input[type=submit]:hover, button[type=submit]:hover {
   width: 100%;
   display: flex;
   justify-content: flex-start;
+  align-items: center;
   padding: 10px;
   border-left: 5px solid transparent;
 }
 .nav span {
-  padding: 0 25px;
+  padding: 0 10%;
   color: #FFB20C;
 }
 
@@ -267,9 +272,9 @@ input[type=submit]:hover, button[type=submit]:hover {
 
 main {
   background-color: #FAF9FA;
-  width: 80vw;
+  width: 80%;
   height: 100vh;
-  padding: 0 70px 30px 70px;
+  padding: 0 5% 30px 5%;
   overflow-y: scroll;
 }
 main .title {
@@ -541,6 +546,19 @@ tr:hover {
 @media (max-width: 850px) {
   .login-form {
     padding: 10vw;
+  }
+}
+@media (max-width: 770px) {
+  .nav {
+    font-size: 0;
+  }
+
+  .sidepanel {
+    width: 10vw;
+  }
+
+  main {
+    width: 90vw;
   }
 }
 
