@@ -2,8 +2,6 @@
 
 .input-div {
   padding-bottom: 20px;
-  margin-bottom: 50px;
-  border-bottom: 2px solid $grey;
   width: 300px;
 
   ::placeholder {
@@ -19,132 +17,7 @@
   width: 100%;
 }
 
-.table-div {
-  height: 360px;
-  
-  overflow-y: scroll;
 
-  &::-webkit-scrollbar { 
-    display: none;
-  }
-}
-
-table {
-  width: 100%;
-  border-radius: 15px;
-  border-collapse:separate;
-  border-spacing:0 15px;
-  position: relative;
-  
-
-  th {
-    text-align: left;
-    background-color: $grey ;
-    color: $dark-grey;
-    position: sticky;
-    top: 0;
-    cursor: default;
-
-    &:hover {
-      background-color: $grey ;
-    }
-  }
-
-  tr {
-    background-color: $white;
-    cursor: pointer;
-  }
-
-  td, th {
-    padding: 10px 20px;
-  }
-}
-
-tr:hover {
-  background-color: $yellow;
-}
-
-.link {
-  width: 100%;
-}
-
-.btn {
-  padding: 10px 15px;
-  border: none;
-  background-color: $yellow;
-  transition: all 300ms ease;
-  font-size: 16px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  &:hover {
-    transform: translateY(-3px);
-  }
-}
-
-.btn.float {
-  position: absolute;
-  top: 30px;
-  right: 50px;
-}
-
-dialog {
-  border: none;
-}
-
-.modal {
-  background-color: $blue;
-  width: 50vw;
-  height: 65vh;
-  position: fixed;
-  top: 15%;
-  left: 25%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 20px;
-  
-  h3, h4 {
-    color: white;
-  }
-
-  form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-
-    div {
-      display: flex;
-    }
-
-    .btn {
-      position: static;
-      margin: 20px 10px;
-    }
-  }
-
-  .row {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-  }
-  
-  .col {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 0 10px;
-  }
-
-  
-  
-}
 
 
 

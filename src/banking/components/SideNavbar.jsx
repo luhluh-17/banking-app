@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import SideNavbarHeading from './SideNavbarHeading'
+
+import Logo from '../../assets/logo.png'
 
 const SideNavbar = () => {
   const style = ({ isActive }) => (isActive ? 'link active' : 'link')
@@ -9,7 +10,7 @@ const SideNavbar = () => {
   return (
     <nav className='sidepanel'>
       <div className='tabs'>
-        <SideNavbarHeading />
+        <img src={Logo} alt='company logo' className='logo-s' />
         <NavLink to={path} className={`${style} nav`} end={true}>
           <span className='material-symbols-outlined'>dashboard</span>
           Overview

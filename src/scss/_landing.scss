@@ -4,11 +4,11 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 50px;
+  padding: 0 2vw;
   border-bottom: 1px solid $dark-grey ;
 
     .menu-link {
-      padding: 0 20px;
+      padding: 0 2vw;
     }
 }
 
@@ -28,6 +28,9 @@ header {
 
 .hero-section {
   background-image: url(../assets/home-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   width: 100%;
   height: 80vh;
   display: flex;
@@ -46,16 +49,15 @@ header {
 
 footer {
   color: $grey;
-  padding: 20px 50px;
-  display: flex;
+  padding: 2.5vh 2vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: end;
   align-items: center;
-  justify-content: space-between;
   font-size: 14px;
-  text-align: center;
-}
+  text-align: left;
 
-footer .login-btn {
-  background-color: transparent;
-  border: 1px solid $yellow;
-  color: $black;
+  p {
+    justify-self: start;
+  }
 }
