@@ -24,5 +24,15 @@ export const getUser = id => {
   )
 }
 
+export const getAllTransactions = () => {
+  const users = getAllUsers()
+  const list = []
+  users.forEach(user => {
+    list.push(user.transactions)
+  })
+
+  return list.flat().sort((a, b) => a.id - b.id)
+}
+
 export const saveData = data =>
   localStorage.setItem(KEY_USERS, JSON.stringify(data))
