@@ -31,15 +31,17 @@ const Accounts = () => {
   return (
     <>
       <main>
-        <h2 className='title'>Accounts</h2>
-        <div className='input-div'>
-          <input
-            type='text'
-            placeholder='🔎︎'
-            className='input-field'
-            value={searchKeyword}
-            onChange={handleSearch}
-          />
+        <div className='sticky'>
+          <h2 className='title'>Accounts</h2>
+          <div className='input-div'>
+            <input
+              type='text'
+              placeholder='🔎︎'
+              className='input-field'
+              value={searchKeyword}
+              onChange={handleSearch}
+            />
+          </div>
         </div>
         <TableUser
           list={filteredUsers}

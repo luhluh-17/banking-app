@@ -21,6 +21,11 @@
   width: 50%;
 }
 
+.login-form {
+  width: 100%;
+  padding: 15vw;
+}
+
 form {
   width: 50%;
   padding: 30px;
@@ -28,8 +33,10 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 
   label {
+    align-self: flex-start;
     padding-bottom: 10px;
     color: $dark-grey;
   }
@@ -52,11 +59,9 @@ form {
   }
 }
 
-input[type='submit'] {
+input[type='submit'], button[type='submit'] {
   width: 100%;
   margin-top: 20px;
-  color: $white;
-  text-shadow: 3px 4px 7px $black;
   background-color: $yellow;
   border: none;
   cursor: pointer;

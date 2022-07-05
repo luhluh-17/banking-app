@@ -2,7 +2,6 @@ import React from 'react'
 
 function AccountDetailsHeading({ user }) {
   return (
-    <section>
       <div className='account-details'>
         <div>
           <h2>{user.name}</h2>
@@ -15,7 +14,6 @@ function AccountDetailsHeading({ user }) {
           <h4>Current Balance</h4>
         </div>
       </div>
-    </section>
   )
 }
 

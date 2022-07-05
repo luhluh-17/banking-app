@@ -52,30 +52,31 @@ function AccountDetails() {
   return (
     <>
       <main>
-        <div className='btn-container'>
-          <div>
+        <section className='account-details-wrapper sticky'>
+          <AccountDetailsHeading user={user} />
+          <div className='icon-container'>
+            <div>
+              <span
+                className='material-symbols-outlined icon'
+                onClick={toggleUpdateDialog}
+              >
+                edit
+              </span>
+              <span
+                className='material-symbols-outlined icon'
+                onClick={() => handleDelete(user.id)}
+              >
+                delete
+              </span>
+            </div>
             <span
-              className='material-symbols-outlined icon'
-              onClick={toggleUpdateDialog}
+              className='material-symbols-outlined icon back'
+              onClick={() => navigate(-1)}
             >
-              edit
-            </span>
-            <span
-              className='material-symbols-outlined icon'
-              onClick={() => handleDelete(user.id)}
-            >
-              delete
+              arrow_back
             </span>
           </div>
-          <span
-            className='material-symbols-outlined icon'
-            onClick={() => navigate(-1)}
-          >
-            arrow_back
-          </span>
-        </div>
-
-        <AccountDetailsHeading user={user} />
+        </section>
 
         <section className='transactions'>
           <h2 className='title'>Transactions</h2>

@@ -12,7 +12,7 @@ const CustomerLogin = () => {
 
 const Logo = () => {
   return (
-    <div className='col'>
+    <div className='col col-one'>
       <img
         src={require('../../assets/logo.png')}
         className='logo'

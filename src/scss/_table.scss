@@ -1,0 +1,42 @@
+@import 'variables';
+
+.table-div {
+  
+}
+
+table {
+  width: 100%;
+  border-radius: 15px;
+  border-collapse:separate;
+  border-spacing:0 15px;
+  
+  
+
+  th {
+    text-align: left;
+    background-color: $grey ;
+    color: $dark-grey;
+    cursor: default;
+
+    &:hover {
+      background-color: $grey ;
+    }
+  }
+
+  tr {
+    background-color: $white;
+    cursor: pointer;
+  }
+
+  td, th {
+    padding: 10px 20px;
+  }
+}
+
+tr:hover {
+  background-color: $yellow;
+}
+
+.link {
+  width: 100%;
+}

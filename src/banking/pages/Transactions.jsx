@@ -5,8 +5,10 @@ import TableTransaction from '../components/TableTransaction'
 function Transactions() {
   return (
     <main>
+      <div className='sticky'>
       <h2 className='title'>Transactions</h2>
       <TableTransaction list={getAllTransactions()} />
+      </div>
     </main>
   )
 }

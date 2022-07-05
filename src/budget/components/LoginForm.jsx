@@ -32,7 +32,7 @@ const LoginForm = () => {
 
   return (
     <div className="col col-two">
-      <form id="login-form" onSubmit={handleFormSubmit}>
+      <form className="login-form" onSubmit={handleFormSubmit}>
         <h3>Customer Login</h3>
 
         <label htmlFor="username">Username</label>
