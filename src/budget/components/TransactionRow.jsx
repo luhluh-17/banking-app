@@ -1,6 +1,7 @@
 import React from 'react'
 
 const TransactionRow = ({ id, description, status, amount }) => {
+  
   const newDate = new Date(id)
   const formatCurrency = number => {
     return new Intl.NumberFormat('en-US', {
