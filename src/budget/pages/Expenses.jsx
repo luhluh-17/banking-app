@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
-import ExpensesRowItem from '../components/ExpensesRowItem'
 import { UserContext } from '../helper/Context'
+import ExpensesRowItem from '../components/ExpensesRowItem'
 import ModalExpense from '../components/ModalExpense'
 
 const Expenses = () => {
