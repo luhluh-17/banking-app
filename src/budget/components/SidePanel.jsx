@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 import { UserContext } from '../helper/Context'
+import { NavLink } from 'react-router-dom'
 import SidePanelItem from './SidePanelItem'
 import Logo from '../../assets/logo.png'
-import { NavLink } from 'react-router-dom'
 
 const PanelData = [
   { icon: 'apps', title: 'Overview' },
@@ -16,13 +16,9 @@ const SidePanel = () => {
 
   return (
     <nav className='sidepanel'>
-      
       <div className='tabs'>
         <img src={Logo} alt='company logo' className='logo-s' />
-
-      <h2>Hello {user.firstName},</h2>
-
-
+        <h2>Hello {user.firstName},</h2>
         {PanelData.map((item, index) => {
           return <SidePanelItem key={index} {...item} />
         })}
