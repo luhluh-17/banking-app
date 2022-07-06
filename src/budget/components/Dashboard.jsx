@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import SidePanel from './SidePanel'
 import { Outlet, useParams } from 'react-router-dom'
 import { UserContext } from '../helper/Context'
 import Users from '../data/User'
+import SidePanel from './SidePanel'
 
 const Dashboard = () => {
 
@@ -11,9 +11,9 @@ const Dashboard = () => {
 
   useEffect(() => {
     const idx = Users.findIndex(item => item.id === user.id)
-    usersList[idx] = user
+    Users[idx] = user
     localStorage.setItem('currentUser', JSON.stringify(user))
-    localStorage.setItem('users', JSON.stringify(usersList))
+    localStorage.setItem('users', JSON.stringify(Users))
   }, [user])
 
   return (

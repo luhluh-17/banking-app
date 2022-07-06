@@ -1,5 +1,7 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { UserContext } from '../helper/Context'
+import FormatCurrency from '../helper/FormatCurrency'
+import InsufficientPrompt from './InsufficientPrompt'
 
 const Expenses_Row_Item = ({
   description,
@@ -9,6 +11,8 @@ const Expenses_Row_Item = ({
   id,
 }) => {
   const { user, setUser } = useContext(UserContext)
+  const [modalOpen, setModalOpen]= useState(false)
+
   const handleDelete = id => {
     onChangeExpenseList(expenseList.filter(item => item.id !== id))
   }
@@ -17,7 +21,7 @@ const Expenses_Row_Item = ({
     const index = expenseList.findIndex(item => item.id === id)
     const newBalance = user.balance - amount
     if (user.balance < amount) {
-      alert('Insufficient Balance')
+		setModalOpen(true)
     } else {
       setUser(prev => {
         return {
@@ -29,17 +33,11 @@ const Expenses_Row_Item = ({
       handleDelete(id)
     }
   }
-
-  const formatCurrency = number => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'PHP',
-    }).format(number)
-  }
   return (
+	<>
     <tr>
       <td>{description}</td>
-      <td>{formatCurrency(amount)}</td>
+      <td>{FormatCurrency(amount)}</td>
       <td style={{ display: 'flex', gap: '1rem' }}>
         <span
           className="material-symbols-outlined icon"
@@ -53,6 +51,8 @@ const Expenses_Row_Item = ({
         </button>
       </td>
     </tr>
+	{modalOpen && <InsufficientPrompt onChangeModalOpen={setModalOpen} />}
+	</>
   )
 }
 
