@@ -4,30 +4,30 @@ import User from '../classes/user'
 const DUMMY_USERS_DATA = [
   new User(
     1656942667530,
-    'R',
-    'Cas',
+    'Admin',
+    'User',
     10000,
-    'rc@gmail.com',
+    'admin@test.com',
     'pass',
     [],
     [new Transaction(1656942667530, 'Initial balance', 'Posted', 10000)]
   ),
   new User(
     1656943293201,
-    'Stan',
-    'Ley',
+    'Jane',
+    'Doe',
     10000,
-    'stan@gmail.com',
+    'janedoe@gmail.com',
     'pass',
     [],
     [new Transaction(1656943293201, 'Initial balance', 'Posted', 10000)]
   ),
   new User(
     1656943301797,
-    'El',
-    'laine',
+    'John',
+    'Doe',
     10000,
-    'ellaine@gmail.com',
+    'johndoe@gmail.com',
     'pass',
     [],
     [new Transaction(1656943301797, 'Initial balance', 'Posted', 10000)]
